@@ -145,7 +145,8 @@
 
   /* SCENES */
   .scene{min-height:100vh;scroll-snap-align:start;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .scene-inner{max-width:1200px;width:100%;padding:80px 40px;position:relative;z-index:2}
+  .scene-inner{max-width:1400px;width:100%;padding:80px 40px;position:relative;z-index:2}
+  @media(min-width:1600px){.scene-inner{max-width:1600px;padding:80px 60px}}
 
   /* ===== FRAMING VIEW ===== */
   .framing-view{background:#000d1a;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;min-height:100vh;overflow-y:auto}
@@ -161,7 +162,8 @@
 
   /* Timeline Section */
   .fr-timeline-section{background:#000d1a;padding:80px 32px 60px;position:relative}
-  .fr-timeline-inner{max-width:1200px;margin:0 auto;position:relative}
+  .fr-timeline-inner{max-width:1400px;margin:0 auto;position:relative}
+  @media(min-width:1600px){.fr-timeline-inner{max-width:1600px}}
   .fr-eras{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative;z-index:2}
   .fr-timeline-line{position:absolute;top:28px;left:10%;right:10%;height:3px;background:linear-gradient(90deg,#34d399,#fbbf24,#8b5cf6);border-radius:2px;z-index:1;opacity:0.3}
 
@@ -419,7 +421,8 @@
   .pt-ongoing{background:rgba(96,165,250,0.06);color:#2563eb;flex:6}
 
   /* Journey Cards Grid */
-  .jc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1200px}
+  .jc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1400px}
+  @media(min-width:1600px){.jc-grid{max-width:1600px;gap:24px}}
   .jc-grid .jc-full{grid-column:1/-1}
   .j-card{position:relative;border-radius:14px;padding:32px;cursor:pointer;transition:all .4s;overflow:hidden}
   .j-card:hover{transform:translateY(-3px)}
@@ -470,6 +473,8 @@
   .scene-step:nth-child(odd){background:var(--white)}
   .scene-step:nth-child(even){background:var(--off-white)}
   .step-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  @media(min-width:1400px){.step-grid{grid-template-columns:1fr 1.3fr;gap:60px}}
+  @media(min-width:1600px){.step-grid{grid-template-columns:1fr 1.4fr;gap:70px}}
   .step-grid.reverse .step-viz{order:-1}
   .step-num{font-size:68px;font-weight:800;color:rgba(0,51,102,0.05);line-height:1;margin-bottom:-12px}
   .step-phase{display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
@@ -484,6 +489,7 @@
   .phase-philanthropy{background:rgba(52,211,153,0.08);color:#059669}
   .phase-entity{background:rgba(129,140,248,0.08);color:var(--indigo)}
   .phase-sentiment{background:rgba(251,191,36,0.08);color:#b45309}
+  .phase-lending{background:rgba(251,113,133,0.15);color:#fb7185}
   .step-title{font-size:24px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.2}
   .step-sub{font-size:13px;color:var(--gray-400);font-style:italic;margin-bottom:16px}
   .step-body{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
@@ -582,6 +588,166 @@
     .cycle-overview{flex-direction:column}
     .phase-row{flex-direction:column}
   }
+
+  /* ===== PROSPECT DOSSIER AGENT ===== */
+  .pd-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
+  .pd-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .pd-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
+  .pd-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
+  .pd-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
+  .pd-back-btn:hover{background:rgba(0,51,102,0.15)}
+  .pd-confidence{display:flex;align-items:center;gap:12px;margin:0 28px;padding:14px 20px;background:linear-gradient(135deg,rgba(0,51,102,0.06),rgba(201,162,39,0.08));border:1px solid rgba(201,162,39,0.2);border-radius:6px}
+  .pd-content{display:grid;grid-template-columns:340px 1fr;gap:24px;padding:24px 28px;max-width:1600px;margin:0 auto}
+  @media(max-width:1024px){.pd-content{grid-template-columns:1fr}}
+  .pd-sidebar{display:flex;flex-direction:column;gap:16px}
+  .pd-main{display:flex;flex-direction:column;gap:20px}
+  .pd-card{background:white;border-radius:12px;border:1px solid #e5e7eb;overflow:hidden}
+  .pd-card-header{padding:16px 20px;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;gap:10px}
+  .pd-card-icon{font-size:18px}
+  .pd-card-title{font-size:14px;font-weight:700;color:#001a33}
+  .pd-card-badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;margin-left:auto}
+  .pd-card-body{padding:16px 20px}
+  .pd-profile-header{text-align:center;padding:24px 20px 16px}
+  .pd-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#003366,#0a4080);display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:700;margin:0 auto 12px}
+  .pd-name{font-size:18px;font-weight:700;color:#001a33;margin-bottom:2px}
+  .pd-role{font-size:12px;color:#6b7280;margin-bottom:12px}
+  .pd-score-ring{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:3px solid #C9A227;font-size:16px;font-weight:800;color:#C9A227;margin-bottom:8px}
+  .pd-score-label{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:1px}
+  .pd-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0f2f5;border-top:1px solid #f0f2f5}
+  .pd-stat{background:white;padding:12px 16px;text-align:center}
+  .pd-stat-val{font-size:16px;font-weight:700;color:#003366}
+  .pd-stat-label{font-size:10px;color:#6b7280;margin-top:2px}
+  .pd-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f5f6f8;font-size:13px}
+  .pd-row:last-child{border-bottom:none}
+  .pd-row-label{color:#6b7280;font-size:12px}
+  .pd-row-val{font-weight:600;color:#001a33;font-size:12px}
+  .pd-tag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;margin:2px}
+  .pd-tag-gold{background:rgba(201,162,39,0.12);color:#b8860b}
+  .pd-tag-blue{background:rgba(37,99,235,0.1);color:#2563eb}
+  .pd-tag-green{background:rgba(5,150,105,0.1);color:#059669}
+  .pd-tag-purple{background:rgba(124,58,237,0.1);color:#7c3aed}
+  .pd-tag-red{background:rgba(239,68,68,0.1);color:#dc2626}
+  .pd-section-title{font-size:13px;font-weight:700;color:#001a33;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #f0f2f5}
+  .pd-insight{padding:12px 16px;border-radius:8px;margin-bottom:10px;font-size:12px;line-height:1.6}
+  .pd-insight-gold{background:rgba(201,162,39,0.06);border-left:3px solid #C9A227;color:#444}
+  .pd-insight-blue{background:rgba(37,99,235,0.05);border-left:3px solid #2563eb;color:#444}
+  .pd-insight-green{background:rgba(5,150,105,0.05);border-left:3px solid #059669;color:#444}
+  .pd-timeline-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f5f6f8;font-size:12px}
+  .pd-timeline-date{min-width:70px;color:#6b7280;font-weight:500}
+  .pd-timeline-text{color:#374151;line-height:1.5}
+  .pd-conn{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f6f8}
+  .pd-conn-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#003366,#0a4080);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600}
+  .pd-conn-info{flex:1}
+  .pd-conn-name{font-size:12px;font-weight:600;color:#001a33}
+  .pd-conn-detail{font-size:11px;color:#6b7280}
+
+
+  /* ===== AI MORNING BRIEF AGENT ===== */
+  .mb-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
+  .mb-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .mb-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
+  .mb-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
+  .mb-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
+  .mb-back-btn:hover{background:rgba(0,51,102,0.15)}
+  .mb-content{max-width:1400px;margin:0 auto;padding:24px 28px}
+  @media(min-width:1600px){.mb-content{max-width:1600px}}
+  .mb-hero{background:linear-gradient(135deg,#001a33 0%,#003366 100%);border-radius:16px;padding:28px 32px;margin-bottom:24px;color:white}
+  .mb-hero-label{font-size:10px;font-weight:700;color:#C9A227;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .mb-hero-title{font-size:20px;font-weight:700;margin-bottom:6px}
+  .mb-hero-sub{font-size:13px;color:#94a3b8;line-height:1.6}
+  .mb-hero-stats{display:flex;gap:32px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)}
+  .mb-hero-stat-val{font-size:18px;font-weight:700;color:#C9A227}
+  .mb-hero-stat-label{font-size:10px;color:#94a3b8;margin-top:2px}
+  .mb-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:1024px){.mb-grid{grid-template-columns:1fr}}
+  .mb-card{background:white;border-radius:12px;border:1px solid #e5e7eb;overflow:hidden}
+  .mb-card-full{grid-column:1/-1}
+  .mb-card-header{padding:16px 20px;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;justify-content:space-between}
+  .mb-card-title{font-size:14px;font-weight:700;color:#001a33;display:flex;align-items:center;gap:8px}
+  .mb-card-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px}
+  .mb-card-badge-red{background:rgba(239,68,68,0.1);color:#dc2626}
+  .mb-card-badge-gold{background:rgba(201,162,39,0.12);color:#b8860b}
+  .mb-card-badge-green{background:rgba(5,150,105,0.1);color:#059669}
+  .mb-card-badge-blue{background:rgba(37,99,235,0.1);color:#2563eb}
+  .mb-card-body{padding:16px 20px}
+  .mb-item{padding:12px 0;border-bottom:1px solid #f5f6f8;font-size:13px;line-height:1.6;color:#374151}
+  .mb-item:last-child{border-bottom:none}
+  .mb-item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .mb-item-title{font-weight:600;color:#001a33;font-size:13px}
+  .mb-item-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+  .mb-item-body{font-size:12px;color:#6b7280;line-height:1.6}
+  .mb-client-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f5f6f8}
+  .mb-client-row:last-child{border-bottom:none}
+  .mb-client-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#003366,#0a4080);display:flex;align-items:center;justify-content:center;color:white;font-size:12px;font-weight:600;flex-shrink:0}
+  .mb-client-info{flex:1;min-width:0}
+  .mb-client-name{font-size:13px;font-weight:600;color:#001a33}
+  .mb-client-detail{font-size:11px;color:#6b7280;line-height:1.4}
+  .mb-client-action{font-size:11px;font-weight:600;color:#003366;background:rgba(0,51,102,0.06);padding:6px 12px;border-radius:5px;white-space:nowrap}
+  .mb-market-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f5f6f8;font-size:12px}
+  .mb-market-row:last-child{border-bottom:none}
+  .mb-market-name{font-weight:600;color:#001a33}
+  .mb-market-val{font-weight:600}
+  .mb-up{color:#059669}
+  .mb-down{color:#dc2626}
+
+
+  /* ===== SHARED AGENT VIEW STYLES ===== */
+  .av-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
+  .av-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .av-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
+  .av-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
+  .av-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
+  .av-back-btn:hover{background:rgba(0,51,102,0.15)}
+  .av-confidence{display:flex;align-items:center;gap:12px;margin:12px 28px 0;padding:14px 20px;background:linear-gradient(135deg,rgba(0,51,102,0.06),rgba(201,162,39,0.08));border:1px solid rgba(201,162,39,0.2);border-radius:6px;flex-wrap:wrap}
+  .av-content{max-width:1400px;margin:0 auto;padding:24px 28px}
+  @media(min-width:1600px){.av-content{max-width:1600px}}
+  .av-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .av-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+  @media(max-width:1024px){.av-grid,.av-grid-3{grid-template-columns:1fr}}
+  .av-card{background:white;border-radius:12px;border:1px solid #e5e7eb;overflow:hidden}
+  .av-card-full{grid-column:1/-1}
+  .av-card-header{padding:16px 20px;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;justify-content:space-between}
+  .av-card-title{font-size:14px;font-weight:700;color:#001a33;display:flex;align-items:center;gap:8px}
+  .av-card-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px}
+  .av-badge-red{background:rgba(239,68,68,0.1);color:#dc2626}
+  .av-badge-gold{background:rgba(201,162,39,0.12);color:#b8860b}
+  .av-badge-green{background:rgba(5,150,105,0.1);color:#059669}
+  .av-badge-blue{background:rgba(37,99,235,0.1);color:#2563eb}
+  .av-badge-purple{background:rgba(124,58,237,0.1);color:#7c3aed}
+  .av-card-body{padding:16px 20px}
+  .av-item{padding:12px 0;border-bottom:1px solid #f5f6f8;font-size:13px;line-height:1.6;color:#374151}
+  .av-item:last-child{border-bottom:none}
+  .av-item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .av-item-title{font-weight:600;color:#001a33;font-size:13px}
+  .av-item-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+  .av-item-body{font-size:12px;color:#6b7280;line-height:1.6}
+  .av-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f5f6f8}
+  .av-row:last-child{border-bottom:none}
+  .av-row-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#003366,#0a4080);display:flex;align-items:center;justify-content:center;color:white;font-size:12px;font-weight:600;flex-shrink:0}
+  .av-row-info{flex:1;min-width:0}
+  .av-row-name{font-size:13px;font-weight:600;color:#001a33}
+  .av-row-detail{font-size:11px;color:#6b7280;line-height:1.4}
+  .av-row-action{font-size:11px;font-weight:600;color:#003366;background:rgba(0,51,102,0.06);padding:6px 12px;border-radius:5px;white-space:nowrap}
+  .av-metric-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f5f6f8;font-size:12px}
+  .av-metric-row:last-child{border-bottom:none}
+  .av-metric-label{color:#6b7280}
+  .av-metric-val{font-weight:600;color:#001a33}
+  .av-bar{height:6px;background:#f0f2f5;border-radius:3px;margin-top:6px;overflow:hidden}
+  .av-bar-fill{height:100%;border-radius:3px}
+  .av-hero{border-radius:16px;padding:28px 32px;margin-bottom:24px;color:white}
+  .av-hero-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .av-hero-title{font-size:20px;font-weight:700;margin-bottom:6px}
+  .av-hero-sub{font-size:13px;opacity:0.8;line-height:1.6}
+  .av-hero-stats{display:flex;gap:32px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)}
+  .av-hero-stat-val{font-size:18px;font-weight:700}
+  .av-hero-stat-label{font-size:10px;opacity:0.7;margin-top:2px}
+  .av-insight{padding:12px 16px;border-radius:8px;margin-bottom:10px;font-size:12px;line-height:1.6;color:#444}
+  .av-insight-gold{background:rgba(201,162,39,0.06);border-left:3px solid #C9A227}
+  .av-insight-blue{background:rgba(37,99,235,0.05);border-left:3px solid #2563eb}
+  .av-insight-green{background:rgba(5,150,105,0.05);border-left:3px solid #059669}
+  .av-insight-red{background:rgba(239,68,68,0.05);border-left:3px solid #dc2626}
+  .av-insight-purple{background:rgba(124,58,237,0.05);border-left:3px solid #7c3aed}
+
 </style>
 </head>
 <body>
@@ -637,17 +803,25 @@
     <div class="sb-sub-items" id="sbSub-era1">
       <div class="sb-sub-item" data-sb-key="prospect" onclick="window.sbNav('prospect')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Prospect Intelligence</span></div>
       <div class="sb-sub-item" data-sb-key="onboard" onclick="window.sbNav('onboard')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Client Onboarding</span></div>
+      <div class="sb-sub-item" data-sb-key="onboardagent" onclick="window.sbNav('onboardagent')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Onboarding Orchestrator</span></div>
       <div class="sb-sub-item" data-sb-key="review" onclick="window.sbNav('review')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Quarterly Reviews</span></div>
       <div class="sb-sub-item" data-sb-key="monitor" onclick="window.sbNav('monitor')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Portfolio Monitoring</span></div>
-      <div class="sb-sub-item" data-sb-key="estate" onclick="window.sbNav('estate')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Estate Planning</span></div>
-      <div class="sb-sub-item" data-sb-key="nextgen" onclick="window.sbNav('nextgen')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Next-Gen Transfer</span></div>
+      <div class="sb-sub-item" data-sb-key="surveillance" onclick="window.sbNav('surveillance')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Portfolio Surveillance Agent</span></div>
+      <div class="sb-sub-item" data-sb-key="estate" onclick="window.sbNav('estate')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Estate &amp; Wealth Transfer</span></div>
+      <div class="sb-sub-item" data-sb-key="sentiment" onclick="window.sbNav('sentiment')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Client Engagement Intelligence</span></div>
+      <div class="sb-sub-item" data-sb-key="attrition" onclick="window.sbNav('attrition')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Attrition Early Warning</span></div>
       <div class="sb-sub-item" data-sb-key="alts" onclick="window.sbNav('alts')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Alternative Investments</span></div>
+      <div class="sb-sub-item" data-sb-key="dealflow" onclick="window.sbNav('dealflow')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Deal Flow Matching</span></div>
       <div class="sb-sub-item" data-sb-key="philanthropy" onclick="window.sbNav('philanthropy')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Philanthropic Advisory</span></div>
-      <div class="sb-sub-item" data-sb-key="sentiment" onclick="window.sbNav('sentiment')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Relationship Health</span></div>
+      <div class="sb-sub-item" data-sb-key="charitablestrat" onclick="window.sbNav('charitablestrat')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Charitable Strategy Agent</span></div>
       <div class="sb-sub-item" data-sb-key="community" onclick="window.sbNav('community')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Community &amp; Convening</span></div>
+      <div class="sb-sub-item" data-sb-key="lending" onclick="window.sbNav('lending')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Lending &amp; Structured Credit</span></div>
+      <div class="sb-sub-item" data-sb-key="lendingstrat" onclick="window.sbNav('lendingstrat')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Lending Structure Agent</span></div>
       <div class="sb-sub-item" data-sb-key="dashboard" onclick="window.sbNav('dashboard')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Advisor Dashboard</span></div>
+      <div class="sb-sub-item" data-sb-key="dossier" onclick="window.sbNav('dossier')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Prospect Dossier Agent</span></div>
       <div class="sb-sub-item" data-sb-key="meetingprep" onclick="window.sbNav('meetingprep')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Meeting Prep Agent</span></div>
       <div class="sb-sub-item" data-sb-key="estatestrat" onclick="window.sbNav('estatestrat')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Estate Strategy Agent</span></div>
+      <div class="sb-sub-item" data-sb-key="morningbrief" onclick="window.sbNav('morningbrief')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">AI Morning Brief</span></div>
     </div>
 
     <!-- Era 2 -->
@@ -721,7 +895,7 @@
 </div>
 
 <div class="hub-map">
-  <div class="scene-inner" style="max-width:1200px;margin:0 auto">
+  <div class="scene-inner" style="max-width:1400px;margin:0 auto">
 
     <!-- Three Eras Timeline -->
     <div class="sec-label">The Strategic Roadmap</div>
@@ -932,7 +1106,7 @@
 </div>
 
 <div class="hub-map">
-  <div class="scene-inner" style="max-width:1200px;margin:0 auto">
+  <div class="scene-inner" style="max-width:1400px;margin:0 auto">
     <div class="sec-label">One Client, One Seamless Experience</div>
     <h2 class="sec-title">Ten Capabilities Powering Every Stage</h2>
     <p class="sec-desc">The wealth management experience is a single, continuous relationship &mdash; not a series of disconnected workflows. Click into any capability to explore how AI agents transform that dimension of the client experience.</p>
@@ -944,8 +1118,8 @@
       <div class="lc-node"><div class="lc-dot green"></div><div class="lc-name">Portfolio<br>Build</div></div>
       <div class="lc-node"><div class="lc-dot teal"></div><div class="lc-name">Ongoing<br>Advisory</div></div>
       <div class="lc-node"><div class="lc-dot blue"></div><div class="lc-name">Portfolio<br>Monitoring</div></div>
-      <div class="lc-node"><div class="lc-dot purple"></div><div class="lc-name">Trust &amp;<br>Estate</div></div>
-      <div class="lc-node"><div class="lc-dot rose"></div><div class="lc-name">Next-Gen<br>Transfer</div></div>
+      <div class="lc-node"><div class="lc-dot purple"></div><div class="lc-name">Estate &amp;<br>Transfer</div></div>
+      <div class="lc-node"><div class="lc-dot amber"></div><div class="lc-name">Engagement<br>Intelligence</div></div>
       <div class="lc-node"><div class="lc-dot teal"></div><div class="lc-name">Community<br>&amp; Convening</div></div>
     </div>
     <div class="phase-row">
@@ -954,8 +1128,9 @@
       <div class="phase-tag pt-ongoing">Ongoing Client Engagement &amp; Lifecycle</div>
     </div>
 
-    <div class="hub-section-label">Acquisition &amp; Onboarding</div>
+    <div class="hub-section-label">Client Lifecycle</div>
     <div class="jc-grid">
+      <!-- 01: Prospecting & Conversion -->
       <div class="j-card j-card-dark j-card-gold" onclick="showView('prospect')">
         <div class="j-card-num clr-gold"><div class="j-pulse" style="background:var(--gold)"></div> 01</div>
         <div class="j-card-title">Prospecting &amp; Conversion</div>
@@ -963,6 +1138,8 @@
         <div class="j-card-stats"><div><div class="j-stat-val clr-gold">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-gold">3x</div><div class="j-stat-label">Response Rate</div></div><div><div class="j-stat-val clr-gold">2x</div><div class="j-stat-label">Close Rate</div></div></div>
         <button class="j-card-cta bg-gold">Explore &#8594;</button>
       </div>
+
+      <!-- 02: Onboarding -->
       <div class="j-card j-card-dark j-card-green" onclick="showView('onboard')">
         <div class="j-card-num clr-green"><div class="j-pulse" style="background:var(--success)"></div> 02</div>
         <div class="j-card-title">Onboarding &amp; First 90 Days</div>
@@ -970,10 +1147,8 @@
         <div class="j-card-stats"><div><div class="j-stat-val clr-green">3</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-green">70%</div><div class="j-stat-label">Faster Onboard</div></div><div><div class="j-stat-val clr-green">95%</div><div class="j-stat-label">Completion</div></div></div>
         <button class="j-card-cta bg-green">Explore &#8594;</button>
       </div>
-    </div>
-    <div class="hub-section-label">Ongoing Client Engagement</div>
-    <div class="jc-grid">
-      <!-- J3: Client Reviews -->
+
+      <!-- 03: Client Reviews -->
       <div class="j-card j-card-dark j-card-teal" onclick="showView('review')">
         <div class="j-card-num clr-teal"><div class="j-pulse" style="background:var(--teal)"></div> 03</div>
         <div class="j-card-title">Ongoing Client Review Cycle</div>
@@ -982,7 +1157,7 @@
         <button class="j-card-cta bg-teal">Explore &#8594;</button>
       </div>
 
-      <!-- J4: Portfolio Monitoring -->
+      <!-- 04: Portfolio Monitoring -->
       <div class="j-card j-card-dark j-card-blue" onclick="showView('monitor')">
         <div class="j-card-num clr-blue"><div class="j-pulse" style="background:var(--info)"></div> 04</div>
         <div class="j-card-title">Proactive Portfolio Monitoring</div>
@@ -991,28 +1166,28 @@
         <button class="j-card-cta bg-blue">Explore &#8594;</button>
       </div>
 
-      <!-- J5: Trust & Estate -->
+      <!-- 05: Estate & Wealth Transfer (merged estate + next-gen) -->
       <div class="j-card j-card-dark j-card-purple" onclick="showView('estate')">
         <div class="j-card-num clr-purple"><div class="j-pulse" style="background:var(--purple)"></div> 05</div>
-        <div class="j-card-title">Trust &amp; Estate Planning Intelligence</div>
-        <div class="j-card-desc">AI monitors legislative changes, life events, and asset thresholds across all entities and structures to deliver timely, cross-entity estate planning recommendations.</div>
-        <div class="j-card-stats"><div><div class="j-stat-val clr-purple">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-purple">$2-5M</div><div class="j-stat-label">Avg Tax Savings</div></div><div><div class="j-stat-val clr-purple">6 mo</div><div class="j-stat-label">Earlier Action</div></div></div>
+        <div class="j-card-title">Estate &amp; Wealth Transfer</div>
+        <div class="j-card-desc">AI monitors legislative changes, life events, and asset thresholds to deliver proactive estate planning &mdash; from trust structuring and tax optimization to intergenerational wealth transfer and heir engagement.</div>
+        <div class="j-card-stats"><div><div class="j-stat-val clr-purple">8</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-purple">$2-5M</div><div class="j-stat-label">Avg Tax Savings</div></div><div><div class="j-stat-val clr-purple">92%</div><div class="j-stat-label">Retention</div></div></div>
         <button class="j-card-cta bg-purple">Explore &#8594;</button>
       </div>
 
-      <!-- J6: Next-Gen Transfer -->
-      <div class="j-card j-card-dark j-card-rose" onclick="showView('nextgen')">
-        <div class="j-card-num clr-rose"><div class="j-pulse" style="background:var(--rose)"></div> 06</div>
-        <div class="j-card-title">Next-Gen Wealth Transfer</div>
-        <div class="j-card-desc">AI-guided succession planning to transition wealth across generations while engaging heirs and optimizing family governance.</div>
-        <div class="j-card-stats"><div><div class="j-stat-val clr-rose">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-rose">92%</div><div class="j-stat-label">Retention</div></div><div><div class="j-stat-val clr-rose">$84T</div><div class="j-stat-label">Opportunity</div></div></div>
-        <button class="j-card-cta bg-rose">Explore &#8594;</button>
+      <!-- 06: Client Engagement Intelligence (moved from Specialized Advisory) -->
+      <div class="j-card j-card-dark j-card-amber" onclick="showView('sentiment')">
+        <div class="j-card-num clr-amber"><div class="j-pulse" style="background:var(--warn)"></div> 06</div>
+        <div class="j-card-title">Client Engagement Intelligence</div>
+        <div class="j-card-desc">AI-powered engagement analytics that monitor relationship health, detect at-risk clients 90+ days early, and identify high-value expansion and cross-sell opportunities.</div>
+        <div class="j-card-stats"><div><div class="j-stat-val clr-amber">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-amber">35%</div><div class="j-stat-label">Less Attrition</div></div><div><div class="j-stat-val clr-amber">2x</div><div class="j-stat-label">Cross-Sell</div></div></div>
+        <button class="j-card-cta bg-amber">Explore &#8594;</button>
       </div>
     </div>
 
     <div class="hub-section-label">Specialized Advisory</div>
     <div class="jc-grid">
-      <!-- J7: Alternative Investments -->
+      <!-- 07: Alternative Investments -->
       <div class="j-card j-card-dark j-card-orange" onclick="showView('alts')">
         <div class="j-card-num clr-orange"><div class="j-pulse" style="background:var(--orange)"></div> 07</div>
         <div class="j-card-title">Alternative Investments &amp; Private Markets</div>
@@ -1021,7 +1196,7 @@
         <button class="j-card-cta bg-orange">Explore &#8594;</button>
       </div>
 
-      <!-- J8: Philanthropy -->
+      <!-- 08: Philanthropy -->
       <div class="j-card j-card-dark j-card-green" onclick="showView('philanthropy')">
         <div class="j-card-num clr-green"><div class="j-pulse" style="background:var(--success)"></div> 08</div>
         <div class="j-card-title">Philanthropic &amp; Impact Advisory</div>
@@ -1030,22 +1205,22 @@
         <button class="j-card-cta bg-green">Explore &#8594;</button>
       </div>
 
-      <!-- J9: Sentiment -->
-      <div class="j-card j-card-dark j-card-amber" onclick="showView('sentiment')">
-        <div class="j-card-num clr-amber"><div class="j-pulse" style="background:var(--warn)"></div> 09</div>
-        <div class="j-card-title">Client Sentiment &amp; Relationship Health</div>
-        <div class="j-card-desc">AI-powered engagement analytics to detect at-risk clients 90+ days early and identify high-value expansion opportunities.</div>
-        <div class="j-card-stats"><div><div class="j-stat-val clr-amber">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-amber">35%</div><div class="j-stat-label">Less Attrition</div></div><div><div class="j-stat-val clr-amber">2x</div><div class="j-stat-label">Cross-Sell</div></div></div>
-        <button class="j-card-cta bg-amber">Explore &#8594;</button>
-      </div>
-
-      <!-- J10: Community & Convening -->
+      <!-- 09: Community & Convening -->
       <div class="j-card j-card-dark" onclick="showView('community')" style="border:1px solid rgba(45,212,191,0.25)">
-        <div class="j-card-num" style="color:var(--teal)"><div class="j-pulse" style="background:var(--teal)"></div> 10</div>
+        <div class="j-card-num" style="color:var(--teal)"><div class="j-pulse" style="background:var(--teal)"></div> 09</div>
         <div class="j-card-title">Community &amp; Convening</div>
         <div class="j-card-desc">The one thing no algorithm can replicate: bringing like-minded UHNW clients together. AI-powered affinity clustering and event intelligence make the human connection dramatically more powerful.</div>
         <div class="j-card-stats"><div><div class="j-stat-val" style="color:var(--teal)">3</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val" style="color:var(--teal)">3x</div><div class="j-stat-label">Referral Rate</div></div><div><div class="j-stat-val" style="color:var(--teal)">92%</div><div class="j-stat-label">Member Retention</div></div></div>
         <button class="j-card-cta" style="background:rgba(45,212,191,0.15);color:var(--teal);border:1px solid rgba(45,212,191,0.3)">Explore &#8594;</button>
+      </div>
+
+      <!-- 10: Lending & Structured Credit (NEW) -->
+      <div class="j-card j-card-dark j-card-rose" onclick="showView('lending')">
+        <div class="j-card-num clr-rose"><div class="j-pulse" style="background:var(--rose)"></div> 10</div>
+        <div class="j-card-title">Lending &amp; Structured Credit</div>
+        <div class="j-card-desc">AI-optimized securities-backed lending, real estate financing, capital call credit lines, and custom structured solutions that unlock portfolio liquidity without disrupting investment strategy.</div>
+        <div class="j-card-stats"><div><div class="j-stat-val clr-rose">4</div><div class="j-stat-label">AI Agents</div></div><div><div class="j-stat-val clr-rose">40%</div><div class="j-stat-label">Better Rates</div></div><div><div class="j-stat-val clr-rose">$1.2B</div><div class="j-stat-label">Lending Volume</div></div></div>
+        <button class="j-card-cta bg-rose">Explore &#8594;</button>
       </div>
     </div>
 
@@ -1081,7 +1256,7 @@
 </div>
 
 <div class="hub-map">
-  <div class="scene-inner" style="max-width:1200px;margin:0 auto">
+  <div class="scene-inner" style="max-width:1400px;margin:0 auto">
     <div class="sec-label">Agent-to-Agent Collaboration</div>
     <h2 class="sec-title">Two Dimensions of the Client Agent Era</h2>
     <p class="sec-desc">As clients bring their own AI to the table, the firm needs both a collaboration framework for day-to-day interactions and a strategic vision for how the entire ecosystem evolves. Explore both dimensions below.</p>
@@ -1119,7 +1294,7 @@
 </div>
 
 <div class="hub-map">
-  <div class="scene-inner" style="max-width:1200px;margin:0 auto">
+  <div class="scene-inner" style="max-width:1400px;margin:0 auto">
     <div class="sec-label">From Wealth Management to Life Management</div>
     <h2 class="sec-title">Two Stages of the Operating System Vision</h2>
     <p class="sec-desc">The collaborative ecosystem unfolds in two stages: first, the firm becomes the persistent operating system for a client's financial life. Then, the platform extends beyond wealth into health, education, security, and life transition orchestration.</p>
@@ -1193,6 +1368,7 @@
       <div class="chip"><div class="chip-icon">&#9733;</div><div><div class="chip-name">Research Synthesis Agent</div><div class="chip-desc">360&#176; profile from 50+ sources including filings, media, conferences</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">24h</div><div class="is-label">Turnaround</div></div><div><div class="is-val">50+</div><div class="is-label">Data sources</div></div><div><div class="is-val">90%</div><div class="is-label">Time saved</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('dossier')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Full Dossier &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Dossier Generated</div></div>
@@ -1277,6 +1453,7 @@
       <div class="chip"><div class="chip-icon">&#9733;</div><div><div class="chip-name">Entity Mapping Agent</div><div class="chip-desc">Discovers all entities &amp; structures, builds unified household view</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">70%</div><div class="is-label">Faster</div></div><div><div class="is-val">&lt;10</div><div class="is-label">Days to funded</div></div><div><div class="is-val">Zero</div><div class="is-label">Paper forms</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('onboardagent')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Agent Output &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Onboarding Active</div></div>
@@ -1486,6 +1663,7 @@
       <div class="chip"><div class="chip-icon">&#9733;</div><div><div class="chip-name">Tax Harvest Agent</div><div class="chip-desc">Identifies loss harvesting paired with wash-sale-compliant replacements</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">$1.2M</div><div class="is-label">Avg tax alpha</div></div><div><div class="is-val">60%</div><div class="is-label">Less transition cost</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('surveillance')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Surveillance Agent &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Analysis Complete</div></div>
@@ -1531,9 +1709,9 @@
 <div class="view" id="estateView"><div class="journey-view" id="estateScroll">
 
 <section class="scene scene-hero-j" id="e-0"><div class="scene-inner">
-  <div class="badge">Capability 5 of 10 · Estate Planning</div>
-  <h1 class="hero-title">Proactive Trust &amp;<br><em>Estate Intelligence</em></h1>
-  <p class="hero-sub">How agentic AI monitors legislative changes, life events, and asset thresholds to deliver proactive estate planning recommendations &mdash; ensuring clients never miss a planning window or get caught by tax law changes.</p>
+  <div class="badge">Capability 5 of 10 · Estate &amp; Wealth Transfer</div>
+  <h1 class="hero-title">Proactive Trust, Estate &amp;<br><em>Wealth Transfer Intelligence</em></h1>
+  <p class="hero-sub">How agentic AI monitors legislative changes, life events, and asset thresholds to deliver proactive estate planning &mdash; from trust structuring and tax optimization to intergenerational wealth transfer, heir engagement, and family governance.</p>
   <div class="hero-kpis"><div><div class="kpi-val">4</div><div class="kpi-label">AI Agents</div></div><div><div class="kpi-val">$2-5M</div><div class="kpi-label">Avg Tax Savings</div></div><div><div class="kpi-val">6 mo</div><div class="kpi-label">Earlier Action</div></div><div><div class="kpi-val">100%</div><div class="kpi-label">Clients Covered</div></div></div>
 </div><div class="scroll-cue"><span>Scroll to explore</span><div class="scroll-chevron"></div></div></section>
 
@@ -1826,6 +2004,7 @@
       <div class="chip"><div class="chip-icon">&#9745;</div><div><div class="chip-name">Capital Management Agent</div><div class="chip-desc">Models capital calls &amp; liquidity impact</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">20+</div><div class="is-label">Deals Reviewed/Quarter</div></div><div><div class="is-val">3-5</div><div class="is-label">High-Fit Recommendations</div></div><div><div class="is-val">2-3</div><div class="is-label">Typical Commitments/Year</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('dealflow')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Deal Matching Agent &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Curation Pipeline</div></div>
@@ -1968,6 +2147,7 @@
       <div class="chip"><div class="chip-icon">&#9745;</div><div><div class="chip-name">Impact Alignment Agent</div><div class="chip-desc">Maps values to philanthropic vehicles</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">$500k</div><div class="is-label">Annual Tax Savings</div></div><div><div class="is-val">$8-10M</div><div class="is-label">Endowment Opportunity</div></div><div><div class="is-val">3</div><div class="is-label">Vehicles Recommended</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('charitablestrat')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Charitable Strategy &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Planning Phase</div></div>
@@ -2064,9 +2244,9 @@
 <div class="view" id="sentimentView"><div class="journey-view" id="sentimentScroll">
 
 <section class="scene scene-hero-j" id="s-0"><div class="scene-inner">
-  <div class="badge">Capability 9 of 10 · Relationship Health</div>
-  <h1 class="hero-title">RELATIONSHIP HEALTH<br><em>Monitoring &amp; Growth</em></h1>
-  <p class="hero-sub">AI-powered engagement analytics to detect at-risk clients early and identify high-value expansion opportunities</p>
+  <div class="badge">Capability 6 of 10 · Client Engagement Intelligence</div>
+  <h1 class="hero-title">CLIENT ENGAGEMENT<br><em>Intelligence &amp; Growth</em></h1>
+  <p class="hero-sub">AI-powered engagement analytics that monitor relationship health, detect at-risk clients 90+ days early, and identify high-value expansion and cross-sell opportunities</p>
   <div class="hero-kpis"><div><div class="kpi-val">90+</div><div class="kpi-label">Day Early Warning</div></div><div><div class="kpi-val">35%</div><div class="kpi-label">Attrition Reduction</div></div><div><div class="kpi-val">2x</div><div class="kpi-label">Cross-Sell Lift</div></div></div>
 </div><div class="scroll-cue"><span>Scroll to explore</span><div class="scroll-chevron"></div></div></section>
 
@@ -2111,6 +2291,7 @@
       <div class="chip"><div class="chip-icon">&#9745;</div><div><div class="chip-name">Attrition Prevention Agent</div><div class="chip-desc">Identifies declining clients early</div></div></div>
     </div>
     <div class="impact-strip"><div><div class="is-val">87</div><div class="is-label">Health Score (0-100)</div></div><div><div class="is-val">+8</div><div class="is-label">90-Day Trend</div></div><div><div class="is-val">GREEN</div><div class="is-label">Status</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('attrition')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Early Warning Agent &#8594;</button></div>
   </div>
   <div class="step-viz">
     <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Assessment Complete</div></div>
@@ -2196,6 +2377,92 @@
   <h2 class="end-title" style="margin-top:14px">From Reactive Monitoring<br><em>to Proactive Relationship Growth</em></h2>
   <p class="end-desc">AI-powered engagement analytics revealed Sarah as a 95th-percentile advocate with 2x cross-sell opportunity and 88% referral likelihood. Early warning identified 3 at-risk clients before departures materialized; proactive interventions restored relationships with 89% success rate. Real-time health scoring enabled 90+ day early intervention windows. Strategic touchpoint optimization increased engagement 35% while reducing advisor time 40%.</p>
   <div class="end-kpis"><div><div class="kpi-val">90+</div><div class="kpi-label">Day Early Warning</div></div><div><div class="kpi-val">35%</div><div class="kpi-label">Attrition Reduction</div></div><div><div class="kpi-val">2x</div><div class="kpi-label">Cross-Sell Lift</div></div><div><div class="kpi-val">4</div><div class="kpi-label">AI Agents Deployed</div></div></div>
+  <button class="return-hub-btn" onclick="showView('era1')">&#8592; Back to Era 1</button>
+  <div class="end-foot" style="margin-top:24px">Wealth Management | AI Transformation<br><span style="opacity:.5">CONFIDENTIAL</span></div>
+</div></section>
+
+</div></div>
+
+
+<!-- ==================== LENDING & STRUCTURED CREDIT ==================== -->
+<div class="view" id="lendingView"><div class="journey-view" id="lendingScroll">
+
+<section class="scene scene-hero-j" id="ln-0"><div class="scene-inner">
+  <div class="badge">Capability 10 of 10 · Lending &amp; Structured Credit</div>
+  <h1 class="hero-title">INTELLIGENT<br><em>Lending &amp; Credit</em></h1>
+  <p class="hero-sub">AI-optimized securities-backed lending, real estate financing, capital call credit lines, and custom structured solutions &mdash; unlocking portfolio liquidity without disrupting long-term investment strategy.</p>
+  <div class="hero-kpis"><div><div class="kpi-val">4</div><div class="kpi-label">AI Agents</div></div><div><div class="kpi-val">40%</div><div class="kpi-label">Better Rates</div></div><div><div class="kpi-val">48hr</div><div class="kpi-label">Avg Approval</div></div><div><div class="kpi-val">$1.2B</div><div class="kpi-label">Lending Volume</div></div></div>
+</div><div class="scroll-cue"><span>Scroll to explore</span><div class="scroll-chevron"></div></div></section>
+
+<section class="scene scene-step" id="ln-1"><div class="scene-inner"><div class="step-grid">
+  <div>
+    <div class="step-num">01</div><span class="step-phase phase-lending">Assessment</span>
+    <h2 class="step-title">Liquidity &amp; Borrowing Capacity Analysis</h2>
+    <p class="step-sub">AI maps the full lending landscape across the client&rsquo;s portfolio</p>
+    <p class="step-body">The Liquidity Assessment Agent analyzes every asset class across all entities &mdash; public equities, fixed income, private equity, real estate, alternatives, and operating businesses &mdash; computing real-time borrowing capacity, margin requirements, and concentration limits. It identifies the optimal collateral mix that maximizes borrowing power while minimizing portfolio disruption.</p>
+    <div class="agent-chips">
+      <div class="chip"><div class="chip-icon">&#9733;</div><div><div class="chip-name">Liquidity Assessment Agent</div><div class="chip-desc">Computes borrowing capacity across all asset classes and entities</div></div></div>
+      <div class="chip"><div class="chip-icon">&#9672;</div><div><div class="chip-name">Collateral Optimization Agent</div><div class="chip-desc">Identifies ideal collateral mix to maximize capacity and minimize risk</div></div></div>
+    </div>
+    <div class="impact-strip"><div><div class="is-val">100%</div><div class="is-label">Portfolio Coverage</div></div><div><div class="is-val">Real-Time</div><div class="is-label">Capacity Updates</div></div><div><div class="is-val">15+</div><div class="is-label">Asset Classes Analyzed</div></div></div>
+  </div>
+  <div class="step-viz">
+    <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Analysis Active</div></div>
+    <div class="viz-heading">Sarah Chen &mdash; Borrowing Capacity</div>
+    <div class="card"><div class="card-head"><div class="card-title">Public Securities</div><span class="tag tag-green">HIGH CAPACITY</span></div><div class="card-body">Portfolio value: $85M. Borrowing capacity: $55M (65% advance rate). Current utilization: $12M (22%). Available: $43M. Concentration note: Nexus Robotics position reduces advance rate to 50% on that holding.</div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Private Equity &amp; Alternatives</div><span class="tag tag-gold">MODERATE</span></div><div class="card-body">NAV: $42M across 8 funds. Borrowing capacity: $12.6M (30% advance rate). Capital call commitments: $18M outstanding. Recommended: Capital call credit line to bridge timing gaps.</div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Real Estate Holdings</div><span class="tag tag-blue">AVAILABLE</span></div><div class="card-body">Combined value: $28M (3 properties). Existing mortgages: $9M. Available equity: $19M. LTV capacity: Additional $5M at current rates. Note: Primary residence excluded per client preference.</div></div>
+  </div>
+</div></div></section>
+
+<section class="scene scene-step" id="ln-2"><div class="scene-inner"><div class="step-grid reverse">
+  <div>
+    <div class="step-num">02</div><span class="step-phase phase-lending">Structure</span>
+    <h2 class="step-title">Optimal Lending Structure Design</h2>
+    <p class="step-sub">AI recommends the right lending product for every need</p>
+    <p class="step-body">The Structure Optimization Agent evaluates lending options across securities-backed lines, margin facilities, real estate financing, capital call bridges, aircraft/yacht financing, and custom structured products &mdash; comparing rates, terms, tax implications, and portfolio impact to recommend the optimal structure for each client need.</p>
+    <div class="agent-chips">
+      <div class="chip"><div class="chip-icon">&#9998;</div><div><div class="chip-name">Structure Optimization Agent</div><div class="chip-desc">Models lending structures and compares rate/term scenarios</div></div></div>
+      <div class="chip"><div class="chip-icon">&#9830;</div><div><div class="chip-name">Tax Impact Agent</div><div class="chip-desc">Analyzes tax efficiency of borrow-vs-sell decisions</div></div></div>
+    </div>
+    <div class="impact-strip"><div><div class="is-val">6+</div><div class="is-label">Product Types</div></div><div><div class="is-val">40%</div><div class="is-label">Rate Improvement</div></div><div><div class="is-val">$2M+</div><div class="is-label">Avg Tax Savings</div></div></div>
+    <div style="margin-top:18px"><button onclick="event.stopPropagation();showView('lendingstrat')" style="background:linear-gradient(135deg,#C9A227,#e6c84d);color:#001a33;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.3px;transition:transform 0.2s;box-shadow:0 2px 8px rgba(201,162,39,0.3)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">View Lending Analysis &#8594;</button></div>
+  </div>
+  <div class="step-viz">
+    <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Optimization Complete</div></div>
+    <div class="viz-heading">Lending Recommendations &mdash; Chen</div>
+    <div class="card"><div class="card-head"><div class="card-title">Securities-Backed Line of Credit</div><span class="tag tag-green">RECOMMENDED</span></div><div class="card-body">Purpose: Liquidity for real estate acquisition ($15M). Rate: SOFR + 85bps (vs. selling shares at 23.8% LTCG). Tax savings: $2.4M by borrowing vs. selling. Collateral: Diversified public portfolio. LTV: 65%.</div><div class="card-metrics"><div><div class="cm-val">$2.4M</div><div class="cm-label">Tax advantage</div></div></div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Capital Call Bridge Facility</div><span class="tag tag-gold">RECOMMENDED</span></div><div class="card-body">Purpose: Bridge PE capital calls ($18M committed). Rate: SOFR + 120bps. Avoids forced liquidation during drawdown periods. Auto-repays from distributions. Typical bridge: 60-90 days.</div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Concentrated Stock Monetization</div><span class="tag tag-blue">SCENARIO</span></div><div class="card-body">Nexus Robotics position ($48M, 31% of portfolio). Options: Prepaid variable forward ($28M immediate, maintain upside to $62). Exchange fund participation. Collar strategy with lending overlay.</div></div>
+  </div>
+</div></div></section>
+
+<section class="scene scene-step" id="ln-3"><div class="scene-inner"><div class="step-grid">
+  <div>
+    <div class="step-num">03</div><span class="step-phase phase-lending">Execution</span>
+    <h2 class="step-title">Automated Execution &amp; Covenant Monitoring</h2>
+    <p class="step-sub">From approval to ongoing management, AI handles the complexity</p>
+    <p class="step-body">The Lending Execution Agent streamlines documentation, coordinates with counterparties, monitors covenant compliance, tracks margin thresholds, and manages auto-draw/repayment schedules. If market movements approach maintenance triggers, the system proactively alerts and recommends preventive action &mdash; posting additional collateral or partial paydowns &mdash; before any margin call occurs.</p>
+    <div class="agent-chips">
+      <div class="chip"><div class="chip-icon">&#9745;</div><div><div class="chip-name">Lending Execution Agent</div><div class="chip-desc">Manages documentation, draws, repayments, and counterparty coordination</div></div></div>
+      <div class="chip"><div class="chip-icon">&#9993;</div><div><div class="chip-name">Covenant Monitor Agent</div><div class="chip-desc">Tracks LTV, margin, compliance thresholds 24/7</div></div></div>
+    </div>
+    <div class="impact-strip"><div><div class="is-val">48hr</div><div class="is-label">Avg Approval</div></div><div><div class="is-val">Zero</div><div class="is-label">Margin Calls</div></div><div><div class="is-val">24/7</div><div class="is-label">Monitoring</div></div></div>
+  </div>
+  <div class="step-viz">
+    <div class="viz-badge"><div class="viz-pulse"></div><div class="viz-badge-text">Monitoring Active</div></div>
+    <div class="viz-heading">Active Lending Dashboard &mdash; Chen</div>
+    <div class="card"><div class="card-head"><div class="card-title">SBLOC &mdash; Property Acquisition</div><span class="tag tag-green">ACTIVE</span></div><div class="card-body">Drawn: $15M of $43M available. LTV: 27% (maintenance: 70%). Margin buffer: $22.4M. Rate: SOFR + 85bps (4.72% current). Interest auto-debit: Monthly. Status: Healthy, well within covenants.</div><div class="bar"><div class="bar-fill" style="width:27%;background:var(--success)"></div></div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Capital Call Bridge</div><span class="tag tag-gold">ACTIVE</span></div><div class="card-body">Current draw: $4.2M (Sequoia Growth Fund V). Expected repayment: Distribution pending ($6.8M, est. 45 days). Auto-repay configured. Remaining commitment: $13.8M across 3 funds.</div><div class="bar"><div class="bar-fill" style="width:55%;background:var(--gold)"></div></div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Proactive Alert</div><span class="tag tag-blue">ADVISORY</span></div><div class="card-body">Nexus Robotics down 8% this week. If decline reaches 15%, SBLOC advance rate drops to 45% on that position. Recommended: Pre-position $3M additional diversified collateral as buffer. No action required yet.</div></div>
+  </div>
+</div></div></section>
+
+<section class="scene scene-end" id="ln-4"><div class="scene-inner">
+  <div class="badge">Outcome</div>
+  <h2 class="end-title" style="margin-top:14px">From Portfolio Liquidation<br><em>to Intelligent Leverage</em></h2>
+  <p class="end-desc">AI-optimized lending unlocked $19.2M in liquidity for Sarah without selling a single share &mdash; saving $2.4M in capital gains tax, bridging $4.2M in PE capital calls, and maintaining full investment exposure. 24/7 covenant monitoring ensured zero margin calls despite market volatility, while automated execution reduced approval times from 2 weeks to 48 hours.</p>
+  <div class="end-kpis"><div><div class="kpi-val">$19.2M</div><div class="kpi-label">Liquidity Unlocked</div></div><div><div class="kpi-val">$2.4M</div><div class="kpi-label">Tax Savings</div></div><div><div class="kpi-val">Zero</div><div class="kpi-label">Margin Calls</div></div><div><div class="kpi-val">4</div><div class="kpi-label">AI Agents Deployed</div></div></div>
   <button class="return-hub-btn" onclick="showView('era1')">&#8592; Back to Era 1</button>
   <div class="end-foot" style="margin-top:24px">Wealth Management | AI Transformation<br><span style="opacity:.5">CONFIDENTIAL</span></div>
 </div></section>
@@ -2519,7 +2786,8 @@
 .ca-top-title em{font-style:normal;color:var(--gold);font-weight:700}
 .ca-back{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy-dark);border:none;padding:8px 20px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s;letter-spacing:.3px;font-family:inherit}
 .ca-back:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(201,162,39,0.3)}
-.ca-body{max-width:1200px;margin:0 auto;padding:40px 32px}
+.ca-body{max-width:1400px;margin:0 auto;padding:40px 32px}
+@media(min-width:1600px){.ca-body{max-width:1600px}}
 
 /* Hero */
 .ca-hero{text-align:center;margin-bottom:56px}
@@ -2642,11 +2910,6 @@
 
 <div class="adv-content">
 
-  <!-- PROTOTYPE BANNER -->
-  
-    <strong>PROTOTYPE</strong> &mdash; Visually refreshed advisor dashboard concept for review. Dark theme with enhanced data visualization.
-  </div>
-
   <!-- AI CHAT PANEL -->
   <div class="adv-chat-panel">
     <div class="adv-chat-header">
@@ -2730,6 +2993,7 @@
         <span class="success-text">Win:</span> Priya Mehta's son Arjun completed Next-Gen Academy.
         Schedule family wealth summit for $2M seed account.
       </div>
+      <div style="margin-top:14px;text-align:right"><button onclick="event.stopPropagation();showView('morningbrief')" style="background:linear-gradient(135deg,rgba(201,162,39,0.2),rgba(201,162,39,0.1));color:#C9A227;border:1px solid rgba(201,162,39,0.4);padding:8px 18px;border-radius:5px;font-weight:600;font-size:11px;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px" onmouseover="this.style.background='rgba(201,162,39,0.25)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(201,162,39,0.2),rgba(201,162,39,0.1))'">View Full Brief &#8594;</button></div>
     </div>
   </div>
 
@@ -6218,6 +6482,785 @@
 </script>
 </div>
 
+
+<!-- ==================== PROSPECT INTELLIGENCE DOSSIER ==================== -->
+<div class="view" id="dossierView">
+<div class="pd-view">
+
+  <div class="pd-top-bar">
+    <div class="pd-top-bar-title">Prospect Intelligence Dossier &mdash; Sarah Chen</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="pd-badge">Generated Feb 20, 2026 &middot; 53 Sources Synthesized &middot; Confidence: 96%</span>
+      <button class="pd-back-btn" onclick="window.showView('prospect')">&#8592; Back to Prospecting</button>
+    </div>
+  </div>
+
+  <div class="pd-confidence" style="margin-top:12px">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:700;color:#001a33;">Research Synthesis Agent</div>
+      <div style="font-size:11px;color:#666;">Compiled from SEC filings, PitchBook, LinkedIn, Crunchbase, public records, media, conference transcripts, philanthropic databases, real estate records, and social network analysis</div>
+    </div>
+    <div style="display:flex;gap:16px;font-size:11px;color:#666;">
+      <span>Sources: <strong style="color:#001a33;">53</strong></span>
+      <span>Confidence: <strong style="color:#28a745;">96%</strong></span>
+      <span>Updated: <strong style="color:#001a33;">2h ago</strong></span>
+    </div>
+  </div>
+
+  <div class="pd-content">
+
+    <!-- LEFT SIDEBAR: Profile Summary -->
+    <div class="pd-sidebar">
+
+      <div class="pd-card">
+        <div class="pd-profile-header">
+          <div class="pd-avatar">SC</div>
+          <div class="pd-name">Sarah Chen</div>
+          <div class="pd-role">CEO &amp; Founder, Nexus Robotics</div>
+          <div class="pd-score-ring">94</div>
+          <div class="pd-score-label">Prospect Score</div>
+        </div>
+        <div class="pd-stat-grid">
+          <div class="pd-stat"><div class="pd-stat-val">$280M</div><div class="pd-stat-label">Est. Net Worth</div></div>
+          <div class="pd-stat"><div class="pd-stat-val">IPO</div><div class="pd-stat-label">Liquidity Trigger</div></div>
+          <div class="pd-stat"><div class="pd-stat-val">2nd</div><div class="pd-stat-label">Degree Connection</div></div>
+          <div class="pd-stat"><div class="pd-stat-val">HIGH</div><div class="pd-stat-label">Conversion Probability</div></div>
+        </div>
+      </div>
+
+      <div class="pd-card">
+        <div class="pd-card-header"><div class="pd-card-title">Quick Facts</div></div>
+        <div class="pd-card-body">
+          <div class="pd-row"><span class="pd-row-label">Age</span><span class="pd-row-val">47</span></div>
+          <div class="pd-row"><span class="pd-row-label">Education</span><span class="pd-row-val">Stanford CS &rsquo;08, MIT BS</span></div>
+          <div class="pd-row"><span class="pd-row-label">Residence</span><span class="pd-row-val">Atherton, CA</span></div>
+          <div class="pd-row"><span class="pd-row-label">Spouse</span><span class="pd-row-val">Michael Chen (Rates Trading)</span></div>
+          <div class="pd-row"><span class="pd-row-label">Children</span><span class="pd-row-val">Emma (28), David (25)</span></div>
+          <div class="pd-row"><span class="pd-row-label">Current Advisor</span><span class="pd-row-val">None identified (self-managed)</span></div>
+        </div>
+      </div>
+
+      <div class="pd-card">
+        <div class="pd-card-header"><div class="pd-card-title">Firm Connections</div></div>
+        <div class="pd-card-body">
+          <div class="pd-conn">
+            <div class="pd-conn-avatar">JL</div>
+            <div class="pd-conn-info"><div class="pd-conn-name">Dr. James Liu</div><div class="pd-conn-detail">Stanford Board &middot; Existing client &middot; Close friend</div></div>
+            <span class="pd-tag pd-tag-gold">Warm Intro</span>
+          </div>
+          <div class="pd-conn">
+            <div class="pd-conn-avatar">RK</div>
+            <div class="pd-conn-info"><div class="pd-conn-name">Raj Kumar</div><div class="pd-conn-detail">Nexus Board Member &middot; IBD relationship</div></div>
+            <span class="pd-tag pd-tag-blue">2nd Degree</span>
+          </div>
+          <div class="pd-conn">
+            <div class="pd-conn-avatar">AP</div>
+            <div class="pd-conn-info"><div class="pd-conn-name">Amanda Peters</div><div class="pd-conn-detail">MOMA Board &middot; Philanthropy client</div></div>
+            <span class="pd-tag pd-tag-green">Shared Interest</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="pd-main">
+
+      <!-- Wealth Profile -->
+      <div class="pd-card">
+        <div class="pd-card-header">
+          <div style="display:flex;align-items:center;gap:10px"><div class="pd-card-icon">&#128176;</div><div class="pd-card-title">Wealth Profile &amp; Asset Map</div></div>
+          <span class="pd-card-badge pd-tag-gold">78% Illiquid</span>
+        </div>
+        <div class="pd-card-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px">
+            <div class="pd-insight pd-insight-gold"><strong>Nexus Robotics Equity:</strong> $220M (28% ownership). IPO advisor engaged (Goldman TMT). S-1 expected Q2 2026. Pre-IPO valuation: $1.2B. Lock-up: 180 days post-IPO.</div>
+            <div class="pd-insight pd-insight-blue"><strong>Real Estate:</strong> $18M across 3 properties. Primary: Atherton ($9.2M, no mortgage). Vacation: Aspen ($5.4M). Investment: SF commercial ($3.4M, rental yield 4.1%).</div>
+            <div class="pd-insight pd-insight-green"><strong>Angel Portfolio:</strong> $14M across 11 startups. 3 in Series B+. Notable: CleanGrid ($4.2M, projected 2027 exit), AquaSense ($2.8M, acquisition talks).</div>
+            <div class="pd-insight pd-insight-gold"><strong>Cash &amp; Liquid:</strong> $28M in money market and short-term bonds. Appears to be positioning for diversification post-IPO.</div>
+          </div>
+          <div class="pd-section-title">Estimated Asset Allocation</div>
+          <div style="display:flex;height:28px;border-radius:6px;overflow:hidden;font-size:10px;font-weight:600">
+            <div style="width:78%;background:#003366;color:white;display:flex;align-items:center;justify-content:center">Nexus Equity 78%</div>
+            <div style="width:7%;background:#C9A227;color:white;display:flex;align-items:center;justify-content:center">RE 7%</div>
+            <div style="width:5%;background:#059669;color:white;display:flex;align-items:center;justify-content:center">Angel</div>
+            <div style="width:10%;background:#60a5fa;color:white;display:flex;align-items:center;justify-content:center">Cash 10%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opportunity Map -->
+      <div class="pd-card">
+        <div class="pd-card-header">
+          <div style="display:flex;align-items:center;gap:10px"><div class="pd-card-icon">&#127919;</div><div class="pd-card-title">Opportunity Map &mdash; Recommended Services</div></div>
+          <span class="pd-card-badge pd-tag-green">6 Opportunities</span>
+        </div>
+        <div class="pd-card-body">
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">1. Pre-IPO Wealth Planning</span><span class="mb-item-tag" style="background:rgba(239,68,68,0.1);color:#dc2626">URGENT</span></div>
+            <div class="mb-item-body">Concentrated position risk ($220M in single stock). Pre-IPO GRAT opportunity at favorable 7520 rates. 10b5-1 plan for systematic post-IPO diversification. Estimated tax savings: $15-25M with proper structuring.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">2. Estate &amp; Wealth Transfer</span><span class="mb-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">HIGH VALUE</span></div>
+            <div class="mb-item-body">TCJA sunset creates urgency for exemption utilization. Two adult children approaching wealth transfer age. Dynasty trust framework for multi-generational preservation. SLAT strategy for $27.2M combined exemption.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">3. Portfolio Diversification</span><span class="mb-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">POST-IPO</span></div>
+            <div class="mb-item-body">78% concentration in single company equity. Target: diversified allocation across public equities, fixed income, and alternatives. $28M cash ready for deployment. Alternative investment appetite indicated by angel portfolio.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">4. Philanthropic Advisory</span><span class="mb-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">ALIGNED</span></div>
+            <div class="mb-item-body">Board member: SF MOMA, Ocean Conservation Alliance. Active donor to STEM education. CRT with appreciated Nexus shares could generate income stream + charitable deduction. DAF for annual giving optimization.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">5. Next-Gen Engagement</span><span class="mb-item-tag" style="background:rgba(124,58,237,0.1);color:#7c3aed">RETENTION</span></div>
+            <div class="mb-item-body">Emma (28, CFO at tech startup) and David (25, marketing). Both approaching age for wealth transfer conversations. Next-Gen Academy program fit. Family governance charter opportunity.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">6. Securities-Backed Lending</span><span class="mb-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">LIQUIDITY</span></div>
+            <div class="mb-item-body">Post-IPO public equity creates significant lending capacity. Borrow against diversified portfolio for real estate, PE capital calls, or angel investments without triggering capital gains.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+
+        <!-- Interests & Engagement Hooks -->
+        <div class="pd-card">
+          <div class="pd-card-header">
+            <div style="display:flex;align-items:center;gap:10px"><div class="pd-card-icon">&#128161;</div><div class="pd-card-title">Interests &amp; Engagement Hooks</div></div>
+          </div>
+          <div class="pd-card-body">
+            <div class="pd-section-title">Professional Interests</div>
+            <div style="margin-bottom:12px">
+              <span class="pd-tag pd-tag-blue">AI &amp; Robotics</span>
+              <span class="pd-tag pd-tag-blue">Climate Tech</span>
+              <span class="pd-tag pd-tag-blue">Deep Tech Investing</span>
+              <span class="pd-tag pd-tag-blue">Board Governance</span>
+            </div>
+            <div class="pd-section-title">Personal Interests</div>
+            <div style="margin-bottom:12px">
+              <span class="pd-tag pd-tag-green">Ocean Conservation</span>
+              <span class="pd-tag pd-tag-green">STEM Education</span>
+              <span class="pd-tag pd-tag-green">Contemporary Art</span>
+              <span class="pd-tag pd-tag-green">Marathon Running</span>
+            </div>
+            <div class="pd-section-title">Recommended Approach</div>
+            <div class="pd-insight pd-insight-gold">
+              <strong>Primary:</strong> Warm intro via Dr. James Liu (Stanford connection, existing client). Frame around post-IPO wealth strategy &mdash; not product push.<br><br>
+              <strong>Hook:</strong> Our AI &amp; Robotics investment thesis aligns with her sector expertise. Impact Fund has robotics/climate allocation that maps to her angel portfolio interests.<br><br>
+              <strong>Event:</strong> Private Wealth Innovation Dinner for tech founders (12 attendees, curated). She has attended similar YPO and MOMA events.
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Timeline -->
+        <div class="pd-card">
+          <div class="pd-card-header">
+            <div style="display:flex;align-items:center;gap:10px"><div class="pd-card-icon">&#128197;</div><div class="pd-card-title">Activity Timeline</div></div>
+          </div>
+          <div class="pd-card-body">
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Feb 2026</div><div class="pd-timeline-text"><strong>IPO advisor engaged</strong> &mdash; Goldman Sachs TMT division. S-1 preparation underway. Estimated IPO: Q3 2026.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Jan 2026</div><div class="pd-timeline-text"><strong>Nexus Series F</strong> &mdash; $200M raise at $1.2B valuation. Sequoia led, Tiger Global participated.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Dec 2025</div><div class="pd-timeline-text"><strong>Conference keynote</strong> &mdash; CES 2026 main stage on "AI-First Manufacturing." 2,400 attendees.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Nov 2025</div><div class="pd-timeline-text"><strong>Atherton property purchase</strong> &mdash; $9.2M primary residence. Closed cash, no mortgage.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Oct 2025</div><div class="pd-timeline-text"><strong>MOMA board appointment</strong> &mdash; Joined as trustee. $500K annual pledge to contemporary art program.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Sep 2025</div><div class="pd-timeline-text"><strong>Angel investment</strong> &mdash; $1.8M in CleanGrid (Series B, climate tech). Third climate investment this year.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Aug 2025</div><div class="pd-timeline-text"><strong>Forbes profile</strong> &mdash; Featured in "50 Over 50" list. Discussed succession planning and legacy in interview.</div></div>
+            <div class="pd-timeline-item"><div class="pd-timeline-date">Jun 2025</div><div class="pd-timeline-text"><strong>Philanthropy</strong> &mdash; $2M gift to Stanford CS department for AI ethics research center.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== AI MORNING BRIEF ==================== -->
+<div class="view" id="morningbriefView">
+<div class="mb-view">
+
+  <div class="mb-top-bar">
+    <div class="mb-top-bar-title">AI Morning Brief &mdash; February 23, 2026</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="mb-badge">Auto-generated 6:00 AM ET &middot; 12 Data Feeds &middot; 28 Client Portfolios Scanned</span>
+      <button class="mb-back-btn" onclick="window.showView('dashboard')">&#8592; Back to Dashboard</button>
+    </div>
+  </div>
+
+  <div class="mb-content">
+
+    <!-- Hero Summary -->
+    <div class="mb-hero">
+      <div class="mb-hero-label"><span style="font-size:14px">&#10024;</span> AI Morning Brief</div>
+      <div class="mb-hero-title">Good morning. Here&rsquo;s what needs your attention today.</div>
+      <div class="mb-hero-sub">3 urgent items, 2 time-sensitive opportunities, and 4 client touchpoints recommended. Estimated 45 minutes of advisor action required across $8.74B AUM.</div>
+      <div class="mb-hero-stats">
+        <div><div class="mb-hero-stat-val">3</div><div class="mb-hero-stat-label">Urgent Actions</div></div>
+        <div><div class="mb-hero-stat-val">28</div><div class="mb-hero-stat-label">Portfolios Scanned</div></div>
+        <div><div class="mb-hero-stat-val">12</div><div class="mb-hero-stat-label">Data Feeds Analyzed</div></div>
+        <div><div class="mb-hero-stat-val">$8.74B</div><div class="mb-hero-stat-label">Total AUM Monitored</div></div>
+      </div>
+    </div>
+
+    <div class="mb-grid">
+
+      <!-- URGENT: Priority Actions -->
+      <div class="mb-card mb-card-full">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#128680; Priority Actions &mdash; Requires Your Decision Today</div>
+          <span class="mb-card-badge mb-card-badge-red">3 Urgent</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">SC</div>
+            <div class="mb-client-info">
+              <div class="mb-client-name">Sarah Chen &mdash; GRAT Funding Deadline</div>
+              <div class="mb-client-detail">March 15 deadline approaching (20 days). $25M Nexus GRAT at 5.2% 7520 rate. Sullivan &amp; Cromwell draft ready for final review. Estimated savings: <strong style="color:#C9A227">$8.2M</strong>. Documents require your sign-off before client meeting Feb 28.</div>
+            </div>
+            <div class="mb-client-action">Review &amp; Approve</div>
+          </div>
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">JW</div>
+            <div class="mb-client-info">
+              <div class="mb-client-name">James Whitfield &mdash; Health Score Alert</div>
+              <div class="mb-client-detail">Relationship health dropped <strong style="color:#dc2626">78 &#8594; 71</strong> over 14 days. Portal logins down 40%. Skipped last two scheduled calls. Asset flow: $2.1M outbound transfer to Schwab last week. <strong style="color:#dc2626">Attrition risk: Elevated.</strong> Intervention playbook ready.</div>
+            </div>
+            <div class="mb-client-action">Call Today</div>
+          </div>
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">MR</div>
+            <div class="mb-client-info">
+              <div class="mb-client-name">Maria Rodriguez &mdash; Margin Alert</div>
+              <div class="mb-client-detail">SBLOC LTV at <strong style="color:#dc2626">62%</strong> (maintenance: 70%). Tech selloff pushed concentrated NVDA position down 12% this week. Recommended: Post $1.5M additional collateral from fixed income sleeve. Auto-rebalance ready &mdash; awaiting advisor confirmation.</div>
+            </div>
+            <div class="mb-client-action">Approve Rebalance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Overnight -->
+      <div class="mb-card">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#127758; Overnight Markets &amp; Impact</div>
+          <span class="mb-card-badge mb-card-badge-blue">7 Portfolios Affected</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-market-row"><span class="mb-market-name">S&amp;P 500</span><span class="mb-market-val mb-up">+0.3% (5,842)</span></div>
+          <div class="mb-market-row"><span class="mb-market-name">10Y Treasury</span><span class="mb-market-val mb-down">4.28% (+4bps)</span></div>
+          <div class="mb-market-row"><span class="mb-market-name">Gold</span><span class="mb-market-val mb-up">$2,156 (+1.1%)</span></div>
+          <div class="mb-market-row"><span class="mb-market-name">USD/EUR</span><span class="mb-market-val mb-down">1.082 (-0.2%)</span></div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #f0f2f5">
+            <div style="font-size:12px;font-weight:600;color:#001a33;margin-bottom:8px">Portfolio Impact</div>
+            <div style="font-size:12px;color:#6b7280;line-height:1.6">
+              <strong>Tech rally:</strong> 4 clients with concentrated tech positions see +$12M aggregate gain. Chen Nexus position +2.4%.<br>
+              <strong>Rate move:</strong> 3 clients with duration-sensitive fixed income. Patel bond portfolio mark-to-market: -$340K. Within tolerance.<br>
+              <strong>Gold:</strong> Morrison precious metals allocation now 8.2% (target: 7%). Flag for rebalance at next review.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today's Calendar -->
+      <div class="mb-card">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#128197; Today&rsquo;s Schedule</div>
+          <span class="mb-card-badge mb-card-badge-gold">4 Meetings</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">9:00 AM &mdash; Team Standup</span><span class="mb-item-tag" style="background:#f0f2f5;color:#6b7280">30 min</span></div>
+            <div class="mb-item-body">Weekly portfolio review. Agenda auto-generated. Key topic: Q1 rebalancing decisions for 6 accounts.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">10:30 AM &mdash; Whitfield Call</span><span class="mb-item-tag" style="background:rgba(239,68,68,0.1);color:#dc2626">URGENT</span></div>
+            <div class="mb-item-body">Intervention call. Meeting prep auto-generated with relationship history, recent interactions, and retention playbook. Talking points ready.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">1:00 PM &mdash; Priya Mehta Review</span><span class="mb-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">PREP READY</span></div>
+            <div class="mb-item-body">Quarterly review. Meeting prep completed. Key topics: Next-Gen Academy completion (Arjun), family summit proposal, alt allocation increase.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">3:30 PM &mdash; New Prospect Intro</span><span class="mb-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">DOSSIER READY</span></div>
+            <div class="mb-item-body">Marcus Williams (PE exit, $180M). Intelligence dossier compiled. Warm intro via Atlas Capital connection. First meeting &mdash; discovery focus.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended Touchpoints -->
+      <div class="mb-card">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#128172; Recommended Client Touchpoints</div>
+          <span class="mb-card-badge mb-card-badge-green">4 Outreach</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">PM</div>
+            <div class="mb-client-info"><div class="mb-client-name">Priya Mehta</div><div class="mb-client-detail">Arjun completed Next-Gen Academy. Send congratulations + propose family wealth summit for $2M seed account setup.</div></div>
+            <div class="mb-client-action">Send Note</div>
+          </div>
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">TP</div>
+            <div class="mb-client-info"><div class="mb-client-name">Thomas Park</div><div class="mb-client-detail">Birthday tomorrow. Portfolio up 12% YTD. Send personalized note with performance snapshot.</div></div>
+            <div class="mb-client-action">Birthday Note</div>
+          </div>
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">LG</div>
+            <div class="mb-client-info"><div class="mb-client-name">Lisa Grant</div><div class="mb-client-detail">Capital call due in 14 days (Sequoia Growth Fund, $2.8M). Bridge facility pre-approved. Confirm she wants to use it vs. wire.</div></div>
+            <div class="mb-client-action">Confirm</div>
+          </div>
+          <div class="mb-client-row">
+            <div class="mb-client-avatar">DK</div>
+            <div class="mb-client-info"><div class="mb-client-name">David Kim</div><div class="mb-client-detail">Sold commercial property last week ($4.6M). 1031 exchange window open &mdash; 45-day identification deadline Mar 28. Share qualified replacement properties list.</div></div>
+            <div class="mb-client-action">Share Options</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance & Admin -->
+      <div class="mb-card">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#9989; Compliance &amp; Administrative</div>
+          <span class="mb-card-badge mb-card-badge-blue">2 Items</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">KYC Refresh &mdash; Morrison Account</span><span class="mb-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">DUE MAR 1</span></div>
+            <div class="mb-item-body">Annual KYC refresh due in 6 days. Pre-populated form ready for client signature. Send via secure portal today.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">Trade Reconciliation</span><span class="mb-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">CLEAN</span></div>
+            <div class="mb-item-body">All 14 trades from Friday settled T+1. No breaks. Commission report filed. Compliance attestation auto-signed.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time-Sensitive Opportunities -->
+      <div class="mb-card">
+        <div class="mb-card-header">
+          <div class="mb-card-title">&#9200; Time-Sensitive Opportunities</div>
+          <span class="mb-card-badge mb-card-badge-gold">2 Windows</span>
+        </div>
+        <div class="mb-card-body">
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">Buyout Fund XIV &mdash; Final Close March 15</span><span class="mb-item-tag" style="background:rgba(239,68,68,0.1);color:#dc2626">20 DAYS</span></div>
+            <div class="mb-item-body">3 clients qualified and interested (Chen $10M, Mehta $5M, Park $3M). Subscription docs 80% complete. $18M aggregate commitment. Capacity: $25M remaining in fund. Push for signatures this week.</div>
+          </div>
+          <div class="mb-item">
+            <div class="mb-item-header"><span class="mb-item-title">Municipal Bond Window</span><span class="mb-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">RATE OPPORTUNITY</span></div>
+            <div class="mb-item-body">AAA muni yields at 3.8% tax-equivalent (highest in 18 months). 5 clients with excess cash positions totaling $42M. Recommend deploying into short-duration muni ladder. Rate window likely 2-3 weeks before next Fed guidance.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== ONBOARDING ORCHESTRATOR AGENT ==================== -->
+<div class="view" id="onboardagentView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Onboarding Orchestrator &mdash; Sarah Chen Account Setup</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Generated Feb 20, 2026 &middot; 4 Workflows Active &middot; Day 12 of 90</span>
+      <button class="av-back-btn" onclick="window.showView('onboard')">&#8592; Back to Onboarding</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Onboarding Orchestrator Agent</div><div style="font-size:11px;color:#666;">Coordinating account opening, portfolio construction, document collection, and first-90-day engagement across 6 systems</div></div>
+    <div style="display:flex;gap:16px;font-size:11px;color:#666;"><span>Progress: <strong style="color:#059669;">68%</strong></span><span>Days Remaining: <strong style="color:#001a33;">78</strong></span></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#059669 0%,#047857 100%)">
+      <div class="av-hero-label" style="color:#a7f3d0">&#9745; Onboarding Progress</div>
+      <div class="av-hero-title">Day 12 of 90 &mdash; Account Setup Phase</div>
+      <div class="av-hero-sub">All account documentation collected. KYC/AML cleared. Portfolio construction model ready for advisor review. First check-in call scheduled for Day 14.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">68%</div><div class="av-hero-stat-label">Overall Progress</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">12</div><div class="av-hero-stat-label">Tasks Completed</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">5</div><div class="av-hero-stat-label">Tasks Remaining</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">0</div><div class="av-hero-stat-label">Blocked Items</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#128203; Onboarding Checklist &mdash; Real-Time Status</div><span class="av-card-badge av-badge-green">12 of 17 Complete</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">&#9745; Account Application &amp; KYC</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">COMPLETE</span></div><div class="av-item-body">All 4 accounts opened (Individual, Revocable Trust, Irrevocable Trust, DAF). KYC/AML screening passed. Accredited investor verified. Documents archived.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">&#9745; Asset Transfer Coordination</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">COMPLETE</span></div><div class="av-item-body">ACAT transfers initiated from 3 custodians. $62M in public securities transferred (T+3 settled). $14M angel portfolio documentation collected. Nexus shares: transfer agent contacted, 180-day lock-up noted.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">&#9745; Investment Policy Statement</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">COMPLETE</span></div><div class="av-item-body">AI-drafted IPS based on discovery meeting notes, risk questionnaire (score: 72/100 &mdash; Growth with Preservation), and tax situation analysis. Advisor reviewed and approved.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">&#9744; Portfolio Construction Model</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">ADVISOR REVIEW</span></div><div class="av-item-body">AI-generated target allocation: 55% equity / 20% FI / 20% alts / 5% cash. Tax-loss harvesting opportunities: $3.2M in transferred positions. Concentrated stock plan for Nexus (28% &rarr; 15% over 18 months). Awaiting advisor sign-off.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">&#9744; Estate Planning Intake</span><span class="av-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">IN PROGRESS</span></div><div class="av-item-body">Trust documents uploaded and parsed. Entity map auto-generated (4 trusts, 2 LLCs, 1 foundation). Beneficiary designations flagged for review &mdash; 2 accounts missing contingent beneficiaries. Estate attorney intro scheduled Day 21.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128197; First 90-Day Engagement Plan</div><span class="av-card-badge av-badge-blue">Auto-Generated</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Day 14: First Check-In Call</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">SCHEDULED</span></div><div class="av-item-body">Review portfolio construction, discuss concentrated stock strategy, confirm estate planning priorities.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Day 30: Portfolio Review</span><span class="av-item-tag" style="background:#f0f2f5;color:#6b7280">UPCOMING</span></div><div class="av-item-body">Initial rebalancing complete. Tax-loss harvesting report. Performance vs. IPS benchmarks.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Day 45: Estate Planning Session</span><span class="av-item-tag" style="background:#f0f2f5;color:#6b7280">UPCOMING</span></div><div class="av-item-body">Joint meeting with estate attorney. Review entity map, GRAT opportunity, TCJA sunset strategy.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Day 60: Family Introduction</span><span class="av-item-tag" style="background:#f0f2f5;color:#6b7280">UPCOMING</span></div><div class="av-item-body">Meet Emma and David. Introduce Next-Gen program. Discuss family governance charter.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Day 90: Comprehensive Review</span><span class="av-item-tag" style="background:#f0f2f5;color:#6b7280">UPCOMING</span></div><div class="av-item-body">Full portfolio performance review. Relationship health baseline. Service expansion recommendations. Transition to ongoing advisory cadence.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128200; Portfolio Construction Preview</div><span class="av-card-badge av-badge-gold">Pending Approval</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">US Equities</span><span class="av-metric-val">35%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">International Equities</span><span class="av-metric-val">20%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Fixed Income</span><span class="av-metric-val">20%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Alternatives</span><span class="av-metric-val">20%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Cash &amp; Short-Term</span><span class="av-metric-val">5%</span></div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #f0f2f5">
+            <div class="av-insight av-insight-gold"><strong>Tax Optimization:</strong> $3.2M in transferable losses identified. Recommend harvesting in Q1 to offset Nexus capital gains. Estimated Year 1 tax savings: $2.4M.</div>
+            <div class="av-insight av-insight-blue"><strong>Concentration Risk:</strong> Nexus position at 28%. 10b5-1 plan modeled: 13 monthly tranches of $5M reduces to 15% by Month 18. Tax impact: $4.8M LTCG (deferrable with GRAT strategy).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== PORTFOLIO SURVEILLANCE AGENT ==================== -->
+<div class="view" id="surveillanceView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Portfolio Surveillance Agent &mdash; Overnight Alert Triage</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Scan Complete 5:45 AM ET &middot; 28 Portfolios &middot; $8.74B AUM</span>
+      <button class="av-back-btn" onclick="window.showView('monitor')">&#8592; Back to Monitoring</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Portfolio Surveillance Agent</div><div style="font-size:11px;color:#666;">24/7 monitoring across 28 portfolios, 847 positions, 12 risk factors, 6 compliance rules. Last full scan: 5:45 AM ET</div></div>
+    <div style="display:flex;gap:16px;font-size:11px;color:#666;"><span>Alerts: <strong style="color:#dc2626;">3</strong></span><span>Warnings: <strong style="color:#b8860b;">5</strong></span><span>All Clear: <strong style="color:#059669;">20</strong></span></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#1e40af 0%,#1d4ed8 100%)">
+      <div class="av-hero-label" style="color:#93c5fd">&#128680; Overnight Surveillance Summary</div>
+      <div class="av-hero-title">3 alerts require advisor action. 5 watchlist items flagged.</div>
+      <div class="av-hero-sub">Asian markets closed mixed (Nikkei -1.2%, Hang Seng +0.4%). European open: STOXX 600 +0.2%. US futures flat. 10Y yield +4bps to 4.28%. No earnings surprises affecting client positions.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#93c5fd">28</div><div class="av-hero-stat-label">Portfolios Scanned</div></div>
+        <div><div class="av-hero-stat-val" style="color:#93c5fd">847</div><div class="av-hero-stat-label">Positions Monitored</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fca5a5">3</div><div class="av-hero-stat-label">Action Required</div></div>
+        <div><div class="av-hero-stat-val" style="color:#93c5fd">$8.74B</div><div class="av-hero-stat-label">Total AUM</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#128308; Priority Alerts &mdash; Action Required</div><span class="av-card-badge av-badge-red">3 Alerts</span></div>
+        <div class="av-card-body">
+          <div class="av-row">
+            <div class="av-row-avatar" style="background:linear-gradient(135deg,#dc2626,#b91c1c)">MR</div>
+            <div class="av-row-info"><div class="av-row-name">Maria Rodriguez &mdash; Margin Threshold Breach</div><div class="av-row-detail">SBLOC LTV at <strong style="color:#dc2626">62%</strong> (maintenance: 70%). NVDA down 12% this week ($8.4M impact). Collateral value: $42M vs. $26M drawn. <strong>Recommended:</strong> Post $1.5M additional collateral from FI sleeve or partial paydown of $3M. Auto-rebalance proposal ready.</div></div>
+            <div class="av-row-action">Approve Action</div>
+          </div>
+          <div class="av-row">
+            <div class="av-row-avatar" style="background:linear-gradient(135deg,#dc2626,#b91c1c)">TP</div>
+            <div class="av-row-info"><div class="av-row-name">Thomas Park &mdash; Concentration Limit Exceeded</div><div class="av-row-detail">AAPL position hit <strong style="color:#dc2626">32%</strong> of portfolio (policy max: 25%). Price appreciation of 18% in 30 days. IPS violation. <strong>Recommended:</strong> Systematic reduction to 22% via 4 weekly tranches. Tax-lot optimization identifies $180K in short-term vs. $420K long-term gains.</div></div>
+            <div class="av-row-action">Review Plan</div>
+          </div>
+          <div class="av-row">
+            <div class="av-row-avatar" style="background:linear-gradient(135deg,#dc2626,#b91c1c)">LG</div>
+            <div class="av-row-info"><div class="av-row-name">Lisa Grant &mdash; Cash Below Minimum</div><div class="av-row-detail">Cash at <strong style="color:#dc2626">1.8%</strong> (policy minimum: 3%). Capital call of $2.8M (Sequoia Growth Fund) due in 14 days will further reduce. <strong>Recommended:</strong> Liquidate $2.1M from money market fund, activate bridge facility for capital call.</div></div>
+            <div class="av-row-action">Approve</div>
+          </div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128992; Watchlist Items</div><span class="av-card-badge av-badge-gold">5 Flagged</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Chen &mdash; Nexus Volatility</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">WATCH</span></div><div class="av-item-body">IV up 15% ahead of earnings. Position: $78M (28% of portfolio). No action needed yet. Will alert if price moves &gt;5% in either direction.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Patel &mdash; Duration Mismatch</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">WATCH</span></div><div class="av-item-body">FI duration at 6.2 years vs. target 4.5. Rate move of +4bps today impacted portfolio -$340K. Within tolerance but trending toward rebalance trigger.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Morrison &mdash; Gold Overweight</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">WATCH</span></div><div class="av-item-body">Precious metals at 8.2% (target 7%). Gold rally +1.1% overnight. Flag for rebalance discussion at next quarterly review (March 12).</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Williams &mdash; Tax-Loss Window</span><span class="av-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">OPPORTUNITY</span></div><div class="av-item-body">European industrials allocation down 8.2% YTD. $420K harvestable loss. Wash sale window clear. Recommend swap to similar ETF to maintain exposure while harvesting.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Kim &mdash; 1031 Exchange Clock</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">DEADLINE</span></div><div class="av-item-body">45-day identification deadline: March 28 (33 days remaining). Property sold for $4.6M. 3 replacement properties pre-screened by AI. Advisor needs to review with client.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#9989; All-Clear Summary</div><span class="av-card-badge av-badge-green">20 Portfolios</span></div>
+        <div class="av-card-body">
+          <div class="av-insight av-insight-green"><strong>20 of 28 portfolios</strong> are within all IPS parameters, compliance limits, and risk tolerances. No action required.</div>
+          <div class="av-metric-row"><span class="av-metric-label">Avg Portfolio Health</span><span class="av-metric-val" style="color:#059669">94/100</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Compliance Score</span><span class="av-metric-val" style="color:#059669">100%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Avg YTD Return</span><span class="av-metric-val" style="color:#059669">+8.4%</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Avg vs. Benchmark</span><span class="av-metric-val" style="color:#059669">+1.2% alpha</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Tax Alpha Generated</span><span class="av-metric-val" style="color:#C9A227">$3.8M YTD</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== ATTRITION EARLY WARNING AGENT ==================== -->
+<div class="view" id="attritionView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Attrition Early Warning Agent &mdash; Client Health Monitor</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Weekly Scan &middot; Feb 23, 2026 &middot; 28 Clients Analyzed</span>
+      <button class="av-back-btn" onclick="window.showView('sentiment')">&#8592; Back to Engagement Intelligence</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Attrition Prevention Agent</div><div style="font-size:11px;color:#666;">Monitors 15+ behavioral signals per client, computes health scores, generates intervention playbooks for at-risk relationships</div></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#b45309 0%,#d97706 100%)">
+      <div class="av-hero-label" style="color:#fef3c7">&#9888; Early Warning Dashboard</div>
+      <div class="av-hero-title">2 clients flagged at-risk. 1 intervention in progress. 25 healthy.</div>
+      <div class="av-hero-sub">Weekly behavioral analysis complete. Two new risk signals detected. One active intervention (Whitfield) showing early positive signs after advisor outreach.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#fef3c7">25</div><div class="av-hero-stat-label">Healthy</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fef3c7">1</div><div class="av-hero-stat-label">Watch</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fca5a5">2</div><div class="av-hero-stat-label">At-Risk</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fef3c7">83.2</div><div class="av-hero-stat-label">Avg Health Score</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#128308; At-Risk Clients &mdash; Intervention Required</div><span class="av-card-badge av-badge-red">2 Flagged</span></div>
+        <div class="av-card-body">
+          <div class="av-row">
+            <div class="av-row-avatar" style="background:linear-gradient(135deg,#dc2626,#b91c1c)">JW</div>
+            <div class="av-row-info"><div class="av-row-name">James Whitfield &mdash; Health Score: 71 (&#8595;7)</div><div class="av-row-detail"><strong style="color:#dc2626">Risk Signals:</strong> Portal logins down 40%. Skipped 2 scheduled calls. $2.1M outbound transfer to Schwab. Email response time: 48hrs (was 4hrs). Tone analysis: 3 recent emails flagged as &ldquo;terse/disengaged.&rdquo;<br><strong>Probable Cause:</strong> Performance dissatisfaction (portfolio -2.1% vs. benchmark +1.4% in Q4). Competitor outreach likely (Schwab transfer is exploratory).<br><strong>Intervention Playbook:</strong> &#9312; Advisor call today (talking points generated) &#9313; Performance attribution deck with forward outlook &#9314; Offer portfolio strategy review with CIO &#9315; If engaged: propose alt allocation increase per original IPS discussion.</div></div>
+            <div class="av-row-action">Call Today</div>
+          </div>
+          <div class="av-row">
+            <div class="av-row-avatar" style="background:linear-gradient(135deg,#dc2626,#b91c1c)">RH</div>
+            <div class="av-row-info"><div class="av-row-name">Rachel Hoffman &mdash; Health Score: 68 (&#8595;12)</div><div class="av-row-detail"><strong style="color:#dc2626">Risk Signals:</strong> Zero portal logins in 30 days (was weekly). No response to 2 outreach emails. Automatic distributions increased 40%. LinkedIn shows connection to Merrill advisor.<br><strong>Probable Cause:</strong> Life event &mdash; divorce filing detected in public records (2 weeks ago). May be reorganizing finances. Competitor exploration likely concurrent with life change.<br><strong>Intervention Playbook:</strong> &#9312; Senior advisor personal call (empathetic, non-transactional) &#9313; Offer family law attorney introduction &#9314; Proactive account restructuring proposal &#9315; Expedited IPS review for changed circumstances.</div></div>
+            <div class="av-row-action">Senior Advisor Call</div>
+          </div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128310; Active Intervention Tracking</div><span class="av-card-badge av-badge-gold">1 In Progress</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Whitfield &mdash; Week 2 of Intervention</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">EARLY POSITIVE</span></div>
+          <div class="av-item-body"><strong>Actions Taken:</strong> Advisor call completed (Feb 16). Performance attribution shared. CIO meeting offered and accepted (scheduled Feb 27). <br><strong>Response Signals:</strong> Email response time improved to 12hrs. Accepted calendar invite within 1hr. Schwab transfer: no additional activity since Feb 14. <br><strong>Projected Outcome:</strong> 72% probability of retention if CIO meeting goes well. Health score trending up: 71 &rarr; projected 76 by end of month.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128994; Healthy Client Highlights</div><span class="av-card-badge av-badge-green">Top 5</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">Sarah Chen</span><span class="av-metric-val" style="color:#059669">94 &#9650;</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Priya Mehta</span><span class="av-metric-val" style="color:#059669">91 &#9650;</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Thomas Park</span><span class="av-metric-val" style="color:#059669">89 &mdash;</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">David Kim</span><span class="av-metric-val" style="color:#059669">88 &#9650;</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Lisa Grant</span><span class="av-metric-val" style="color:#059669">86 &mdash;</span></div>
+          <div style="margin-top:12px"><div class="av-insight av-insight-green"><strong>Referral Opportunity:</strong> Chen (94) and Mehta (91) both in advocate range. Combined network: ~60 UHNW contacts. Recommend activating strategic referral program.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== DEAL FLOW MATCHING AGENT ==================== -->
+<div class="view" id="dealflowView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Deal Flow Matching Agent &mdash; Q1 2026 Alternative Investment Pipeline</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Updated Feb 23, 2026 &middot; 24 Deals Screened &middot; 6 Client Matches</span>
+      <button class="av-back-btn" onclick="window.showView('alts')">&#8592; Back to Alternatives</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Deal Flow Matching Agent</div><div style="font-size:11px;color:#666;">Screens fund offerings against client eligibility, IPS fit, portfolio gaps, vintage diversification, and GP track record</div></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#c2410c 0%,#ea580c 100%)">
+      <div class="av-hero-label" style="color:#fed7aa">&#127919; Deal Pipeline Summary</div>
+      <div class="av-hero-title">5 high-fit deals ready for advisor review. $32M aggregate opportunity.</div>
+      <div class="av-hero-sub">AI screened 24 fund offerings from 18 GPs this quarter. Filtered by accreditation, minimum investment, sector fit, vintage year diversification, and IPS alignment.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#fed7aa">24</div><div class="av-hero-stat-label">Deals Screened</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fed7aa">5</div><div class="av-hero-stat-label">High-Fit Matches</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fed7aa">$32M</div><div class="av-hero-stat-label">Total Opportunity</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fed7aa">85%</div><div class="av-hero-stat-label">Match Accuracy</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#128176; Top Fund Recommendations</div><span class="av-card-badge av-badge-gold">Advisor Review Required</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Sequoia Buyout Fund XIV</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">96% FIT</span></div><div class="av-item-body"><strong>Strategy:</strong> Mid-market buyout, tech &amp; healthcare. <strong>Target:</strong> $8B. <strong>Min:</strong> $5M. <strong>GP Track:</strong> Fund XIII 2.4x MOIC, 28% net IRR.<br><strong>Matched Clients:</strong> Chen ($10M), Mehta ($5M), Park ($3M). <strong>Why:</strong> All three underweight PE vs. IPS target. Vintage 2026 fills gap. Sector alignment with growth mandates. <strong>Closing:</strong> March 15 (final close).</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">Blackstone Private Credit Fund IV</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">92% FIT</span></div><div class="av-item-body"><strong>Strategy:</strong> Senior secured lending, floating rate. <strong>Target:</strong> $5B. <strong>Min:</strong> $2M. <strong>GP Track:</strong> Fund III 1.5x MOIC, 11.2% net yield.<br><strong>Matched Clients:</strong> Chen ($8M), Grant ($4M). <strong>Why:</strong> Fixed income alternative with higher yield. Rate-protective (floating). Reduces duration risk in FI sleeve. <strong>Closing:</strong> Rolling quarterly.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">KKR Infrastructure Partners III</span><span class="av-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">88% FIT</span></div><div class="av-item-body"><strong>Strategy:</strong> Core-plus infrastructure, global. <strong>Target:</strong> $12B. <strong>Min:</strong> $3M. <strong>GP Track:</strong> Fund II 1.8x MOIC, 14% net IRR.<br><strong>Matched Clients:</strong> Chen ($4.4M), Kim ($3M). <strong>Why:</strong> Inflation hedge, stable cash yields (6-8% target). ESG-aligned (renewable energy focus). Portfolio diversifier. <strong>Closing:</strong> Q2 2026.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128202; Client Alt Allocation Gaps</div><span class="av-card-badge av-badge-blue">6 Underweight</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">Chen: Current / Target</span><span class="av-metric-val">12% / 20% <span style="color:#dc2626">(&#8595;8%)</span></span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Mehta: Current / Target</span><span class="av-metric-val">14% / 18% <span style="color:#dc2626">(&#8595;4%)</span></span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Park: Current / Target</span><span class="av-metric-val">8% / 15% <span style="color:#dc2626">(&#8595;7%)</span></span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Grant: Current / Target</span><span class="av-metric-val">16% / 20% <span style="color:#dc2626">(&#8595;4%)</span></span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Kim: Current / Target</span><span class="av-metric-val">10% / 15% <span style="color:#dc2626">(&#8595;5%)</span></span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Williams: Current / Target</span><span class="av-metric-val">11% / 18% <span style="color:#dc2626">(&#8595;7%)</span></span></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128683; Screened Out (19 Deals)</div><span class="av-card-badge av-badge-blue">Auto-Filtered</span></div>
+        <div class="av-card-body">
+          <div class="av-insight av-insight-blue"><strong>Filtered Reasons:</strong> 8 deals below minimum qualification threshold. 4 deals in over-represented vintages (2024-25). 3 deals with GP track record below 1.5x MOIC. 2 deals in sectors conflicting with client ESG mandates. 2 deals with lockup periods exceeding client liquidity needs.</div>
+          <div class="av-insight av-insight-gold"><strong>Borderline (2 deals):</strong> Apollo Real Estate Fund VI (84% fit &mdash; slightly high minimum) and Warburg Pincus Growth XIV (82% fit &mdash; overlaps with existing VC allocation). Available for advisor review if interested.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== CHARITABLE STRATEGY AGENT ==================== -->
+<div class="view" id="charitablestratView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Charitable Strategy Agent &mdash; Sarah Chen Philanthropic Plan</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Generated Feb 22, 2026 &middot; Tax Optimization + Impact Modeling &middot; 4 Vehicles Analyzed</span>
+      <button class="av-back-btn" onclick="window.showView('philanthropy')">&#8592; Back to Philanthropic Advisory</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Charitable Strategy Agent</div><div style="font-size:11px;color:#666;">Optimizes giving vehicles, tax efficiency, and social impact alignment based on client values, estate plan, and financial profile</div></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#047857 0%,#059669 100%)">
+      <div class="av-hero-label" style="color:#a7f3d0">&#127793; Philanthropic Strategy Summary</div>
+      <div class="av-hero-title">4 giving vehicles recommended. $14.5M total planned giving. $4.2M in tax savings.</div>
+      <div class="av-hero-sub">AI analyzed Sarah&rsquo;s charitable interests (STEM education, ocean conservation, contemporary art), current giving patterns, estate plan, and Nexus equity concentration to design an integrated philanthropic strategy.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">$14.5M</div><div class="av-hero-stat-label">Total Planned Giving</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">$4.2M</div><div class="av-hero-stat-label">Tax Savings</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">4</div><div class="av-hero-stat-label">Vehicles</div></div>
+        <div><div class="av-hero-stat-val" style="color:#a7f3d0">3</div><div class="av-hero-stat-label">Cause Areas</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#127919; Recommended Giving Vehicles</div><span class="av-card-badge av-badge-green">AI-Optimized</span></div>
+        <div class="av-card-body">
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">1. Charitable Remainder Trust (CRT)</span><span class="av-item-tag" style="background:rgba(5,150,105,0.1);color:#059669">PRIMARY</span></div><div class="av-item-body"><strong>Funded with:</strong> $10M in appreciated Nexus shares (cost basis: $1.2M). <strong>Structure:</strong> 5% unitrust, 15-year term. <strong>Income stream:</strong> ~$500K/year to Sarah. <strong>Tax benefit:</strong> $3.2M charitable deduction + avoids $2.1M in capital gains. <strong>Remainder:</strong> Distributed to Ocean Conservation Alliance and Stanford CS at term end. <strong>Why CRT:</strong> Diversifies concentrated position, generates income, maximizes charitable impact, and reduces estate.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">2. Donor-Advised Fund (DAF)</span><span class="av-item-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">ANNUAL</span></div><div class="av-item-body"><strong>Initial contribution:</strong> $2M (Nexus shares). <strong>Annual additions:</strong> $500K/year. <strong>Tax benefit:</strong> Full fair-market-value deduction in contribution year. <strong>Grants:</strong> $300K/year to STEM education nonprofits, $150K/year to MOMA, $50K/year flexible. <strong>Why DAF:</strong> Flexibility in timing of grants vs. deductions. Bunching strategy for years with large capital events (e.g., post-IPO).</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">3. Private Foundation</span><span class="av-item-tag" style="background:rgba(124,58,237,0.1);color:#7c3aed">LEGACY</span></div><div class="av-item-body"><strong>Initial funding:</strong> $2M (post-IPO cash). <strong>Mission:</strong> STEM education for underrepresented communities. <strong>Structure:</strong> Family foundation with Sarah as president, Emma and David as trustees. <strong>Annual distribution:</strong> 5% minimum ($100K+). <strong>Why Foundation:</strong> Multi-generational family engagement, governance training for heirs, legacy building. Higher administrative cost but greater control and visibility.</div></div>
+          <div class="av-item"><div class="av-item-header"><span class="av-item-title">4. Direct Qualified Charitable Distributions</span><span class="av-item-tag" style="background:rgba(201,162,39,0.12);color:#b8860b">SUPPLEMENTAL</span></div><div class="av-item-body"><strong>Annual amount:</strong> $500K in direct gifts. <strong>Targets:</strong> MOMA annual pledge ($500K). <strong>Why Direct:</strong> Satisfies board commitment, maintains trustee standing, simple execution. Future QCD opportunity when Michael reaches RMD age (2031).</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128202; Tax Impact Analysis</div><span class="av-card-badge av-badge-gold">$4.2M Savings</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">CRT Charitable Deduction</span><span class="av-metric-val" style="color:#059669">$3.2M</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">CRT Capital Gains Avoided</span><span class="av-metric-val" style="color:#059669">$2.1M</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">DAF Year 1 Deduction</span><span class="av-metric-val" style="color:#059669">$2.0M</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Foundation Deduction</span><span class="av-metric-val" style="color:#059669">$600K</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Estate Tax Reduction</span><span class="av-metric-val" style="color:#059669">$5.8M</span></div>
+          <div style="margin-top:12px"><div class="av-insight av-insight-gold"><strong>Bunching Strategy:</strong> By concentrating CRT and DAF contributions in the IPO year, Sarah can offset ~$5.2M in capital gains from Nexus diversification. Recommend coordinating with 10b5-1 plan timing.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#127758; Impact Alignment Score</div><span class="av-card-badge av-badge-green">96% Match</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">Ocean Conservation</span><span class="av-metric-val">$5.2M (CRT remainder)</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">STEM Education</span><span class="av-metric-val">$4.8M (Foundation + DAF)</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Contemporary Art</span><span class="av-metric-val">$3.5M (MOMA + DAF)</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Flexible / Emerging</span><span class="av-metric-val">$1.0M (DAF reserve)</span></div>
+          <div style="margin-top:12px"><div class="av-insight av-insight-green"><strong>Values Alignment:</strong> 96% of planned giving maps directly to Sarah&rsquo;s stated philanthropic priorities. The foundation structure engages Emma and David in cause areas they&rsquo;ve expressed interest in, strengthening intergenerational engagement.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== LENDING STRUCTURE AGENT ==================== -->
+<div class="view" id="lendingstratView">
+<div class="av-view">
+  <div class="av-top-bar">
+    <div class="av-top-bar-title">Lending Structure Agent &mdash; Sarah Chen Borrow-vs-Sell Analysis</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="av-badge">Generated Feb 22, 2026 &middot; 6 Structures Modeled &middot; 3 Recommended</span>
+      <button class="av-back-btn" onclick="window.showView('lending')">&#8592; Back to Lending</button>
+    </div>
+  </div>
+  <div class="av-confidence">
+    <div style="width:36px;height:36px;background:linear-gradient(135deg,#003366,#C9A227);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:700;flex-shrink:0">AI</div>
+    <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#001a33;">Lending Structure Optimization Agent</div><div style="font-size:11px;color:#666;">Compares borrow vs. sell scenarios across tax impact, portfolio disruption, rate cost, and liquidity needs</div></div>
+  </div>
+  <div class="av-content">
+    <div class="av-hero" style="background:linear-gradient(135deg,#9f1239 0%,#be123c 100%)">
+      <div class="av-hero-label" style="color:#fecdd3">&#128176; Borrow vs. Sell Decision Framework</div>
+      <div class="av-hero-title">Borrowing saves $2.4M vs. selling for Sarah&rsquo;s $15M liquidity need.</div>
+      <div class="av-hero-sub">Sarah needs $15M for a real estate acquisition. AI modeled 6 lending structures against outright sale, factoring in tax impact, opportunity cost, interest expense, and portfolio disruption.</div>
+      <div class="av-hero-stats">
+        <div><div class="av-hero-stat-val" style="color:#fecdd3">$2.4M</div><div class="av-hero-stat-label">Tax Savings vs. Sell</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fecdd3">4.72%</div><div class="av-hero-stat-label">Best Rate (SOFR+85bp)</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fecdd3">27%</div><div class="av-hero-stat-label">LTV Ratio</div></div>
+        <div><div class="av-hero-stat-val" style="color:#fecdd3">$22.4M</div><div class="av-hero-stat-label">Margin Buffer</div></div>
+      </div>
+    </div>
+    <div class="av-grid">
+      <div class="av-card av-card-full">
+        <div class="av-card-header"><div class="av-card-title">&#9878; Scenario Comparison</div><span class="av-card-badge av-badge-gold">6 Structures Analyzed</span></div>
+        <div class="av-card-body" style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:12px">
+            <thead><tr style="border-bottom:2px solid #e5e7eb;text-align:left">
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">Structure</th>
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">Rate</th>
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">Tax Impact</th>
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">5-Year Cost</th>
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">LTV</th>
+              <th style="padding:10px 12px;color:#6b7280;font-weight:600">Recommendation</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f0f2f5;background:rgba(5,150,105,0.04)"><td style="padding:10px 12px;font-weight:600;color:#001a33">SBLOC (Diversified Portfolio)</td><td style="padding:10px 12px">SOFR+85bp (4.72%)</td><td style="padding:10px 12px;color:#059669">$0 cap gains</td><td style="padding:10px 12px">$3.5M interest</td><td style="padding:10px 12px">27%</td><td style="padding:10px 12px"><span style="background:rgba(5,150,105,0.1);color:#059669;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">RECOMMENDED</span></td></tr>
+              <tr style="border-bottom:1px solid #f0f2f5"><td style="padding:10px 12px;font-weight:600;color:#001a33">Outright Equity Sale</td><td style="padding:10px 12px">N/A</td><td style="padding:10px 12px;color:#dc2626">$2.4M LTCG tax</td><td style="padding:10px 12px">$2.4M + opp cost</td><td style="padding:10px 12px">N/A</td><td style="padding:10px 12px"><span style="background:rgba(239,68,68,0.1);color:#dc2626;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">NOT RECOMMENDED</span></td></tr>
+              <tr style="border-bottom:1px solid #f0f2f5;background:rgba(37,99,235,0.04)"><td style="padding:10px 12px;font-weight:600;color:#001a33">Margin Loan (Nexus Only)</td><td style="padding:10px 12px">SOFR+150bp (5.37%)</td><td style="padding:10px 12px;color:#059669">$0 cap gains</td><td style="padding:10px 12px">$4.0M interest</td><td style="padding:10px 12px">19%</td><td style="padding:10px 12px"><span style="background:rgba(37,99,235,0.1);color:#2563eb;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">ALTERNATIVE</span></td></tr>
+              <tr style="border-bottom:1px solid #f0f2f5"><td style="padding:10px 12px;font-weight:600;color:#001a33">RE Mortgage (Investment)</td><td style="padding:10px 12px">6.8% fixed 30yr</td><td style="padding:10px 12px;color:#059669">Interest deductible</td><td style="padding:10px 12px">$5.1M interest</td><td style="padding:10px 12px">54%</td><td style="padding:10px 12px"><span style="background:#f0f2f5;color:#6b7280;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">HIGHER COST</span></td></tr>
+              <tr style="border-bottom:1px solid #f0f2f5"><td style="padding:10px 12px;font-weight:600;color:#001a33">Prepaid Variable Forward</td><td style="padding:10px 12px">Implied ~5.5%</td><td style="padding:10px 12px;color:#b8860b">Deferred gains</td><td style="padding:10px 12px">$4.2M (est.)</td><td style="padding:10px 12px">N/A</td><td style="padding:10px 12px"><span style="background:#f0f2f5;color:#6b7280;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">COMPLEX</span></td></tr>
+              <tr><td style="padding:10px 12px;font-weight:600;color:#001a33">Hybrid: SBLOC + Partial Sale</td><td style="padding:10px 12px">Blended ~4.2%</td><td style="padding:10px 12px;color:#b8860b">$800K LTCG</td><td style="padding:10px 12px">$2.8M total</td><td style="padding:10px 12px">18%</td><td style="padding:10px 12px"><span style="background:rgba(201,162,39,0.12);color:#b8860b;padding:3px 8px;border-radius:4px;font-weight:600;font-size:10px">CONSIDER</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#9989; SBLOC Structure Details</div><span class="av-card-badge av-badge-green">Recommended</span></div>
+        <div class="av-card-body">
+          <div class="av-metric-row"><span class="av-metric-label">Facility Size</span><span class="av-metric-val">$43M available</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Draw Amount</span><span class="av-metric-val">$15M</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">LTV After Draw</span><span class="av-metric-val">27% (maint: 70%)</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Margin Buffer</span><span class="av-metric-val">$22.4M</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Annual Interest</span><span class="av-metric-val">~$708K</span></div>
+          <div class="av-metric-row"><span class="av-metric-label">Collateral</span><span class="av-metric-val">Diversified public portfolio</span></div>
+          <div style="margin-top:12px"><div class="av-insight av-insight-green"><strong>Stress Test:</strong> Portfolio would need to decline 61% before reaching maintenance LTV. During 2020 COVID crash (max drawdown -34%), this facility would have remained within covenants with $8.2M buffer.</div></div>
+        </div>
+      </div>
+      <div class="av-card">
+        <div class="av-card-header"><div class="av-card-title">&#128200; Opportunity Cost Analysis</div><span class="av-card-badge av-badge-blue">5-Year Model</span></div>
+        <div class="av-card-body">
+          <div class="av-insight av-insight-blue"><strong>If Sarah sells $15M:</strong> Loses $15M in market exposure. At historical 10% annual return, forfeited gains: ~$9.2M over 5 years. Plus $2.4M in immediate LTCG tax. <strong>Total cost of selling: ~$11.6M.</strong></div>
+          <div class="av-insight av-insight-green"><strong>If Sarah borrows $15M:</strong> Interest cost: ~$3.5M over 5 years (at current rates). Maintains full market exposure. No tax event. <strong>Total cost of borrowing: ~$3.5M.</strong></div>
+          <div class="av-insight av-insight-gold"><strong>Net advantage of borrowing: ~$8.1M over 5 years.</strong> Even in a flat market scenario (0% return), borrowing saves $2.4M vs. selling due to tax avoidance alone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 <div class="view" id="estateStratView">
   <div class="es-view-container">
 
@@ -8399,11 +9442,20 @@
     dashboard:document.getElementById('dashboardView'),
     meetingprep:document.getElementById('meetingprepView'),
     estatestrat:document.getElementById('estateStratView'),
+    dossier:document.getElementById('dossierView'),
+    onboardagent:document.getElementById('onboardagentView'),
+    surveillance:document.getElementById('surveillanceView'),
+    attrition:document.getElementById('attritionView'),
+    dealflow:document.getElementById('dealflowView'),
+    charitablestrat:document.getElementById('charitablestratView'),
+    lendingstrat:document.getElementById('lendingstratView'),
+    morningbrief:document.getElementById('morningbriefView'),
     futurestate:document.getElementById('futureStateView'),
     clientagent:document.getElementById('clientAgentView'),
     wealthos:document.getElementById('wealthOsView'),
     servicehorizon:document.getElementById('serviceHorizonView'),
-    collabeco:document.getElementById('collabEcoView')
+    collabeco:document.getElementById('collabEcoView'),
+    lending:document.getElementById('lendingView')
   };
   const scrollers={
     prospect:document.getElementById('prospectScroll'),
@@ -8415,9 +9467,10 @@
     alts:document.getElementById('altsScroll'),
     philanthropy:document.getElementById('philanthropyScroll'),
     sentiment:document.getElementById('sentimentScroll'),
-    community:document.getElementById('communityScroll')
+    community:document.getElementById('communityScroll'),
+    lending:document.getElementById('lendingScroll')
   };
-  const prefixes={prospect:'p',onboard:'o',review:'r',monitor:'m',estate:'e',nextgen:'n',alts:'a',philanthropy:'ph',sentiment:'s',community:'cc'};
+  const prefixes={prospect:'p',onboard:'o',review:'r',monitor:'m',estate:'e',nextgen:'n',alts:'a',philanthropy:'ph',sentiment:'s',community:'cc',lending:'ln'};
   const labels={
     prospect:['Introduction','Prospect Identification','Intelligence Dossier','Personalized Outreach','Discovery & Proposal','The Outcome'],
     onboard:['Introduction','Account Opening','Portfolio Construction','First 90 Days','The Outcome'],
@@ -8428,18 +9481,20 @@
     alts:['Introduction','Eligibility Assessment','Deal Flow Matching','Subscription & Capital Calls','Performance Monitoring','The Outcome'],
     philanthropy:['Introduction','Charitable Intent Detection','Vehicle Optimization','Impact Investment Alignment','Giving Execution','The Outcome'],
     sentiment:['Introduction','Engagement Signal Collection','Health Scoring','Early Warning & Prevention','Enrichment & Growth','The Outcome'],
-    community:['Introduction','Affinity Clustering','Event Intelligence & Engagement','The Outcome']
+    community:['Introduction','Affinity Clustering','Event Intelligence & Engagement','The Outcome'],
+    lending:['Introduction','Liquidity Assessment','Structure Optimization','Execution & Monitoring','The Outcome']
   };
 
   /* ---------- parent mapping ---------- */
   const parentMap={
     prospect:'era1',onboard:'era1',review:'era1',monitor:'era1',estate:'era1',
     nextgen:'era1',alts:'era1',philanthropy:'era1',sentiment:'era1',community:'era1',
-    dashboard:'era1',meetingprep:'era1',estatestrat:'era1',
+    dashboard:'era1',meetingprep:'era1',estatestrat:'era1',dossier:'era1',morningbrief:'era1',onboardagent:'era1',surveillance:'era1',attrition:'era1',dealflow:'era1',charitablestrat:'era1',lendingstrat:'era1',
     clientagent:'era2',
     futurestate:'era2',
     wealthos:'era3',servicehorizon:'framing',
-    collabeco:'era3'
+    collabeco:'era3',
+    lending:'era1'
   };
 
   const navTitle=document.getElementById('navTitle');
@@ -8448,7 +9503,7 @@
   let currentKey=null, obs=null;
 
   /* ---------- non-scroller views ---------- */
-  const nonScrollers=['dashboard','meetingprep','estatestrat','futurestate','clientagent','wealthos','servicehorizon','collabeco','era1','era2','era3'];
+  const nonScrollers=['dashboard','meetingprep','estatestrat','dossier','morningbrief','onboardagent','surveillance','attrition','dealflow','charitablestrat','lendingstrat','futurestate','clientagent','wealthos','servicehorizon','collabeco','era1','era2','era3'];
 
   /* ---------- navigation ---------- */
   function showView(key){
@@ -8465,15 +9520,39 @@
       onboard:'Client Onboarding',
       review:'Quarterly Reviews',
       monitor:'Portfolio Monitoring',
-      estate:'Estate Planning',
+      estate:'Estate & Wealth Transfer',
       nextgen:'Next-Gen Transfer',
+    lending:'Lending & Structured Credit',
+      lending:'Lending & Structured Credit',
       alts:'Alternative Investments',
       philanthropy:'Philanthropic Advisory',
-      sentiment:'Relationship Health',
+      sentiment:'Client Engagement Intelligence',
       community:'Community & Convening',
       dashboard:'Advisor Dashboard',
       meetingprep:'Meeting Prep Agent',
       estatestrat:'Estate Strategy Agent',
+    dossier:'Prospect Dossier Agent',
+    morningbrief:'AI Morning Brief',
+    onboardagent:'Onboarding Orchestrator',
+    surveillance:'Portfolio Surveillance',
+    attrition:'Attrition Early Warning',
+    dealflow:'Deal Flow Matching',
+    charitablestrat:'Charitable Strategy',
+    lendingstrat:'Lending Structure Analysis',
+      dossier:'Prospect Dossier Agent',
+      morningbrief:'AI Morning Brief',
+    onboardagent:'Onboarding Orchestrator',
+    surveillance:'Portfolio Surveillance',
+    attrition:'Attrition Early Warning',
+    dealflow:'Deal Flow Matching',
+    charitablestrat:'Charitable Strategy',
+    lendingstrat:'Lending Structure Analysis',
+      onboardagent:'Onboarding Orchestrator',
+      surveillance:'Portfolio Surveillance',
+      attrition:'Attrition Early Warning',
+      dealflow:'Deal Flow Matching',
+      charitablestrat:'Charitable Strategy',
+      lendingstrat:'Lending Structure Analysis',
       futurestate:'Future State',
       clientagent:'Client Agent Experience',
       wealthos:'Wealth OS',
@@ -8515,6 +9594,14 @@
     if(currentKey==='era1'||currentKey==='era2'||currentKey==='era3') window.showFraming();
     else if(currentKey==='meetingprep') window.showView('review');
     else if(currentKey==='estatestrat') window.showView('estate');
+    else if(currentKey==='dossier') window.showView('prospect');
+    else if(currentKey==='morningbrief') window.showView('dashboard');
+    else if(currentKey==='onboardagent') window.showView('onboard');
+    else if(currentKey==='surveillance') window.showView('monitor');
+    else if(currentKey==='attrition') window.showView('sentiment');
+    else if(currentKey==='dealflow') window.showView('alts');
+    else if(currentKey==='charitablestrat') window.showView('philanthropy');
+    else if(currentKey==='lendingstrat') window.showView('lending');
     else if(parentMap[currentKey]) window.showView(parentMap[currentKey]);
     else window.showFraming();
   });
@@ -8562,15 +9649,25 @@
     onboard:'Client Onboarding',
     review:'Quarterly Reviews',
     monitor:'Portfolio Monitoring',
-    estate:'Estate Planning',
+    estate:'Estate & Wealth Transfer',
     nextgen:'Next-Gen Transfer',
+    lending:'Lending & Structured Credit',
+      lending:'Lending & Structured Credit',
     alts:'Alternative Investments',
     philanthropy:'Philanthropic Advisory',
-    sentiment:'Relationship Health',
+    sentiment:'Client Engagement Intelligence',
     community:'Community & Convening',
     dashboard:'Advisor Dashboard',
     meetingprep:'Meeting Prep Agent',
     estatestrat:'Estate Strategy Agent',
+    dossier:'Prospect Dossier Agent',
+    morningbrief:'AI Morning Brief',
+    onboardagent:'Onboarding Orchestrator',
+    surveillance:'Portfolio Surveillance',
+    attrition:'Attrition Early Warning',
+    dealflow:'Deal Flow Matching',
+    charitablestrat:'Charitable Strategy',
+    lendingstrat:'Lending Structure Analysis',
     futurestate:'Future State',
     clientagent:'Client Agent Experience',
     wealthos:'Wealth OS',
@@ -8831,6 +9928,10 @@
     }
   });
 
+
+
+
+  /* Auto-snap scroll removed — using default scroll behavior */
 
 })();
 </script>
