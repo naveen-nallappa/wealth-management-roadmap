@@ -46,19 +46,19 @@
   .wt-bar{position:fixed;bottom:-200px;left:50%;transform:translateX(-50%);z-index:1500;display:flex;align-items:center;gap:20px;padding:14px 32px;background:linear-gradient(135deg,#001a33,#003366);border:1px solid rgba(201,162,39,0.3);border-radius:16px;box-shadow:0 -4px 30px rgba(0,0,0,0.4);transition:bottom .4s cubic-bezier(.4,0,.2,1),opacity .3s ease;backdrop-filter:blur(20px);min-width:720px;max-width:90vw;pointer-events:none;opacity:0}
 .wt-bar.active{bottom:28px;pointer-events:auto;opacity:1}
   .wt-bar-info{display:flex;flex-direction:column;min-width:320px}
-  .wt-bar-bc{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;display:flex;align-items:center;gap:0;white-space:nowrap}
-  .wt-bar-bc span.wt-bc-sep{margin:0 7px;font-size:10px;color:rgba(255,255,255,0.3)}
+  .wt-bar-bc{font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px;display:flex;align-items:center;gap:0;white-space:nowrap}
+  .wt-bar-bc span.wt-bc-sep{margin:0 7px;font-size:11px;color:rgba(255,255,255,0.3)}
   .wt-bar-bc span.wt-bc-era{color:var(--gold);font-weight:600}
-  .wt-bar-bc span.wt-bc-track{color:rgba(255,255,255,0.55);font-weight:500}
-  .wt-bar-step{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
-  .wt-bar-title{font-size:14px;font-weight:600;color:#fff;margin-top:2px}
+  .wt-bar-bc span.wt-bc-track{color:rgba(255,255,255,0.6);font-weight:500}
+  .wt-bar-step{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase}
+  .wt-bar-title{font-size:16px;font-weight:600;color:#fff;margin-top:2px}
   .wt-bar-progress{display:flex;gap:4px;align-items:center}
   .wt-bar-pip{width:24px;height:4px;border-radius:2px;background:rgba(255,255,255,0.1);transition:all .3s;cursor:pointer}
   .wt-bar-pip.done{background:var(--gold)}
   .wt-bar-pip.current{background:var(--gold);box-shadow:0 0 8px rgba(201,162,39,0.4)}
   .wt-bar-pip:hover{background:rgba(201,162,39,0.5)}
   .wt-bar-nav{display:flex;gap:8px;margin-left:12px}
-  .wt-bar-btn{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;border:none}
+  .wt-bar-btn{padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;border:none}
   .wt-bar-btn.prev{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1)}
   .wt-bar-btn.prev:hover{background:rgba(255,255,255,0.12);color:#fff}
   .wt-bar-btn.prev:disabled{opacity:0.3;cursor:default}
@@ -66,7 +66,7 @@
   .wt-bar-btn.next:hover{transform:scale(1.03);box-shadow:0 4px 15px rgba(201,162,39,0.3)}
   .wt-bar-exit{background:none;border:none;color:var(--gray-400);font-size:18px;cursor:pointer;padding:4px 8px;margin-left:8px;transition:color .2s}
   .wt-bar-exit:hover{color:#fff}
-  .wt-bar-desc{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;margin-top:5px;max-width:480px;transition:opacity .4s}
+  .wt-bar-desc{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;margin-top:5px;max-width:520px;transition:opacity .4s}
 
   /* Start tour button on homepage */
   .tour-start-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#001a33;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s;letter-spacing:.3px;margin-top:16px}
@@ -234,7 +234,50 @@
   #framingView .j-card-title{font-size:22px}
   @media(max-width:900px){.fr-eras{grid-template-columns:1fr}.fr-context-grid{grid-template-columns:repeat(2,1fr)}.fr-timeline-line{display:none}.fr-moat-grid{grid-template-columns:1fr}}
 
-  
+  /* ===== AGENT CATALOG PAGE ===== */
+  .ac-view{min-height:calc(100vh - 80px);overflow-y:auto;background:#f4f5f7}
+  .ac-hero{background:linear-gradient(160deg,#000d1a 0%,#0a1e3d 40%,#0f3060 100%);padding:60px 32px 48px;text-align:center}
+  .ac-hero-badge{display:inline-block;padding:5px 16px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.25);border-radius:20px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+  .ac-hero h1{font-size:clamp(26px,3vw,38px);font-weight:800;color:#fff;margin:0 0 12px}
+  .ac-hero h1 em{font-style:normal;color:var(--gold)}
+  .ac-hero p{font-size:15px;color:rgba(255,255,255,0.85);max-width:700px;margin:0 auto;line-height:1.7}
+  .ac-summary{display:flex;justify-content:center;gap:40px;margin-top:28px;flex-wrap:wrap}
+  .ac-summary-item{text-align:center}
+  .ac-summary-val{font-size:28px;font-weight:800;color:var(--gold)}
+  .ac-summary-label{font-size:10px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+  .ac-body{max-width:1200px;margin:0 auto;padding:40px 32px 80px}
+  .ac-legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;justify-content:center}
+  .ac-legend-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray-800)}
+  .ac-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .ac-stage{margin-bottom:40px}
+  .ac-stage-header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .ac-stage-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .ac-stage-title{font-size:18px;font-weight:700;color:var(--navy)}
+  .ac-stage-count{font-size:11px;font-weight:600;color:var(--gray-600);background:var(--gray-50);border:1px solid var(--gray-100);border-radius:12px;padding:2px 10px}
+  .ac-agents{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+  .ac-agent{background:#fff;border:1px solid var(--gray-100);border-radius:14px;padding:20px;transition:all .3s;position:relative}
+  .ac-agent:hover{border-color:rgba(201,162,39,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+  .ac-agent-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .ac-agent-name{font-size:15px;font-weight:700;color:var(--navy);flex:1}
+  .ac-agent-impact{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:10px;flex-shrink:0}
+  .ac-impact-critical{background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
+  .ac-impact-high{background:rgba(245,158,11,0.1);color:#d97706;border:1px solid rgba(245,158,11,0.2)}
+  .ac-impact-medium{background:rgba(59,130,246,0.1);color:#3b82f6;border:1px solid rgba(59,130,246,0.2)}
+  .ac-impact-standard{background:rgba(107,114,128,0.08);color:#6b7280;border:1px solid rgba(107,114,128,0.15)}
+  .ac-agent-desc{font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:10px}
+  .ac-agent-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ac-agent-cap{font-size:10px;font-weight:600;color:var(--gray-600);background:var(--gray-50);border:1px solid var(--gray-100);border-radius:6px;padding:2px 8px;letter-spacing:.5px}
+  .ac-priority-bar{height:3px;border-radius:2px;position:absolute;bottom:0;left:0;right:0;border-radius:0 0 14px 14px}
+  .ac-bar-critical{background:linear-gradient(90deg,#ef4444,#f87171)}
+  .ac-bar-high{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+  .ac-bar-medium{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+  .ac-bar-standard{background:linear-gradient(90deg,#9ca3af,#d1d5db)}
+  .ac-cta-section{text-align:center;margin-top:48px;padding:40px 24px;background:#fff;border:1px solid var(--gray-100);border-radius:16px}
+  .ac-cta-section h3{font-size:20px;font-weight:700;color:var(--navy);margin:0 0 8px}
+  .ac-cta-section p{font-size:14px;color:var(--gray-600);margin:0 0 20px}
+  .ac-back-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+
+
   /* ===== SERVICE EXPANSION TIMELINE ===== */
   .svc-timeline{margin-top:8px;margin-bottom:48px;position:relative}
   .svc-row-label{font-size:14px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
@@ -869,6 +912,7 @@
       <div class="sb-sub-item" data-sb-key="meetingprep" onclick="window.sbNav('meetingprep')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Meeting Prep Agent</span></div>
       <div class="sb-sub-item" data-sb-key="estatestrat" onclick="window.sbNav('estatestrat')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">Estate Strategy Agent</span></div>
       <div class="sb-sub-item" data-sb-key="morningbrief" onclick="window.sbNav('morningbrief')"><div class="sb-item-dot" style="background:#34d399"></div><span class="sb-item-label">AI Morning Brief</span></div>
+      <div class="sb-sub-item" data-sb-key="agentcatalog" onclick="window.sbNav('agentcatalog')"><div class="sb-item-dot" style="background:var(--gold)"></div><span class="sb-item-label" style="color:var(--gold);font-weight:700">&#9733; Agent Build Catalog</span></div>
     </div>
 
     <!-- Era 2 -->
@@ -971,6 +1015,7 @@
             <div><div class="fr-stat-val">60%+</div><div class="fr-stat-label">Efficiency Gain</div></div>
           </div>
           <div class="fr-era-cta">Explore Era 1 &#8594;</div>
+          <div onclick="event.stopPropagation();showView('agentcatalog')" style="margin-top:8px;padding:7px 14px;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#fff;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .3s;box-shadow:0 2px 8px rgba(201,162,39,0.25)">&#9733; Agent Catalog</div>
         </div>
       </div>
 
@@ -1273,6 +1318,14 @@
       </div>
     </div>
 
+    <!-- Agent Catalog CTA -->
+    <div style="text-align:center;margin-top:48px;padding:40px 24px;background:linear-gradient(135deg,rgba(201,162,39,0.06) 0%,rgba(201,162,39,0.02) 100%);border:2px solid rgba(201,162,39,0.2);border-radius:16px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">&#9733; Build Roadmap</div>
+      <h3 style="font-size:22px;font-weight:700;color:var(--navy);margin:0 0 8px">The Complete Agent Catalog</h3>
+      <p style="font-size:14px;color:var(--gray-600);margin:0 0 20px;max-width:600px;display:inline-block;line-height:1.7">See all 60+ agents organized by the 10 capabilities, prioritized by impact on human capital. Know exactly what to build now vs. later.</p><br>
+      <button onclick="showView('agentcatalog')" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(201,162,39,0.3)">View Agent Catalog &#8594;</button>
+    </div>
+
     <div class="hub-section-label" style="margin-top:20px">Advisor Experience</div>
     <div class="jc-grid" style="grid-template-columns:1fr">
       <div class="j-card j-card-dark" onclick="showView('dashboard')" style="border:1px solid rgba(201,162,39,0.25);background:linear-gradient(135deg,#0b1628 0%,#0d2137 50%,#001a33 100%);position:relative;overflow:hidden">
@@ -1284,7 +1337,213 @@
         <button class="j-card-cta bg-gold" style="margin-top:20px;padding:10px 24px;font-size:12px">Explore Dashboard &#8594;</button>
       </div>
     </div>
+
   </div>
+</div>
+</div>
+
+<!-- ==================== AGENT CATALOG ==================== -->
+<div class="view" id="agentCatalogView">
+<div class="ac-view">
+<div class="ac-hero">
+  <div class="ac-hero-badge">Era 1 &middot; Build Roadmap</div>
+  <h1>The Complete <em>Agent Catalog</em></h1>
+  <p>Every AI agent we need to build across the client lifecycle, prioritized by impact on human capital efficiency. Critical agents should be built first &mdash; they free up the most advisor time and deliver the highest ROI.</p>
+  <div class="ac-summary">
+    <div class="ac-summary-item"><div class="ac-summary-val">60+</div><div class="ac-summary-label">Total Agents</div></div>
+    <div class="ac-summary-item"><div class="ac-summary-val">10</div><div class="ac-summary-label">Capabilities</div></div>
+    <div class="ac-summary-item"><div class="ac-summary-val">5</div><div class="ac-summary-label">Journey Stages</div></div>
+    <div class="ac-summary-item"><div class="ac-summary-val">60%+</div><div class="ac-summary-label">Efficiency Gain</div></div>
+  </div>
+</div>
+
+<div class="ac-body">
+
+  <!-- Impact Legend -->
+  <div class="ac-legend">
+    <div class="ac-legend-item"><div class="ac-legend-dot" style="background:#ef4444"></div> Critical &mdash; Build Now (highest time savings)</div>
+    <div class="ac-legend-item"><div class="ac-legend-dot" style="background:#f59e0b"></div> High &mdash; Build Next</div>
+    <div class="ac-legend-item"><div class="ac-legend-dot" style="background:#3b82f6"></div> Medium &mdash; Phase 2</div>
+    <div class="ac-legend-item"><div class="ac-legend-dot" style="background:#9ca3af"></div> Standard &mdash; Phase 3</div>
+  </div>
+
+  <!-- ========== CAP 1: PROSPECTING ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(52,211,153,0.1);color:#34d399">1</div>
+      <div class="ac-stage-title">Prospecting &amp; Conversion</div>
+      <div class="ac-stage-count">5 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Prospect Intelligence Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Scans SEC filings, Crunchbase, PitchBook, and wealth signals to identify high-potential prospects. Replaces 4-6 hours of manual research per prospect.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Research Synthesis Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Builds 360&deg; prospect profiles from 50+ data sources including filings, media, conference attendance, and social presence. Eliminates days of manual aggregation.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Relationship Mapping Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Maps prospect connections to existing firm clients, alumni networks, and board memberships to find warm introduction paths.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Communication Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Drafts personalized multi-touch outreach sequences tailored to prospect interests and triggers. Advisor approval required before send.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Proposal Generation Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Generates bespoke wealth plans with scenario models, fee analysis, and competitive positioning. Turns a 2-day process into 2 hours.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 2: ONBOARDING ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(96,165,250,0.1);color:#3b82f6">2</div>
+      <div class="ac-stage-title">Onboarding &amp; First 90 Days</div>
+      <div class="ac-stage-count">9 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Document Processing Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Pre-fills forms, validates documents, routes for e-signatures. Eliminates the biggest bottleneck in onboarding &mdash; saves 8-12 hours per new client.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Transfer Coordination Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Manages ACAT transfers, tracks incoming assets across custodians, and sends real-time status updates to clients and advisors.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Entity Mapping Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Discovers all entities, trusts, and structures to build a unified household view. Foundation for every other agent's accuracy.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Compliance Automation Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Runs KYC/AML checks, accreditation verification, and exception flagging. Reduces compliance review from days to minutes.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Portfolio Construction Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Builds optimal transition plans considering tax lots, wash sales, and market timing. Converts manual spreadsheet work into automated optimization.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Tax Optimization Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Analyzes tax implications of every portfolio decision and identifies harvesting opportunities from Day 1 of the relationship.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Client Experience Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Orchestrates the 90-day onboarding cadence with automated milestones, satisfaction checks, and personalized touchpoints.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Proactive Insight Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Delivers timely, personalized insights about the new portfolio &mdash; building client confidence during the critical first 90 days.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Administrative Services Agent</div><div class="ac-agent-impact ac-impact-standard">Standard</div></div><div class="ac-agent-desc">Handles bill pay, lifestyle concierge, travel, property management, and insurance coordination for white-glove onboarding.</div><div class="ac-priority-bar ac-bar-standard"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 3: CLIENT REVIEW CYCLE ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(201,162,39,0.1);color:var(--gold)">3</div>
+      <div class="ac-stage-title">Client Review Cycle</div>
+      <div class="ac-stage-count">6 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Meeting Prep Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Compiles client summaries, peer comparisons, agenda items from prior notes, and portfolio updates. Saves 80% of prep time &mdash; the single biggest time sink for advisors.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Transcription &amp; Notes Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Real-time meeting transcription with CRM-ready notes, action items, and follow-up tasks. Eliminates post-meeting documentation entirely.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Scenario Modeling Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Generates &ldquo;what-if&rdquo; scenarios tailored to each client&rsquo;s portfolio, enabling richer review conversations and proactive planning.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Consolidated Analytics Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Aggregates performance and reporting across all entities, custodians, and asset classes into a single unified view.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Live Research Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Instant answers from 50K+ proprietary research documents during live client conversations. Boosts advisor confidence and credibility.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Communication Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Drafts follow-up emails and meeting summaries for advisor approval. Ensures no action items are dropped post-review.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 4: PORTFOLIO MONITORING ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(14,165,233,0.1);color:#0ea5e9">4</div>
+      <div class="ac-stage-title">Portfolio Monitoring</div>
+      <div class="ac-stage-count">7 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Portfolio Surveillance Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">24/7 monitoring of drift, concentration, IPS triggers, and rebalancing opportunities across all client portfolios. Replaces manual daily checks.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Market Intelligence Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Tracks sector rotations, earnings events, and macro shifts mapped to each client&rsquo;s specific holdings and risk profile.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Tax Harvest Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Identifies loss harvesting opportunities paired with wash-sale-compliant replacements. Avg $1.2M tax alpha per year across client base.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Cross-Entity Optimization Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Coordinates asset location and tax harvesting across all structures &mdash; trusts, LLCs, retirement accounts &mdash; for household-level optimization.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Rebalancing Analysis Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Generates optimal rebalancing proposals with tax-lot awareness, minimizing tax drag while maintaining target allocations.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Entity Compliance Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Tracks K-1s, trust distributions, FATCA filings, and regulatory deadlines across all client entities automatically.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Trade Execution Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Routes trades with compliance pre-checks, sends client notifications, and handles post-trade reconciliation.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 5: ESTATE & WEALTH TRANSFER ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(139,92,246,0.1);color:#8b5cf6">5</div>
+      <div class="ac-stage-title">Estate &amp; Wealth Transfer</div>
+      <div class="ac-stage-count">10 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Estate Strategy Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Models trust structures, gifting strategies, and charitable vehicles with tax projections. Avg $2-5M in tax savings per family. Replaces weeks of external counsel coordination.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Legislative Intelligence Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Monitors federal/state tax legislation, IRS rulings, and estate law proposals in real time. Enables advisors to act months ahead of changes.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Client Impact Analysis Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Maps legislative changes to specific client situations and quantifies dollar impact &mdash; turning abstract policy into actionable advice.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Life Event Detection Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Detects birthdays, family changes, business events, and asset thresholds that trigger estate planning actions &mdash; 6 months earlier than manual processes.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Generational Intelligence Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Maps family demographics and heir profiles; models multi-generational transfer scenarios and tax impact. Key to 92% asset retention across generations.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Entity Mapping Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Maintains complete entity genealogy across trusts, LLCs, and family structures &mdash; the foundational data layer for accurate estate modeling.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Implementation Coordination Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Orchestrates attorneys, CPAs, trust officers; tracks deadlines and documents across all parties involved in estate execution.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Heir Profiling Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Builds readiness and interest assessments for heirs; captures preferences and goals to personalize transition strategies.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Family Governance Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Schedules family events and mentor connections; aligns estate structures with family values and governance frameworks.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Transition Orchestrator</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Coordinates engagement cadence across family members; manages execution checklists, compliance, and timelines for wealth transfer.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 6: ENGAGEMENT INTELLIGENCE ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(236,72,153,0.1);color:#ec4899">6</div>
+      <div class="ac-stage-title">Client Engagement Intelligence</div>
+      <div class="ac-stage-count">4 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Engagement Analytics Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Tracks all interaction signals and behavioral changes; scores client readiness for new services. Prevents attrition by catching disengagement early.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Attrition Prevention Agent</div><div class="ac-agent-impact ac-impact-critical">&#9733; Critical</div></div><div class="ac-agent-desc">Identifies declining clients early, flags risk signals, and recommends retention actions. 35% reduction in attrition &mdash; protects existing revenue.</div><div class="ac-priority-bar ac-bar-critical"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Health Scoring Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Computes composite relationship health scores and trends across the book of business. Enables data-driven relationship management.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Relationship Enrichment Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Coordinates retention outreach and identifies cross-sell and growth opportunities within the existing client base.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 7: ALTERNATIVE INVESTMENTS ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(168,85,247,0.1);color:#a855f7">7</div>
+      <div class="ac-stage-title">Alternative Investments &amp; Private Markets</div>
+      <div class="ac-stage-count">4 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Deal Matching Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Analyzes portfolio composition and gaps; curates private market opportunities matched to client eligibility, interests, and allocation targets.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Capital Management Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Models capital calls and liquidity impact; tracks calls and manages funding logistics for private market investments.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Eligibility Monitoring Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Tracks qualification status and accreditation thresholds; maintains subscription document compliance across alternative vehicles.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Alt Performance Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Models capital deployment and returns; tracks performance and benchmarks vs peers across illiquid holdings.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 8: PHILANTHROPIC ADVISORY ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(244,114,182,0.1);color:#f472b6">8</div>
+      <div class="ac-stage-title">Philanthropic &amp; Impact Advisory</div>
+      <div class="ac-stage-count">4 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Philanthropic DNA Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Detects giving patterns and intent signals; tracks impact metrics and outcomes to help clients maximize their philanthropic footprint.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Vehicle Optimization Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Models giving strategy options &mdash; DAFs, private foundations, CRTs &mdash; comparing structure benefits and tax tradeoffs.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Impact Alignment Agent</div><div class="ac-agent-impact ac-impact-standard">Standard</div></div><div class="ac-agent-desc">Maps client values to philanthropic vehicles and impact investments; measures and reports outcomes for donor-advised strategies.</div><div class="ac-priority-bar ac-bar-standard"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Giving Coordination Agent</div><div class="ac-agent-impact ac-impact-standard">Standard</div></div><div class="ac-agent-desc">Manages giving execution, compliance, and reporting across all philanthropic vehicles and charitable commitments.</div><div class="ac-priority-bar ac-bar-standard"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 9: COMMUNITY & CONVENING ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(251,191,36,0.1);color:#f59e0b">9</div>
+      <div class="ac-stage-title">Community &amp; Convening</div>
+      <div class="ac-stage-count">4 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Affinity Clustering Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Identifies shared interests, industries, causes, and investment philosophies across the client base to create high-value networking opportunities.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Event Intelligence Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Recommends optimal guest lists, topics, timing, and format based on client preference data. Drives 3x referral rates from curated events.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Network Graph Agent</div><div class="ac-agent-impact ac-impact-standard">Standard</div></div><div class="ac-agent-desc">Maps client relationships, board memberships, and social connections to find organic linkages and collaboration opportunities.</div><div class="ac-priority-bar ac-bar-standard"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Community Engagement Agent</div><div class="ac-agent-impact ac-impact-standard">Standard</div></div><div class="ac-agent-desc">Personalizes invitations, tracks post-event engagement lift, referral signals, and NPS impact across community initiatives.</div><div class="ac-priority-bar ac-bar-standard"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== CAP 10: LENDING ========== -->
+  <div class="ac-stage">
+    <div class="ac-stage-header">
+      <div class="ac-stage-icon" style="background:rgba(244,63,94,0.1);color:#f43f5e">10</div>
+      <div class="ac-stage-title">Lending &amp; Structured Credit</div>
+      <div class="ac-stage-count">6 agents</div>
+    </div>
+    <div class="ac-agents">
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Liquidity Assessment Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Computes borrowing capacity across all asset classes and entities. Unlocks $1.2B+ lending volume by surfacing opportunities advisors miss.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Collateral Optimization Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Identifies ideal collateral mix to maximize borrowing capacity and minimize risk across all pledgeable assets.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Structure Optimization Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Models lending structures and compares rate/term scenarios; analyzes borrow-vs-sell tax efficiency for optimal client outcomes.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Tax Impact Agent</div><div class="ac-agent-impact ac-impact-high">High</div></div><div class="ac-agent-desc">Analyzes tax efficiency of borrow-vs-sell decisions, quantifying after-tax cost of liquidity strategies across structures.</div><div class="ac-priority-bar ac-bar-high"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Lending Execution Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Manages documentation, draws, repayments, and counterparty coordination across all lending facilities.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+      <div class="ac-agent"><div class="ac-agent-top"><div class="ac-agent-name">Covenant Monitor Agent</div><div class="ac-agent-impact ac-impact-medium">Medium</div></div><div class="ac-agent-desc">Tracks LTV, margin requirements, and compliance thresholds 24/7 to prevent covenant breaches and forced liquidations.</div><div class="ac-priority-bar ac-bar-medium"></div></div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="ac-cta-section">
+    <h3>Ready to Start Building?</h3>
+    <p>Begin with Critical-impact agents to maximize advisor time savings, then layer in High and Medium priority agents as the platform matures.</p>
+    <button class="ac-back-btn" onclick="showView('era1')">&#8592; Back to Era 1 Overview</button>
+  </div>
+
+</div>
 </div>
 </div>
 
@@ -1380,7 +1639,7 @@
 <div class="view" id="prospectView"><div class="journey-view" id="prospectScroll">
 
 <section class="scene scene-hero-j" id="p-0"><div class="scene-inner">
-  <div class="badge">Capability 1 of 10 · Prospecting & Conversion</div>
+  <div class="badge">Capability 1 of 10 · Prospecting &amp; Conversion</div>
   <h1 class="hero-title">From First Signal<br>to <em>Signed Commitment</em></h1>
   <p class="hero-sub">How agentic AI transforms UHNW prospect identification and conversion &mdash; finding the right people 6 months earlier and winning them with hyper-personalized engagement.</p>
   <div class="hero-kpis"><div><div class="kpi-val">4</div><div class="kpi-label">AI Agents</div></div><div><div class="kpi-val">10x</div><div class="kpi-label">More Prospects</div></div><div><div class="kpi-val">3x</div><div class="kpi-label">Response Rate</div></div><div><div class="kpi-val">2x</div><div class="kpi-label">Close Rate</div></div></div>
@@ -1483,7 +1742,7 @@
 <div class="view" id="onboardView"><div class="journey-view" id="onboardScroll">
 
 <section class="scene scene-hero-j" id="o-0"><div class="scene-inner">
-  <div class="badge">Capability 2 of 10 · Onboarding & First 90 Days</div>
+  <div class="badge">Capability 2 of 10 · Onboarding &amp; First 90 Days</div>
   <h1 class="hero-title">From Signed Agreement<br>to <em>Trusted Client</em></h1>
   <p class="hero-sub">How agentic AI compresses account opening from weeks to days, constructs tax-optimized portfolios, and orchestrates a 90-day experience that captures more assets and cements the relationship.</p>
   <div class="hero-kpis"><div><div class="kpi-val">5</div><div class="kpi-label">AI Agents</div></div><div><div class="kpi-val">70%</div><div class="kpi-label">Faster Onboarding</div></div><div><div class="kpi-val">95+</div><div class="kpi-label">Onboarding NPS</div></div><div><div class="kpi-val">40%</div><div class="kpi-label">More Assets</div></div></div>
@@ -2293,7 +2552,7 @@
 <div class="view" id="sentimentView"><div class="journey-view" id="sentimentScroll">
 
 <section class="scene scene-hero-j" id="s-0"><div class="scene-inner">
-  <div class="badge">Capability 6 of 10 · Client Engagement Intelligence</div>
+  <div class="badge">Capability 9 of 10 · Client Engagement Intelligence</div>
   <h1 class="hero-title">CLIENT ENGAGEMENT<br><em>Intelligence &amp; Growth</em></h1>
   <p class="hero-sub">AI-powered engagement analytics that monitor relationship health, detect at-risk clients 90+ days early, and identify high-value expansion and cross-sell opportunities</p>
   <div class="hero-kpis"><div><div class="kpi-val">90+</div><div class="kpi-label">Day Early Warning</div></div><div><div class="kpi-val">35%</div><div class="kpi-label">Attrition Reduction</div></div><div><div class="kpi-val">2x</div><div class="kpi-label">Cross-Sell Lift</div></div></div>
@@ -9805,7 +10064,8 @@
     wealthos:document.getElementById('wealthOsView'),
     servicehorizon:document.getElementById('serviceHorizonView'),
     collabeco:document.getElementById('collabEcoView'),
-    lending:document.getElementById('lendingView')
+    lending:document.getElementById('lendingView'),
+    agentcatalog:document.getElementById('agentCatalogView')
   };
   const scrollers={
     prospect:document.getElementById('prospectScroll'),
@@ -9853,7 +10113,7 @@
   let currentKey=null, obs=null;
 
   /* ---------- non-scroller views ---------- */
-  const nonScrollers=['dashboard','meetingprep','estatestrat','dossier','morningbrief','onboardagent','surveillance','attrition','dealflow','charitablestrat','lendingstrat','futurestate','clientagent','wealthos','servicehorizon','collabeco','era1','era2','era3'];
+  const nonScrollers=['dashboard','meetingprep','estatestrat','dossier','morningbrief','onboardagent','surveillance','attrition','dealflow','charitablestrat','lendingstrat','futurestate','clientagent','wealthos','servicehorizon','collabeco','era1','era2','era3','agentcatalog'];
 
   /* ---------- navigation ---------- */
   function showView(key){
@@ -9946,6 +10206,7 @@
     else if(currentKey==='estatestrat') window.showView('estate');
     else if(currentKey==='dossier') window.showView('prospect');
     else if(currentKey==='morningbrief') window.showView('dashboard');
+    else if(currentKey==='agentcatalog') window.showView('era1');
     else if(currentKey==='onboardagent') window.showView('onboard');
     else if(currentKey==='surveillance') window.showView('monitor');
     else if(currentKey==='attrition') window.showView('sentiment');
@@ -10190,7 +10451,9 @@
     { key: 'wealthos', title: 'Wealth OS Platform', bc: ['How We Deliver', 'Era 3', 'Platform Vision'],
       desc: 'Wealth OS is the platform vision: an operating system for high-net-worth life \u2014 connecting financial planning, real estate, healthcare, philanthropy, and family governance into a single intelligent fabric.' },
     { key: 'servicehorizon', title: 'Service Expansion Roadmap', bc: ['What We Deliver', 'Expansion'],
-      desc: 'Beyond AI capabilities, this maps the expansion of what we deliver \u2014 new service lines, product extensions, and revenue opportunities that each era unlocks across the client relationship.' }
+      desc: 'Beyond AI capabilities, this maps the expansion of what we deliver \u2014 new service lines, product extensions, and revenue opportunities that each era unlocks across the client relationship.' },
+    { key: 'agentcatalog', title: 'Next Steps: Agent Build Catalog', bc: ['How We Deliver', 'Era 1', 'Agent Catalog'],
+      desc: 'Now that you\u2019ve seen the full vision, here\u2019s where we start building. This catalog lists every agent we need across all 10 capabilities, prioritized by impact on human capital. Start with the Critical agents to maximize advisor time savings, then layer in High and Medium priority as the platform matures. This is our build roadmap.' }
   ];
 
   var wtIdx = 0;
