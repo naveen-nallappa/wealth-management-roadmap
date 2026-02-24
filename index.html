@@ -43,8 +43,8 @@
   .tour-pointer.active{opacity:1}
 
   /* Walkthrough control bar */
-  .wt-bar{position:fixed;bottom:-80px;left:50%;transform:translateX(-50%);z-index:1500;display:flex;align-items:center;gap:20px;padding:14px 32px;background:linear-gradient(135deg,#001a33,#003366);border:1px solid rgba(201,162,39,0.3);border-radius:16px;box-shadow:0 -4px 30px rgba(0,0,0,0.4);transition:bottom .4s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(20px);min-width:720px;max-width:90vw}
-  .wt-bar.active{bottom:28px}
+  .wt-bar{position:fixed;bottom:-200px;left:50%;transform:translateX(-50%);z-index:1500;display:flex;align-items:center;gap:20px;padding:14px 32px;background:linear-gradient(135deg,#001a33,#003366);border:1px solid rgba(201,162,39,0.3);border-radius:16px;box-shadow:0 -4px 30px rgba(0,0,0,0.4);transition:bottom .4s cubic-bezier(.4,0,.2,1),opacity .3s ease;backdrop-filter:blur(20px);min-width:720px;max-width:90vw;pointer-events:none;opacity:0}
+.wt-bar.active{bottom:28px;pointer-events:auto;opacity:1}
   .wt-bar-info{display:flex;flex-direction:column;min-width:320px}
   .wt-bar-bc{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;display:flex;align-items:center;gap:0;white-space:nowrap}
   .wt-bar-bc span.wt-bc-sep{margin:0 7px;font-size:10px;color:rgba(255,255,255,0.3)}
@@ -66,11 +66,31 @@
   .wt-bar-btn.next:hover{transform:scale(1.03);box-shadow:0 4px 15px rgba(201,162,39,0.3)}
   .wt-bar-exit{background:none;border:none;color:var(--gray-400);font-size:18px;cursor:pointer;padding:4px 8px;margin-left:8px;transition:color .2s}
   .wt-bar-exit:hover{color:#fff}
+  .wt-bar-desc{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;margin-top:5px;max-width:480px;transition:opacity .4s}
 
   /* Start tour button on homepage */
   .tour-start-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#001a33;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s;letter-spacing:.3px;margin-top:16px}
   .tour-start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,162,39,0.3)}
   .tour-start-icon{font-size:16px}
+
+  /* Spotlight for guided tour prompt — no dim */
+  .spotlight-overlay{position:fixed;inset:0;z-index:2000;pointer-events:none;transition:opacity .5s ease;opacity:0}
+  .spotlight-overlay.active{opacity:1}
+  .spotlight-dim{display:none}
+  .spotlight-hole{display:none}
+  .spotlight-pulse{position:absolute;border-radius:14px;border:2px solid var(--gold);animation:spotlightPulse 2s ease-in-out infinite;z-index:2;pointer-events:none}
+  @keyframes spotlightPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,0.5)}50%{box-shadow:0 0 0 14px rgba(201,162,39,0)}}
+  .spotlight-tooltip{position:absolute;z-index:3;background:linear-gradient(135deg,#001a33,#003366);border:1px solid rgba(201,162,39,0.35);border-radius:14px;padding:24px 28px;width:340px;box-shadow:0 12px 40px rgba(0,0,0,0.5);pointer-events:auto}
+  .spotlight-tooltip-arrow{position:absolute;left:-8px;top:24px;width:8px;height:16px;overflow:hidden}
+  .spotlight-tooltip-arrow::after{content:'';position:absolute;left:4px;top:2px;width:12px;height:12px;background:linear-gradient(135deg,#001a33,#003366);border:1px solid rgba(201,162,39,0.35);transform:rotate(45deg)}
+  .spotlight-tooltip h4{font-size:17px;font-weight:700;color:#fff;margin:0 0 8px}
+  .spotlight-tooltip h4 .spotlight-icon{margin-right:8px;font-size:18px}
+  .spotlight-tooltip p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 20px}
+  .spotlight-actions{display:flex;gap:10px;align-items:center}
+  .spotlight-btn-start{padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;border:none;background:linear-gradient(135deg,var(--gold),#d4b12f);color:#001a33;transition:all .2s}
+  .spotlight-btn-start:hover{transform:scale(1.03);box-shadow:0 4px 15px rgba(201,162,39,0.3)}
+  .spotlight-btn-dismiss{padding:10px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;background:none;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.12);transition:all .2s}
+  .spotlight-btn-dismiss:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
 
 
     /* ===== BREADCRUMB BAR ===== */
@@ -123,18 +143,21 @@
 
 
     /* VIEW SYSTEM */
-  .view{display:none}.view.active{display:block}
-  .journey-view{overflow-y:auto;height:100vh;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .view{display:none}.view.active{display:block;padding-top:80px}
+  .journey-view{overflow-y:auto;height:calc(100vh - 80px);scroll-snap-type:y mandatory;scroll-behavior:smooth}
+
+  /* Hide page-level headers — replaced by breadcrumb nav */
+  .ca-top,.wo-top,.fh-top,.ce-top,.era-hub-top,.adv-top-bar,.fs-top-bar,.mp-top-bar,.es-top-bar,.pd-top-bar,.mb-top-bar,.av-top-bar{display:none!important}
 
   /* PROGRESS */
   .progress-track{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.06);z-index:1001}
   .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .4s ease}
 
   /* NAV */
-  .nav{position:fixed;top:3px;left:0;right:0;z-index:900;padding:12px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,26,51,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,162,39,0.1)}
-  .nav-brand{font-size:13px;font-weight:600;color:var(--white);letter-spacing:.3px}
+  .nav{position:fixed;top:3px;left:0;right:0;z-index:900;padding:12px 32px;display:flex;align-items:center;background:rgba(0,26,51,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,162,39,0.1)}
+  .nav-brand{font-size:13px;font-weight:600;color:var(--white);letter-spacing:.3px;margin-left:8px}
   .nav-brand span{color:var(--gold);font-weight:400}
-  .nav-right{display:flex;align-items:center;gap:6px}
+  .nav-right{display:flex;align-items:center;gap:6px;margin-left:auto}
   .nav-dots{display:flex;gap:5px}
   .nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;cursor:pointer;transition:all .3s}
   .nav-dot.active{background:var(--gold);box-shadow:0 0 8px rgba(201,162,39,0.5);transform:scale(1.2)}
@@ -144,7 +167,7 @@
   .back-btn:hover{background:rgba(201,162,39,0.3);border-color:var(--gold)}
 
   /* SCENES */
-  .scene{min-height:100vh;scroll-snap-align:start;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .scene{min-height:calc(100vh - 80px);scroll-snap-align:start;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .scene-inner{max-width:1400px;width:100%;padding:80px 40px;position:relative;z-index:2}
   @media(min-width:1600px){.scene-inner{max-width:1600px;padding:80px 60px}}
 
@@ -260,7 +283,7 @@
 
 
   /* ===== COLLABORATIVE ECOSYSTEM VIEW ===== */
-  .ce-view{background:#0a0a1a;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;min-height:100vh;overflow-y:auto}
+  .ce-view{background:#0a0a1a;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;min-height:calc(100vh - 80px);overflow-y:auto}
   .ce-top{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:linear-gradient(135deg,#0d0520,#1a0a3e);border-bottom:1px solid rgba(139,92,246,0.2);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
   .ce-back{background:linear-gradient(135deg,#8b5cf6,#a78bfa);color:#fff;border:none;padding:8px 18px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit}
   .ce-badge{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;background:rgba(139,92,246,0.12);color:#8b5cf6;border:1px solid rgba(139,92,246,0.25)}
@@ -347,7 +370,7 @@
   @media(max-width:900px){.ce-arch{grid-template-columns:1fr;gap:20px}.ce-arch-middle{flex-direction:row;writing-mode:horizontal-tb}.ce-protocols{grid-template-columns:1fr}.ce-tiers{grid-template-columns:1fr}.ce-compete{grid-template-columns:1fr}.ce-flow-lanes{grid-template-columns:1fr}}
 
   /* ===== ERA HUB VIEWS ===== */
-  .era-hub{background:#000d1a;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;min-height:100vh;overflow-y:auto}
+  .era-hub{background:#000d1a;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;min-height:calc(100vh - 80px);overflow-y:auto}
   .era-hub-top{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;background:linear-gradient(135deg,#001a33,#003366);border-bottom:1px solid rgba(201,162,39,0.2);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
   .era-hub-back{background:linear-gradient(135deg,var(--gold),#d4b12f);color:#001a33;border:none;padding:8px 18px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit}
   .era-hub-badge{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px}
@@ -375,7 +398,7 @@
   .era-hub-card-cta{font-size:13px;font-weight:600;color:var(--gold)}
 
   /* HUB */
-  .hub-hero{background:linear-gradient(160deg,#000d1a 0%,var(--navy-dark) 40%,var(--navy) 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative}
+  .hub-hero{background:linear-gradient(160deg,#000d1a 0%,var(--navy-dark) 40%,var(--navy) 100%);min-height:calc(100vh - 80px);display:flex;align-items:center;justify-content:center;position:relative}
   .hub-hero::after{content:'';position:absolute;bottom:-10%;right:-5%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,0.06) 0%,transparent 70%);animation:drift 12s ease-in-out infinite}
   @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
 
@@ -591,7 +614,7 @@
 
   /* ===== PROSPECT DOSSIER AGENT ===== */
   .pd-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
-  .pd-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .pd-top-bar{position:sticky;top:80px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .pd-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
   .pd-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
   .pd-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
@@ -644,7 +667,7 @@
 
   /* ===== AI MORNING BRIEF AGENT ===== */
   .mb-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
-  .mb-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .mb-top-bar{position:sticky;top:80px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .mb-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
   .mb-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
   .mb-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
@@ -693,7 +716,7 @@
 
   /* ===== SHARED AGENT VIEW STYLES ===== */
   .av-view{background:#f8f9fb;min-height:100vh;overflow-y:auto;font-family:'Inter',-apple-system,sans-serif}
-  .av-top-bar{position:sticky;top:48px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .av-top-bar{position:sticky;top:80px;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
   .av-top-bar-title{font-size:16px;font-weight:700;color:#001a33}
   .av-badge{font-size:11px;color:#6b7280;background:#f0f2f5;padding:6px 12px;border-radius:20px}
   .av-back-btn{background:rgba(0,51,102,0.08);border:1px solid rgba(0,51,102,0.2);color:#003366;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
@@ -761,6 +784,22 @@
     <div class="nav-stage" id="navStage"><span id="navTitle"></span></div>
   </div>
 </nav>
+
+<!-- SPOTLIGHT OVERLAY -->
+<div class="spotlight-overlay" id="spotlightOverlay">
+  <div class="spotlight-dim" id="spotlightDim"></div>
+  <div class="spotlight-hole" id="spotlightHole"></div>
+  <div class="spotlight-pulse" id="spotlightPulse"></div>
+  <div class="spotlight-tooltip" id="spotlightTooltip">
+    <div class="spotlight-tooltip-arrow"></div>
+    <h4><span class="spotlight-icon">&#9654;</span> Start with the Guided Tour</h4>
+    <p>New here? The guided tour walks you through the entire AI transformation roadmap step by step — from strategy overview to live agent demos. It takes about 5 minutes and is the best way to experience the storyboard.</p>
+    <div class="spotlight-actions">
+      <button class="spotlight-btn-start" id="spotlightStart">Take the Guided Tour</button>
+      <button class="spotlight-btn-dismiss" id="spotlightDismiss">I'll explore on my own</button>
+    </div>
+  </div>
+</div>
 
 <!-- BREADCRUMB BAR -->
 <div class="breadcrumb-bar hidden" id="breadcrumbBar">
@@ -872,6 +911,7 @@
     <div class="wt-bar-step" id="wtStepLabel">Stop 1 of 10</div>
     <div class="wt-bar-title" id="wtTitle">Homepage</div>
     <div class="wt-bar-bc" id="wtBreadcrumb"></div>
+    <div class="wt-bar-desc" id="wtDesc"></div>
   </div>
   <div class="wt-bar-progress" id="wtPips"></div>
   <div class="wt-bar-nav">
@@ -898,7 +938,7 @@
   <div class="scene-inner" style="max-width:1400px;margin:0 auto">
 
     <!-- Three Eras Timeline -->
-    <div class="sec-label">The Strategic Roadmap</div>
+    <div id="framing-eras" class="sec-label">The Strategic Roadmap</div>
     <h2 class="sec-title">Three Eras of Transformation</h2>
     <p class="sec-desc">Click into any era to explore the detailed experience, capabilities, and strategic vision.</p>
 
@@ -1022,7 +1062,7 @@
 
 
     <!-- Competitive Landscape -->
-    <div class="hub-section-label">Competitive Landscape &mdash; Pressure-Tested</div>
+    <div id="framing-moat" class="hub-section-label">Competitive Landscape &mdash; Pressure-Tested</div>
     <p style="font-size:13px;color:var(--gray-400);text-align:center;max-width:800px;margin:0 auto 32px;line-height:1.7">A realistic assessment of what generic AI will commoditize, where our agents maintain an edge, and where non-agentic advantages are the true differentiator.</p>
 
     <div class="fr-moat-grid" style="margin-bottom:40px">
@@ -1107,7 +1147,7 @@
 
 <div class="hub-map">
   <div class="scene-inner" style="max-width:1400px;margin:0 auto">
-    <div class="sec-label">One Client, One Seamless Experience</div>
+    <div id="era1-capabilities" class="sec-label">One Client, One Seamless Experience</div>
     <h2 class="sec-title">Ten Capabilities Powering Every Stage</h2>
     <p class="sec-desc">The wealth management experience is a single, continuous relationship &mdash; not a series of disconnected workflows. Click into any capability to explore how AI agents transform that dimension of the client experience.</p>
 
@@ -1258,8 +1298,8 @@
 <div class="hub-map">
   <div class="scene-inner" style="max-width:1400px;margin:0 auto">
     <div class="sec-label">Agent-to-Agent Collaboration</div>
-    <h2 class="sec-title">Two Dimensions of the Client Agent Era</h2>
-    <p class="sec-desc">As clients bring their own AI to the table, the firm needs both a collaboration framework for day-to-day interactions and a strategic vision for how the entire ecosystem evolves. Explore both dimensions below.</p>
+    <h2 class="sec-title">The Client Agent Interaction Model</h2>
+    <p class="sec-desc">As clients bring their own AI to the table, the firm needs a structured collaboration framework &mdash; governing how client agents and firm agents interact, negotiate, and escalate to human advisors. Explore the full experience below.</p>
 
     <div class="hub-section-label">Agent Interaction Framework</div>
     <div class="jc-grid" style="grid-template-columns:1fr">
@@ -2637,6 +2677,17 @@
   /* ===== MAIN GRID ===== */
   .adv-main-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
   .adv-main-grid-3{display:grid;grid-template-columns:2fr 1.2fr 1fr;gap:20px;margin-bottom:24px}
+  .adv-row-2col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;align-items:start}
+  .adv-kpi-strip-inline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:0}
+  .adv-kpi-mini{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px 12px;text-align:center}
+  .adv-kpi-mini .adv-kpi-label{font-size:9px;text-transform:uppercase;letter-spacing:0.8px;color:rgba(255,255,255,0.4);margin-bottom:4px}
+  .adv-kpi-mini .adv-kpi-value{font-size:18px;font-weight:800;color:#fff}
+  .adv-kpi-mini .adv-kpi-delta{font-size:9px;margin-top:2px}
+  .adv-kpi-mini .adv-kpi-delta.up{color:#34d399}
+  .adv-kpi-mini .adv-kpi-delta.down{color:#f472b6}
+  @media(max-width:1200px){.adv-row-2col{grid-template-columns:1fr}.adv-kpi-strip-inline{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:700px){.adv-kpi-strip-inline{grid-template-columns:repeat(2,1fr)}}
+
 
   /* ===== PANELS ===== */
   .adv-panel{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;transition:border-color .3s}
@@ -2774,13 +2825,89 @@
   @media(max-width:1400px){.adv-kpi-strip{grid-template-columns:repeat(3,1fr)}.adv-main-grid-3{grid-template-columns:1fr 1fr}}
   @media(max-width:1000px){.adv-main-grid,.adv-main-grid-3{grid-template-columns:1fr}.adv-greeting-row{flex-direction:column}.adv-kpi-strip{grid-template-columns:repeat(2,1fr)}.adv-market-row{grid-template-columns:repeat(3,1fr)}}
 
+  /* ===== DASHBOARD LIGHT THEME ===== */
+  #dashboardView .adv-dashboard{background:#f4f5f7;color:#1a1a2e}
+  #dashboardView .adv-content{background:#f4f5f7}
+  #dashboardView .adv-panel{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  #dashboardView .adv-panel:hover{border-color:rgba(0,51,102,0.2)}
+  #dashboardView .adv-panel-head{background:linear-gradient(135deg,#001a33,#003366);border-bottom:none;padding:14px 20px}
+  #dashboardView .adv-panel-title{color:#ffffff}
+  #dashboardView .adv-panel-body{color:#333}
+  /* KPI inline */
+  #dashboardView .adv-kpi-mini{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-kpi-mini .adv-kpi-label{color:#666}
+  #dashboardView .adv-kpi-mini .adv-kpi-value{color:#001a33}
+  /* Markets */
+  #dashboardView .adv-market-card{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-market-card:hover{background:#f0f4f8;border-color:rgba(0,51,102,0.2)}
+  #dashboardView .adv-market-name{color:#555}
+  #dashboardView .adv-market-val{color:#001a33}
+  /* News */
+  #dashboardView .adv-news-bar{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-news-item{color:#444;border-bottom:1px solid #eef0f2}
+  #dashboardView .adv-news-source{color:#999}
+  /* Agenda */
+  #dashboardView .adv-time-block{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-time-block:hover{border-color:rgba(0,51,102,0.2);background:#f0f4f8}
+  #dashboardView .adv-time-col{color:#003366}
+  #dashboardView .adv-time-dur{color:#888}
+  #dashboardView .adv-time-title{color:#001a33}
+  #dashboardView .adv-time-desc{color:#555}
+  #dashboardView .adv-time-meta{color:#888}
+  #dashboardView .adv-agenda-tab{color:#666;border:1px solid #e0e2e7;background:#f9fafb}
+  #dashboardView .adv-agenda-tab.active{color:#003366;background:rgba(0,51,102,0.06);border-color:rgba(0,51,102,0.25)}
+  /* Actions */
+  #dashboardView .adv-action-card{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-action-card:hover{background:#f0f4f8}
+  #dashboardView .adv-action-client{color:#001a33}
+  #dashboardView .adv-action-title-text{color:#333}
+  #dashboardView .adv-action-detail{color:#555}
+  #dashboardView .adv-action-detail .label{color:#003366}
+  #dashboardView .adv-action-btn.primary{background:#003366;color:#fff;border-color:#003366}
+  #dashboardView .adv-action-btn.secondary{background:#f0f4f8;color:#003366;border-color:#d0d5dd}
+  /* Client table */
+  #dashboardView table.adv-client-tbl th{background:#003366;color:#fff}
+  #dashboardView table.adv-client-tbl td{color:#333;border-bottom:1px solid #eef0f2}
+  #dashboardView table.adv-client-tbl tr:hover{background:rgba(0,51,102,0.04)}
+  #dashboardView .adv-client-search{background:#f9fafb;border:1px solid #dde0e4;color:#001a33}
+  #dashboardView .adv-client-search::placeholder{color:#999}
+  /* Agent feed */
+  #dashboardView .adv-feed-item{background:#f9fafb;border:1px solid #e8eaed}
+  #dashboardView .adv-feed-item:hover{background:#f0f4f8}
+  #dashboardView .adv-feed-title{color:#001a33}
+  #dashboardView .adv-feed-summary{color:#555}
+  #dashboardView .adv-feed-time{color:#999}
+  #dashboardView .adv-feed-detail{color:#555;border-top:1px solid #eef0f2}
+  #dashboardView .adv-feed-action-btn{background:#f0f4f8;border:1px solid #d0d5dd;color:#003366}
+  #dashboardView .adv-feed-action-btn:hover{background:#003366;color:#fff;border-color:#003366}
+  /* Date badge */
+  #dashboardView .adv-date-badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)}
+  /* Scrollbar */
+  #dashboardView .adv-panel-body-scroll::-webkit-scrollbar-thumb{background:rgba(0,51,102,0.15)}
+  /* Badges */
+  #dashboardView .adv-panel-badge.adv-badge-gold{background:rgba(201,162,39,0.1);color:#996b00;border:1px solid rgba(201,162,39,0.25)}
+  #dashboardView .adv-panel-badge.adv-badge-blue{background:rgba(0,51,102,0.08);color:#003366;border:1px solid rgba(0,51,102,0.2)}
+  #dashboardView .adv-panel-badge.adv-badge-rose{background:rgba(244,114,182,0.08);color:#be185d;border:1px solid rgba(244,114,182,0.2)}
+  #dashboardView .adv-panel-badge.adv-badge-green{background:rgba(52,211,153,0.08);color:#059669;border:1px solid rgba(52,211,153,0.2)}
+  /* Panel header icons & badges on navy bg */
+  #dashboardView .adv-panel-head .icon{color:rgba(255,255,255,0.7)}
+  #dashboardView .adv-panel-head .adv-panel-badge{border:none}
+  #dashboardView .adv-panel-head .adv-badge-gold{background:rgba(201,162,39,0.2);color:#e6c84d}
+  #dashboardView .adv-panel-head .adv-badge-blue{background:rgba(96,165,250,0.2);color:#93c5fd}
+  #dashboardView .adv-panel-head .adv-badge-rose{background:rgba(244,114,182,0.2);color:#f9a8d4}
+  #dashboardView .adv-panel-head .adv-badge-green{background:rgba(52,211,153,0.2);color:#6ee7b7}
+  /* Client name */
+  #dashboardView .adv-client-name-cell{color:#001a33}
+  /* Divider in markets panel */
+  #dashboardView .adv-panel-body div[style*="rgba(255,255,255,0.06)"]{background:#eef0f2 !important}
+
   /* ===== PROTOTYPE BANNER ===== */
   .adv-proto-banner{background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));border:1px solid rgba(201,162,39,0.3);border-radius:10px;padding:12px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px;font-size:12px;color:var(--gold)}
   .adv-proto-banner .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);animation:advPulse 2s infinite}
 
 
 /* ===== CLIENT AGENT EXPERIENCE VIEW ===== */
-.ca-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;overflow-y:auto;height:100vh;padding:0;margin:0}
+.ca-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,sans-serif;overflow-y:auto;height:calc(100vh - 80px);padding:0;margin:0}
 .ca-top{background:linear-gradient(135deg,var(--navy-dark),var(--navy));border-bottom:1px solid rgba(201,162,39,0.2);padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
 .ca-top-title{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:.5px}
 .ca-top-title em{font-style:normal;color:var(--gold);font-weight:700}
@@ -2885,6 +3012,117 @@
 
 @media(max-width:900px){.ca-flow{flex-direction:column}.ca-flow-arrow{transform:rotate(90deg)}.ca-principles{grid-template-columns:1fr}.ca-scenarios{grid-template-columns:1fr}.ca-arch{grid-template-columns:1fr;gap:16px}}
 
+/* ===== CLIENT AGENT LIGHT THEME (below hero) ===== */
+/* Dark hero top preserved, light background below via wrapper */
+#clientAgentView .ca-light-section{background:#f4f5f7;color:#1a1a2e;padding:40px 32px 60px;margin:0 -32px -60px}
+/* Sections in light area */
+#clientAgentView .ca-light-section .ca-section-label{color:#003366}
+#clientAgentView .ca-light-section .ca-section-title{color:#001a33}
+#clientAgentView .ca-light-section .ca-section-desc{color:#555}
+/* Conversation thread */
+#clientAgentView .ca-light-section .ca-thread{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#clientAgentView .ca-light-section .ca-thread-header{background:linear-gradient(135deg,#001a33,#003366);border-bottom:none}
+#clientAgentView .ca-light-section .ca-thread-title{color:#fff}
+#clientAgentView .ca-light-section .ca-thread-body{padding:20px;background:#fff}
+#clientAgentView .ca-light-section .ca-msg-sender .name{color:#001a33}
+#clientAgentView .ca-light-section .ca-msg-bubble{background:#f4f6f8;border:1px solid #e8eaed;color:#333}
+#clientAgentView .ca-light-section .ca-msg-bubble .highlight{color:#003366}
+#clientAgentView .ca-light-section .ca-msg-bubble .alert{color:#be185d}
+#clientAgentView .ca-light-section .ca-msg-bubble .success{color:#059669}
+#clientAgentView .ca-light-section .ca-msg-time{color:#999}
+/* Review gate */
+#clientAgentView .ca-light-section .ca-review-gate{background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.2)}
+#clientAgentView .ca-light-section .ca-review-desc{color:#555}
+#clientAgentView .ca-light-section .ca-review-btn.modify{background:#f0f4f8;color:#003366;border:1px solid #d0d5dd}
+/* Principle cards */
+#clientAgentView .ca-light-section .ca-principle{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#clientAgentView .ca-light-section .ca-principle:hover{border-color:rgba(0,51,102,0.25);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+#clientAgentView .ca-light-section .ca-principle-title{color:#001a33}
+#clientAgentView .ca-light-section .ca-principle-desc{color:#555}
+/* Scenario cards */
+#clientAgentView .ca-light-section .ca-scenario{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#clientAgentView .ca-light-section .ca-scenario:hover{border-color:rgba(0,51,102,0.25);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+#clientAgentView .ca-light-section .ca-scenario-num{color:#003366}
+#clientAgentView .ca-light-section .ca-scenario-title{color:#001a33}
+#clientAgentView .ca-light-section .ca-scenario-desc{color:#555}
+#clientAgentView .ca-light-section .ca-scenario-detail{border-top-color:#eef0f2;color:#555}
+/* Architecture diagram */
+#clientAgentView .ca-light-section .ca-arch{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#clientAgentView .ca-light-section .ca-arch-arrow{color:#888}
+#clientAgentView .ca-light-section .ca-arch-node.client-side{background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.2)}
+#clientAgentView .ca-light-section .ca-arch-node.gs-side{background:rgba(0,51,102,0.06);border-color:rgba(0,51,102,0.2);color:#003366}
+#clientAgentView .ca-light-section .ca-arch-node.gateway{background:linear-gradient(135deg,rgba(52,211,153,0.1),rgba(0,51,102,0.06));border-color:rgba(52,211,153,0.25)}
+/* Autonomy tiers */
+#clientAgentView .ca-light-section .ca-principle-icon{color:#001a33}
+/* Flow nodes inside light section */
+#clientAgentView .ca-light-section .ca-flow-node.client-agent{background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.25)}
+#clientAgentView .ca-light-section .ca-flow-node.gs-agent{background:rgba(0,51,102,0.06);border-color:rgba(0,51,102,0.2)}
+#clientAgentView .ca-light-section .ca-flow-node.advisor{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.25)}
+#clientAgentView .ca-light-section .ca-flow-name{color:#001a33}
+#clientAgentView .ca-light-section .ca-flow-desc{color:#666}
+#clientAgentView .ca-light-section .ca-flow-arrow{color:#003366}
+
+/* ===== WEALTH OS LIGHT THEME (Client Experience and below) ===== */
+#wealthOsView .wo-light-section{background:#f4f5f7;color:#1a1a2e;padding:40px 32px 60px;margin:0 -32px -80px}
+/* Section headings */
+#wealthOsView .wo-light-section .wo-section-label{color:#003366}
+#wealthOsView .wo-light-section .wo-section-title{color:#001a33}
+#wealthOsView .wo-light-section .wo-section-desc{color:#555}
+/* Phone */
+#wealthOsView .wo-light-section .wo-phone{background:#ffffff;border-color:#e0e2e7}
+#wealthOsView .wo-light-section .wo-phone-header{background:linear-gradient(135deg,#001a33,#003366);border-bottom:none}
+#wealthOsView .wo-light-section .wo-phone-body{background:#fff}
+#wealthOsView .wo-light-section .wo-nw-strip{background:rgba(0,51,102,0.04);border-color:rgba(0,51,102,0.12)}
+#wealthOsView .wo-light-section .wo-nw-label{color:#666}
+#wealthOsView .wo-light-section .wo-nw-val{color:#003366}
+#wealthOsView .wo-light-section .wo-nw-change{color:#059669}
+#wealthOsView .wo-light-section .wo-nw-item-val{color:#001a33}
+#wealthOsView .wo-light-section .wo-nw-item-label{color:#888}
+/* Chat messages */
+#wealthOsView .wo-light-section .wo-chat-msg.from-os .wo-chat-bubble{background:#f4f6f8;border-color:#e8eaed;color:#333}
+#wealthOsView .wo-light-section .wo-chat-msg.from-client .wo-chat-bubble{background:rgba(0,51,102,0.06);border-color:rgba(0,51,102,0.12);color:#333}
+#wealthOsView .wo-light-section .wo-chat-bubble .bold{color:#001a33}
+#wealthOsView .wo-light-section .wo-chat-bubble .gold{color:#003366}
+#wealthOsView .wo-light-section .wo-chat-bubble .green{color:#059669}
+#wealthOsView .wo-light-section .wo-chat-time{color:#aaa}
+/* Alerts */
+#wealthOsView .wo-light-section .wo-alert{background:rgba(251,191,36,0.06);border-color:rgba(251,191,36,0.2)}
+#wealthOsView .wo-light-section .wo-alert-body{color:#555}
+/* Context cards */
+#wealthOsView .wo-light-section .wo-context{background:#ffffff;border-color:#e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#wealthOsView .wo-light-section .wo-context-title{color:#003366}
+#wealthOsView .wo-light-section .wo-context-row{border-bottom-color:#f0f1f3}
+#wealthOsView .wo-light-section .wo-context-key{color:#888}
+#wealthOsView .wo-light-section .wo-context-val{color:#001a33}
+/* Command center */
+#wealthOsView .wo-light-section .wo-command{background:#ffffff;border-color:#e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#wealthOsView .wo-light-section .wo-command-header{background:linear-gradient(135deg,#001a33,#003366);border-bottom:none}
+#wealthOsView .wo-light-section .wo-command-body{background:#fff}
+#wealthOsView .wo-light-section .wo-action{background:#f8f9fb;border-color:#e8eaed}
+#wealthOsView .wo-light-section .wo-action:hover{border-color:rgba(0,51,102,0.2)}
+#wealthOsView .wo-light-section .wo-action-title{color:#001a33}
+#wealthOsView .wo-light-section .wo-action-desc{color:#555}
+#wealthOsView .wo-light-section .wo-action-source{background:rgba(0,51,102,0.06);color:#003366}
+/* Bridge */
+#wealthOsView .wo-light-section .wo-bridge{background:#ffffff;border-color:rgba(0,51,102,0.15);box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#wealthOsView .wo-light-section .wo-bridge-title{color:#001a33}
+#wealthOsView .wo-light-section .wo-bridge-desc{color:#666}
+#wealthOsView .wo-light-section .wo-bridge-node-title{color:#001a33}
+#wealthOsView .wo-light-section .wo-bridge-node-desc{color:#666}
+#wealthOsView .wo-light-section .wo-bridge-arrow{color:#003366}
+/* Tiers */
+#wealthOsView .wo-light-section .wo-tier{background:#f8f9fb;border-color:#e8eaed}
+#wealthOsView .wo-light-section .wo-tier-desc{color:#555}
+#wealthOsView .wo-light-section .wo-tier-examples{color:#888}
+/* Modules */
+#wealthOsView .wo-light-section .wo-module{background:#ffffff;border-color:#e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#wealthOsView .wo-light-section .wo-module:hover{border-color:rgba(0,51,102,0.25);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+#wealthOsView .wo-light-section .wo-module-name{color:#001a33}
+/* Footer */
+#wealthOsView .wo-light-section .wo-footer{background:rgba(0,51,102,0.04);border-color:rgba(0,51,102,0.15)}
+#wealthOsView .wo-light-section .wo-footer h3{color:#003366}
+#wealthOsView .wo-light-section .wo-footer p{color:#555}
+
 </style>
 
 <div class="view" id="dashboardView">
@@ -2910,131 +3148,26 @@
 
 <div class="adv-content">
 
-  <!-- AI CHAT PANEL -->
-  <div class="adv-chat-panel">
-    <div class="adv-chat-header">
-      <div class="adv-chat-header-left">
-        <div class="adv-chat-icon">&#10024;</div>
-        <div>
-          <div class="adv-chat-title">AI Advisory Assistant</div>
-          <div class="adv-chat-subtitle">Connected to 9 agents &middot; Full book access</div>
-        </div>
-      </div>
-      <div class="adv-chat-header-right">
-        <div class="adv-chat-status"><div class="adv-chat-status-dot"></div>Online</div>
-        <button class="adv-chat-expand" onclick="window.advToggleChat()" id="advChatToggle">&#9660;</button>
-      </div>
-    </div>
-    <div class="adv-chat-body" id="advChatBody">
-      <div class="adv-chat-messages" id="advChatMessages">
-        <div class="adv-chat-msg adv-chat-ai">
-          <div class="adv-chat-msg-avatar">AI</div>
-          <div class="adv-chat-msg-content">
-            <div class="adv-chat-msg-text">Good morning, Marcus. I've analyzed your book overnight. Three things worth your attention:</div>
-          </div>
-        </div>
-        <div class="adv-chat-msg adv-chat-ai">
-          <div class="adv-chat-msg-avatar">AI</div>
-          <div class="adv-chat-msg-content">
-            <div class="adv-chat-msg-text"><strong>1.</strong> Sarah Chen's GRAT window closes March 15 &mdash; the 7520 rate moved to 5.2%. At current Nexus valuation, this saves <strong>$21.8M</strong> in estate tax. Documents are drafted.<br><br><strong>2.</strong> James Whitfield's engagement score dropped to 71. He hasn't logged into the portal in 18 days. I recommend a personal call today &mdash; I've prepared talking points.<br><br><strong>3.</strong> The Buyout XIV allocation window opens next week. 12 clients are eligible. I've ranked them by fit and prepared commitment memos.</div>
-          </div>
-        </div>
-        <div class="adv-chat-msg adv-chat-user">
-          <div class="adv-chat-msg-content">
-            <div class="adv-chat-msg-text">Pull up the estate plan for Sarah Chen. What happens if Nexus IPOs at $2B instead of $1.8B?</div>
-          </div>
-          <div class="adv-chat-msg-avatar">MT</div>
-        </div>
-        <div class="adv-chat-msg adv-chat-ai">
-          <div class="adv-chat-msg-avatar">AI</div>
-          <div class="adv-chat-msg-content">
-            <div class="adv-chat-msg-text">At a $2B IPO, the GRAT transfers <strong>$98.5M</strong> to David and Emily tax-free (vs. $90M at $1.8B). Estate tax savings increase to <strong>$29.1M</strong>. The incremental $200M in enterprise value flows entirely through the GRAT structure since the annuity payments are fixed.<br><br>Combined with the SLAT ($10.9M savings) and CRT ($7.2M), total tax savings reach <strong>$47.2M</strong>. Should I update the scenario deck for your 8 AM signing call with Sullivan &amp; Cromwell?</div>
-            <div class="adv-chat-msg-actions">
-              <button class="adv-chat-action-btn">View Estate Flow</button>
-              <button class="adv-chat-action-btn">Update Deck</button>
-              <button class="adv-chat-action-btn">Schedule Call</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="adv-chat-input-area">
-        <div class="adv-chat-suggestions">
-          <button class="adv-chat-suggestion" onclick="return false">Show me at-risk clients</button>
-          <button class="adv-chat-suggestion" onclick="return false">Prepare for Whitfield review</button>
-          <button class="adv-chat-suggestion" onclick="return false">Buyout XIV eligible list</button>
-          <button class="adv-chat-suggestion" onclick="return false">Run portfolio stress test</button>
-        </div>
-        <div class="adv-chat-input-row">
-          <input type="text" class="adv-chat-input" placeholder="Ask your AI assistant anything about your clients, markets, or strategy..." onclick="return false">
-          <button class="adv-chat-send">&#10148;</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ROW 1: Markets & Intelligence | AI Advisory Assistant -->
+  <div class="adv-row-2col">
 
-    <!-- GREETING + AI BRIEF -->
-  <div class="adv-greeting-row">
-    <div class="adv-greeting-card">
-      <div class="adv-greeting-time">Good Morning</div>
-      <div class="adv-greeting-text">Hello, <em>Marcus</em></div>
-      <div class="adv-greeting-sub">
-        Your book is at <strong>$8.74B AUM</strong> across 28 clients. You have <strong>4 meetings today</strong>,
-        1 critical action item, and 3 high-priority items in your queue. Markets are favorable &mdash;
-        your clients are positioned well.
-      </div>
-    </div>
-    <div class="adv-brief-card">
-      <div class="adv-brief-label"><span class="sparkle">&#10024;</span> AI Morning Brief</div>
-      <div class="adv-brief-text">
-        <span class="highlight">GRAT Opportunity:</span> Sarah Chen's $78M Nexus position is ideal for a 3-year GRAT at 5.2% rates.
-        Estimated savings: <span class="highlight">$8.2M</span>. Deadline: March 15.<br><br>
-        <span class="alert-text">Attention:</span> James Whitfield's health score dropped 78 &#8594; 71. Portal logins down 40%.
-        Recommend proactive outreach today.<br><br>
-        <span class="success-text">Win:</span> Priya Mehta's son Arjun completed Next-Gen Academy.
-        Schedule family wealth summit for $2M seed account.
-      </div>
-      <div style="margin-top:14px;text-align:right"><button onclick="event.stopPropagation();showView('morningbrief')" style="background:linear-gradient(135deg,rgba(201,162,39,0.2),rgba(201,162,39,0.1));color:#C9A227;border:1px solid rgba(201,162,39,0.4);padding:8px 18px;border-radius:5px;font-weight:600;font-size:11px;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px" onmouseover="this.style.background='rgba(201,162,39,0.25)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(201,162,39,0.2),rgba(201,162,39,0.1))'">View Full Brief &#8594;</button></div>
-    </div>
-  </div>
-
-  <!-- KPI STRIP -->
-  <div class="adv-kpi-strip">
-    <div class="adv-kpi-card kpi-aum">
-      <div class="adv-kpi-label">Total AUM</div>
-      <div class="adv-kpi-value">$8.74B</div>
-      <div class="adv-kpi-delta up">&#9650; +2.8% MTD</div>
-    </div>
-    <div class="adv-kpi-card kpi-clients">
-      <div class="adv-kpi-label">Active Clients</div>
-      <div class="adv-kpi-value">28</div>
-      <div class="adv-kpi-delta up">&#9650; 2 prospects in pipeline</div>
-    </div>
-    <div class="adv-kpi-card kpi-health">
-      <div class="adv-kpi-label">Avg Health Score</div>
-      <div class="adv-kpi-value">83.2</div>
-      <div class="adv-kpi-delta up">&#9650; +1.4 from last month</div>
-    </div>
-    <div class="adv-kpi-card kpi-actions">
-      <div class="adv-kpi-label">Open Actions</div>
-      <div class="adv-kpi-value">8</div>
-      <div class="adv-kpi-delta down">1 critical, 3 high</div>
-    </div>
-    <div class="adv-kpi-card kpi-revenue">
-      <div class="adv-kpi-label">YTD Revenue</div>
-      <div class="adv-kpi-value">$14.2M</div>
-      <div class="adv-kpi-delta up">&#9650; +18% vs prior year</div>
-    </div>
-  </div>
-
-  <!-- MARKETS + AGENDA -->
-  <div class="adv-main-grid">
-    <!-- LEFT: Markets + News -->
+    <!-- LEFT: Markets & Intelligence + KPI Stats -->
     <div class="adv-panel">
       <div class="adv-panel-head">
         <div class="adv-panel-title"><span class="icon">&#9733;</span> Markets &amp; Intelligence</div>
         <span class="adv-panel-badge adv-badge-gold">LIVE</span>
       </div>
       <div class="adv-panel-body">
+        <!-- KPI Stats -->
+        <div class="adv-kpi-strip-inline">
+          <div class="adv-kpi-mini"><div class="adv-kpi-label">Total AUM</div><div class="adv-kpi-value">$8.74B</div><div class="adv-kpi-delta up">&#9650; +2.8% MTD</div></div>
+          <div class="adv-kpi-mini"><div class="adv-kpi-label">Active Clients</div><div class="adv-kpi-value">28</div><div class="adv-kpi-delta up">&#9650; 2 in pipeline</div></div>
+          <div class="adv-kpi-mini"><div class="adv-kpi-label">Avg Health</div><div class="adv-kpi-value">83.2</div><div class="adv-kpi-delta up">&#9650; +1.4</div></div>
+          <div class="adv-kpi-mini"><div class="adv-kpi-label">Open Actions</div><div class="adv-kpi-value">8</div><div class="adv-kpi-delta down">1 critical</div></div>
+          <div class="adv-kpi-mini"><div class="adv-kpi-label">YTD Revenue</div><div class="adv-kpi-value">$14.2M</div><div class="adv-kpi-delta up">&#9650; +18% YoY</div></div>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,0.06);margin:16px 0"></div>
+        <!-- Market Cards -->
         <div class="adv-market-row">
           <div class="adv-market-card">
             <div class="adv-market-name">S&amp;P 500</div>
@@ -3076,7 +3209,73 @@
       </div>
     </div>
 
-    <!-- RIGHT: Agenda -->
+    <!-- RIGHT: AI Advisory Assistant -->
+    <div class="adv-chat-panel" style="margin-bottom:0">
+      <div class="adv-chat-header">
+        <div class="adv-chat-header-left">
+          <div class="adv-chat-icon">&#10024;</div>
+          <div>
+            <div class="adv-chat-title">AI Advisory Assistant</div>
+            <div class="adv-chat-subtitle">Connected to 9 agents &middot; Full book access</div>
+          </div>
+        </div>
+        <div class="adv-chat-header-right">
+          <div class="adv-chat-status"><div class="adv-chat-status-dot"></div>Online</div>
+        </div>
+      </div>
+      <div class="adv-chat-body open" id="advChatBody">
+        <div class="adv-chat-messages" id="advChatMessages">
+          <div class="adv-chat-msg adv-chat-ai">
+            <div class="adv-chat-msg-avatar">AI</div>
+            <div class="adv-chat-msg-content">
+              <div class="adv-chat-msg-text">Good morning, Marcus. I've analyzed your book overnight. Three things worth your attention:</div>
+            </div>
+          </div>
+          <div class="adv-chat-msg adv-chat-ai">
+            <div class="adv-chat-msg-avatar">AI</div>
+            <div class="adv-chat-msg-content">
+              <div class="adv-chat-msg-text"><strong>1.</strong> Sarah Chen's GRAT window closes March 15 &mdash; the 7520 rate moved to 5.2%. At current Nexus valuation, this saves <strong>$21.8M</strong> in estate tax. Documents are drafted.<br><br><strong>2.</strong> James Whitfield's engagement score dropped to 71. He hasn't logged into the portal in 18 days. I recommend a personal call today &mdash; I've prepared talking points.<br><br><strong>3.</strong> The Buyout XIV allocation window opens next week. 12 clients are eligible. I've ranked them by fit and prepared commitment memos.</div>
+            </div>
+          </div>
+          <div class="adv-chat-msg adv-chat-user">
+            <div class="adv-chat-msg-content">
+              <div class="adv-chat-msg-text">Pull up the estate plan for Sarah Chen. What happens if Nexus IPOs at $2B instead of $1.8B?</div>
+            </div>
+            <div class="adv-chat-msg-avatar">MT</div>
+          </div>
+          <div class="adv-chat-msg adv-chat-ai">
+            <div class="adv-chat-msg-avatar">AI</div>
+            <div class="adv-chat-msg-content">
+              <div class="adv-chat-msg-text">At a $2B IPO, the GRAT transfers <strong>$98.5M</strong> to David and Emily tax-free (vs. $90M at $1.8B). Estate tax savings increase to <strong>$29.1M</strong>. The incremental $200M in enterprise value flows entirely through the GRAT structure since the annuity payments are fixed.<br><br>Combined with the SLAT ($10.9M savings) and CRT ($7.2M), total tax savings reach <strong>$47.2M</strong>. Should I update the scenario deck for your 8 AM signing call with Sullivan &amp; Cromwell?</div>
+              <div class="adv-chat-msg-actions">
+                <button class="adv-chat-action-btn">View Estate Flow</button>
+                <button class="adv-chat-action-btn">Update Deck</button>
+                <button class="adv-chat-action-btn">Schedule Call</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="adv-chat-input-area">
+          <div class="adv-chat-suggestions">
+            <button class="adv-chat-suggestion" onclick="return false">Show me at-risk clients</button>
+            <button class="adv-chat-suggestion" onclick="return false">Prepare for Whitfield review</button>
+            <button class="adv-chat-suggestion" onclick="return false">Buyout XIV eligible list</button>
+            <button class="adv-chat-suggestion" onclick="return false">Run portfolio stress test</button>
+          </div>
+          <div class="adv-chat-input-row">
+            <input type="text" class="adv-chat-input" placeholder="Ask your AI assistant anything about your clients, markets, or strategy..." onclick="return false">
+            <button class="adv-chat-send">&#10148;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Today's Agenda | Action Queue -->
+  <div class="adv-row-2col">
+
+    <!-- LEFT: Today's Agenda -->
     <div class="adv-panel">
       <div class="adv-panel-head">
         <div class="adv-panel-title"><span class="icon">&#128197;</span> Today's Agenda</div>
@@ -3126,11 +3325,8 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ACTION QUEUE + CLIENT BOOK + FEED -->
-  <div class="adv-main-grid-3">
-    <!-- Action Queue -->
+    <!-- RIGHT: Action Queue -->
     <div class="adv-panel">
       <div class="adv-panel-head">
         <div class="adv-panel-title"><span class="icon">&#9889;</span> Action Queue</div>
@@ -3139,10 +3335,15 @@
       <div class="adv-panel-body adv-panel-body-scroll" id="adv-action-queue2"></div>
     </div>
 
-    <!-- Client Book -->
+  </div>
+
+  <!-- ROW 3: Client Relationships | Agent Activity -->
+  <div class="adv-row-2col">
+
+    <!-- LEFT: Client Relationships -->
     <div class="adv-panel">
       <div class="adv-panel-head">
-        <div class="adv-panel-title"><span class="icon">&#128101;</span> Client Book</div>
+        <div class="adv-panel-title"><span class="icon">&#128101;</span> Client Relationships</div>
         <span class="adv-panel-badge adv-badge-green">28 Clients</span>
       </div>
       <div class="adv-panel-body">
@@ -3156,7 +3357,7 @@
       </div>
     </div>
 
-    <!-- Agent Feed -->
+    <!-- RIGHT: Agent Activity -->
     <div class="adv-panel">
       <div class="adv-panel-head">
         <div class="adv-panel-title"><span class="icon">&#9889;</span> Agent Activity</div>
@@ -3164,8 +3365,8 @@
       </div>
       <div class="adv-panel-body adv-panel-body-scroll" id="adv-feed-list2"></div>
     </div>
-  </div>
 
+  </div>
 </div>
 </div>
 <script>
@@ -3175,26 +3376,7 @@
   const today = new Date();
   dateEl.textContent = today.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
 
-  // Chat toggle
-  window.advToggleChat = function() {
-    var body = document.getElementById('advChatBody');
-    var btn = document.getElementById('advChatToggle');
-    body.classList.toggle('open');
-    btn.classList.toggle('open');
-    if(body.classList.contains('open')){
-      var msgs = document.getElementById('advChatMessages');
-      msgs.scrollTop = msgs.scrollHeight;
-    }
-  };
-  // Auto-open chat on view
-  setTimeout(function(){
-    var body = document.getElementById('advChatBody');
-    var btn = document.getElementById('advChatToggle');
-    if(body && !body.classList.contains('open')){
-      body.classList.add('open');
-      btn.classList.add('open');
-    }
-  }, 500);
+  // Chat is always open in new layout
 
 
   // Mini charts
@@ -3218,7 +3400,7 @@
 
   // Agenda toggle
   window._advToggleAgenda2 = function(el, view){
-    document.querySelectorAll('.agenda-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.adv-agenda-tab').forEach(t=>t.classList.remove('active'));
     el.classList.add('active');
     document.getElementById('adv-agenda-today2').style.display = view==='today'?'block':'none';
     document.getElementById('adv-agenda-week2').style.display = view==='week'?'block':'none';
@@ -3291,7 +3473,7 @@
   CLIENTS.forEach(c=>{
     const tr = document.createElement('tr');
     const chips = c.journeys.map(j=>`<span class="adv-journey-chip j-${j}">${j}</span>`).join('');
-    tr.innerHTML = `<td style="font-weight:600;color:var(--white)">${c.name}</td><td>$${c.aum}M</td><td><span class="adv-health-badge ${healthClass(c.health)}">${c.health}</span></td><td>${chips}</td><td>${c.next}</td>`;
+    tr.innerHTML = `<td class="adv-client-name-cell" style="font-weight:600">${c.name}</td><td>$${c.aum}M</td><td><span class="adv-health-badge ${healthClass(c.health)}">${c.health}</span></td><td>${chips}</td><td>${c.next}</td>`;
     tbody.appendChild(tr);
   });
   document.getElementById('adv-client-search').addEventListener('input',function(){
@@ -3927,6 +4109,9 @@
   opacity: 0.1;
   border-radius: 50%;
 }
+.mp-slide-rich{position:relative;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.mp-slide-rich:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.12);}
+.mp-sr-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);color:white;font-size:9px;font-weight:600;padding:2px 8px;border-radius:10px;z-index:2;backdrop-filter:blur(4px);}
 
 .mp-slide-number {
   position: absolute;
@@ -4881,7 +5066,7 @@
     border-bottom: 3px solid #C9A227;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 100;
   }
 
@@ -5441,15 +5626,18 @@
   }
 
 /* ===== FUTURE SERVICE HORIZON VIEW ===== */
-.fh-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-y:auto}
-.fh-top{background:linear-gradient(135deg,#001a33,#003366);padding:24px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #60a5fa;position:sticky;top:0;z-index:100}
-.fh-top h1{color:#fff;font-size:20px;font-weight:600;margin:0}
-.fh-back{background:linear-gradient(135deg,#60a5fa,#3b82f6);border:none;color:#001a33;padding:10px 16px;border-radius:6px;font-weight:600;font-size:13px;cursor:pointer;margin-right:16px}
-.fh-badge{background:rgba(96,165,250,0.15);color:#60a5fa;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(96,165,250,0.3)}
+.fh-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:calc(100vh - 80px);overflow-y:auto}
+.fh-top{background:linear-gradient(135deg,#001a33,#003366);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+.fh-top h1{color:#fff;font-size:18px;font-weight:600;margin:0}
+.fh-top h1 em{font-style:normal;color:var(--gold)}
+.fh-back{background:linear-gradient(135deg,var(--gold),#d4b12f);border:none;color:#001a33;padding:8px 18px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;margin-right:16px;font-family:inherit}
+.fh-badge{background:rgba(201,162,39,0.12);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid rgba(201,162,39,0.25)}
 .fh-body{max-width:1300px;margin:0 auto;padding:40px 32px 80px}
-.fh-hero{text-align:center;margin-bottom:60px}
-.fh-hero h2{font-size:36px;font-weight:700;color:#fff;margin:0 0 16px}
-.fh-hero p{font-size:16px;color:rgba(255,255,255,0.6);max-width:700px;margin:0 auto;line-height:1.7}
+.fh-hero{text-align:center;margin-bottom:56px}
+.fh-hero-badge{display:inline-block;padding:5px 16px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.25);border-radius:20px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.fh-hero h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;line-height:1.15;margin:0 0 14px}
+.fh-hero h2 em{font-style:normal;color:var(--gold)}
+.fh-hero p{font-size:15px;color:rgba(255,255,255,0.5);max-width:680px;margin:0 auto;line-height:1.7}
 .fh-strategic{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:60px}
 .fh-theme{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;text-align:center;transition:all .3s}
 .fh-theme:hover{border-color:rgba(96,165,250,0.3);transform:translateY(-2px)}
@@ -5492,6 +5680,36 @@
 .fh-fly-arrow{color:rgba(201,162,39,0.4);font-size:20px;margin:0 8px}
 .fh-convergence-foot{font-size:12px;color:rgba(255,255,255,0.35);font-style:italic}
 @media(max-width:900px){.fh-strategic{grid-template-columns:repeat(2,1fr)}.fh-cards{grid-template-columns:1fr}.fh-flywheel{flex-direction:column;gap:8px}.fh-fly-arrow{transform:rotate(90deg)}}
+
+/* ===== SERVICE HORIZON LIGHT THEME (below hero) ===== */
+#serviceHorizonView .fh-light-section{background:#f4f5f7;color:#1a1a2e;padding:40px 32px 60px;margin:0 -32px -80px;border-radius:0}
+/* Horizon headers */
+#serviceHorizonView .fh-light-section .fh-horizon-near .fh-horizon-badge{background:#059669;color:#fff;border-color:#059669}
+#serviceHorizonView .fh-light-section .fh-horizon-mid .fh-horizon-badge{background:#d97706;color:#fff;border-color:#d97706}
+#serviceHorizonView .fh-light-section .fh-horizon-long .fh-horizon-badge{background:#7c3aed;color:#fff;border-color:#7c3aed}
+#serviceHorizonView .fh-light-section .fh-horizon-title{color:#001a33}
+#serviceHorizonView .fh-light-section .fh-horizon-sub{color:#666}
+/* Cards */
+#serviceHorizonView .fh-light-section .fh-card{background:#ffffff;border:1px solid #e0e2e7;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#serviceHorizonView .fh-light-section .fh-card:hover{border-color:rgba(0,51,102,0.25);box-shadow:0 4px 16px rgba(0,0,0,0.08);transform:translateY(-2px)}
+#serviceHorizonView .fh-light-section .fh-card-num{color:#666}
+#serviceHorizonView .fh-light-section .fh-card h3{color:#001a33}
+#serviceHorizonView .fh-light-section .fh-card p{color:#555}
+#serviceHorizonView .fh-light-section .fh-card-examples{background:#f8f9fb;border-color:#e8eaed}
+#serviceHorizonView .fh-light-section .fh-card-examples dt{color:#003366}
+#serviceHorizonView .fh-light-section .fh-card-examples dd{color:#555;border-left-color:rgba(0,51,102,0.2)}
+#serviceHorizonView .fh-light-section .fh-card-impact{border-top-color:#eef0f2}
+#serviceHorizonView .fh-light-section .fh-impact-val{color:#003366}
+#serviceHorizonView .fh-light-section .fh-impact-label{color:#888}
+/* Agent chips */
+#serviceHorizonView .fh-light-section .fh-agent-chip{background:rgba(0,51,102,0.06);color:#003366;border-color:rgba(0,51,102,0.15)}
+/* Convergence / flywheel */
+#serviceHorizonView .fh-light-section .fh-convergence{background:#ffffff;border-color:rgba(0,51,102,0.2);box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+#serviceHorizonView .fh-light-section .fh-convergence h3{color:#003366}
+#serviceHorizonView .fh-light-section .fh-convergence p{color:#555}
+#serviceHorizonView .fh-light-section .fh-fly-node{background:rgba(0,51,102,0.06);border-color:rgba(0,51,102,0.15);color:#001a33}
+#serviceHorizonView .fh-light-section .fh-fly-arrow{color:#003366}
+#serviceHorizonView .fh-light-section .fh-convergence-foot{color:#888}
 
 /* ===== ESTATE FLOW DIAGRAM ===== */
   .es-flow-diagram{background:#fff;border:1px solid #eaecf0;border-radius:14px;padding:24px 16px;margin-bottom:16px}
@@ -5538,12 +5756,12 @@
   @media(max-width:900px){.es-flow-trust,.es-flow-beneficiary{max-width:48%}.es-total-bar{flex-wrap:wrap}.es-total-item{min-width:45%}}
 
   /* ===== DASHBOARD CHAT ===== */
-  .adv-chat-panel{background:linear-gradient(135deg,#0b1628,#0d2137);border:1px solid rgba(201,162,39,0.25);border-radius:12px;margin-bottom:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.3)}
-  .adv-chat-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(135deg,rgba(201,162,39,0.08),rgba(201,162,39,0.02));border-bottom:1px solid rgba(201,162,39,0.15);cursor:pointer}
+  .adv-chat-panel{background:#ffffff;border:1px solid #e0e2e7;border-radius:12px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+  .adv-chat-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(135deg,#001a33,#003366);border-bottom:1px solid #e0e2e7;cursor:pointer}
   .adv-chat-header-left{display:flex;align-items:center;gap:10px}
   .adv-chat-icon{font-size:20px}
   .adv-chat-title{font-size:13px;font-weight:700;color:#fff}
-  .adv-chat-subtitle{font-size:10px;color:rgba(255,255,255,0.4)}
+  .adv-chat-subtitle{font-size:10px;color:rgba(255,255,255,0.5)}
   .adv-chat-header-right{display:flex;align-items:center;gap:10px}
   .adv-chat-status{display:flex;align-items:center;gap:5px;font-size:10px;color:#34d399}
   .adv-chat-status-dot{width:6px;height:6px;border-radius:50%;background:#34d399;animation:advPulse 2s infinite}
@@ -5555,28 +5773,28 @@
   .adv-chat-msg{display:flex;gap:8px;margin-bottom:14px;align-items:flex-start}
   .adv-chat-user{flex-direction:row-reverse}
   .adv-chat-msg-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-  .adv-chat-ai .adv-chat-msg-avatar{background:linear-gradient(135deg,#C9A227,#d4b12f);color:#001a33}
-  .adv-chat-user .adv-chat-msg-avatar{background:rgba(96,165,250,0.2);color:#60a5fa}
+  .adv-chat-ai .adv-chat-msg-avatar{background:linear-gradient(135deg,#003366,#0a4080);color:#fff}
+  .adv-chat-user .adv-chat-msg-avatar{background:rgba(0,51,102,0.1);color:#003366}
   .adv-chat-msg-content{max-width:85%}
   .adv-chat-msg-text{font-size:12px;line-height:1.65;padding:10px 14px;border-radius:12px}
-  .adv-chat-ai .adv-chat-msg-text{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);border-bottom-left-radius:4px}
-  .adv-chat-user .adv-chat-msg-text{background:rgba(96,165,250,0.12);color:rgba(255,255,255,0.9);border-bottom-right-radius:4px}
+  .adv-chat-ai .adv-chat-msg-text{background:#f4f6f8;color:#1a1a2e;border-bottom-left-radius:4px}
+  .adv-chat-user .adv-chat-msg-text{background:rgba(0,51,102,0.08);color:#001a33;border-bottom-right-radius:4px}
   .adv-chat-msg-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .adv-chat-action-btn{padding:4px 12px;border-radius:6px;font-size:10px;font-weight:600;background:rgba(201,162,39,0.12);color:var(--gold);border:1px solid rgba(201,162,39,0.25);cursor:pointer;font-family:inherit;transition:all .2s}
-  .adv-chat-action-btn:hover{background:rgba(201,162,39,0.25)}
-  .adv-chat-input-area{padding:12px 20px 16px;border-top:1px solid rgba(255,255,255,0.06)}
+  .adv-chat-action-btn{padding:4px 12px;border-radius:6px;font-size:10px;font-weight:600;background:rgba(0,51,102,0.06);color:#003366;border:1px solid rgba(0,51,102,0.2);cursor:pointer;font-family:inherit;transition:all .2s}
+  .adv-chat-action-btn:hover{background:rgba(0,51,102,0.12)}
+  .adv-chat-input-area{padding:12px 20px 16px;border-top:1px solid #eef0f2}
   .adv-chat-suggestions{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-  .adv-chat-suggestion{padding:4px 12px;border-radius:20px;font-size:10px;font-weight:500;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);cursor:pointer;font-family:inherit;transition:all .2s}
-  .adv-chat-suggestion:hover{color:var(--gold);border-color:rgba(201,162,39,0.3);background:rgba(201,162,39,0.06)}
+  .adv-chat-suggestion{padding:4px 12px;border-radius:20px;font-size:10px;font-weight:500;color:#555;background:#f9fafb;border:1px solid #e0e2e7;cursor:pointer;font-family:inherit;transition:all .2s}
+  .adv-chat-suggestion:hover{color:#003366;border-color:rgba(0,51,102,0.3);background:rgba(0,51,102,0.04)}
   .adv-chat-input-row{display:flex;gap:8px}
-  .adv-chat-input{flex:1;padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#fff;font-size:12px;font-family:inherit;outline:none;transition:border-color .2s}
-  .adv-chat-input:focus{border-color:rgba(201,162,39,0.4)}
-  .adv-chat-input::placeholder{color:rgba(255,255,255,0.25)}
-  .adv-chat-send{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#C9A227,#d4b12f);border:none;color:#001a33;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .adv-chat-input{flex:1;padding:10px 16px;border-radius:10px;border:1px solid #dde0e4;background:#f9fafb;color:#001a33;font-size:12px;font-family:inherit;outline:none;transition:border-color .2s}
+  .adv-chat-input:focus{border-color:rgba(0,51,102,0.4)}
+  .adv-chat-input::placeholder{color:#999}
+  .adv-chat-send{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#003366,#0a4080);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s}
   .adv-chat-send:hover{transform:scale(1.05)}
 
   /* ===== GS WEALTH OS VIEW ===== */
-.wo-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-y:auto}
+.wo-view{background:#0b1628;color:#e0e6ef;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:calc(100vh - 80px);overflow-y:auto}
 .wo-top{background:linear-gradient(135deg,#001a33,#003366);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
 .wo-top h1{color:#fff;font-size:18px;font-weight:600;margin:0}
 .wo-top h1 em{font-style:normal;color:var(--gold)}
@@ -5803,6 +6021,9 @@
       </div>
     </div>
 
+    <!-- LIGHT SECTION WRAPPER -->
+    <div class="ca-light-section">
+
     <!-- GOVERNING PRINCIPLES -->
     <div class="ca-section">
       <div class="ca-section-label">Governance</div>
@@ -6008,12 +6229,14 @@
     </div>
 
     <!-- BOTTOM CTA -->
-    <div style="text-align:center;padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.06)">
-      <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">The Competitive Moat</div>
-      <div style="font-size:20px;font-weight:700;color:var(--white);margin-bottom:8px">Becoming the Operating System for Client Wealth</div>
-      <div style="font-size:13px;color:var(--gray-400);line-height:1.7;max-width:600px;margin:0 auto 24px">When a client's AI can talk to Goldman's AI &mdash; with a trusted advisor as the orchestrator &mdash; switching costs become infinite. No competitor can replicate forty years of relationship context, proprietary research, and institutional trust.</div>
-      <button class="ca-back" onclick="showView('futurestate')" style="background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.08));color:var(--gold);border:1px solid rgba(201,162,39,0.3)">Explore Full Future State &#8594;</button>
+    <div style="text-align:center;padding:40px 0 20px;border-top:1px solid #e0e2e7">
+      <div style="font-size:11px;font-weight:700;color:#003366;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">The Competitive Moat</div>
+      <div style="font-size:20px;font-weight:700;color:#001a33;margin-bottom:8px">Becoming the Operating System for Client Wealth</div>
+      <div style="font-size:13px;color:#555;line-height:1.7;max-width:600px;margin:0 auto 24px">When a client's AI can talk to Goldman's AI &mdash; with a trusted advisor as the orchestrator &mdash; switching costs become infinite. No competitor can replicate forty years of relationship context, proprietary research, and institutional trust.</div>
+      <button class="ca-back" onclick="showView('futurestate')" style="background:linear-gradient(135deg,#003366,#001a33);color:#fff;border:none">Explore Full Future State &#8594;</button>
     </div>
+
+    </div><!-- end ca-light-section -->
 
   </div>
 </div>
@@ -8267,96 +8490,203 @@
 
       <!-- Presentation Preview -->
       <div style="margin-bottom:20px;">
-        <h3 style="font-size:14px;font-weight:600;color:#001a33;margin-bottom:12px;">Presentation Preview</h3>
-        <div class="mp-slides-grid">
+        <h3 style="font-size:14px;font-weight:600;color:#001a33;margin-bottom:12px;">Presentation Preview <span style="font-size:11px;font-weight:400;color:#666;">— 8 slides, AI-generated</span></h3>
+        <div class="mp-slides-grid" style="grid-template-columns:1fr;gap:14px;">
+
           <!-- Slide 1: Cover -->
-          <div class="mp-slide mp-slide1" onclick="window.mpShowSlideModal(1, 'Quarterly Investment Review — Sarah & Michael Chen | Q1 2026 | Private Wealth Management | Prepared by James Rodriguez, Managing Director')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">1</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title" style="font-size:14px;line-height:1.3;">Quarterly Investment Review</div>
-                <div class="mp-slide-subtitle">Sarah & Michael Chen | Q1 2026</div>
-                <div class="mp-slide-subtitle" style="font-size:9px;margin-top:6px;">Private Wealth Management</div>
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(1,'Cover')">
+            <div class="mp-sr-badge">1 / 8</div>
+            <div style="background:linear-gradient(135deg,#001a33 0%,#003366 60%,#0a4080 100%);border-radius:6px;padding:28px 24px;color:white;position:relative;overflow:hidden;min-height:120px;">
+              <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,0.12) 0%,transparent 70%)"></div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(201,162,39,0.8);margin-bottom:12px;">PRIVATE WEALTH MANAGEMENT</div>
+              <div style="font-size:18px;font-weight:800;line-height:1.2;margin-bottom:6px;">Quarterly Investment Review</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:16px;">Sarah &amp; Michael Chen &nbsp;|&nbsp; Q1 2026</div>
+              <div style="display:flex;gap:16px;font-size:9px;color:rgba(255,255,255,0.4);">
+                <span>Prepared by James Rodriguez, Managing Director</span>
+                <span>February 28, 2026</span>
               </div>
+              <div style="position:absolute;bottom:8px;right:12px;font-size:8px;font-weight:700;letter-spacing:1px;color:rgba(201,162,39,0.5);">CONFIDENTIAL</div>
             </div>
           </div>
+
           <!-- Slide 2: Performance Overview -->
-          <div class="mp-slide mp-slide2" onclick="window.mpShowSlideModal(2, 'Portfolio Performance: +9.2% YTD vs Benchmark +7.8% | Alpha: +1.4% | Sharpe: 1.42 | Key Contributors: Nexus (+34%), Growth Equity (+18%), NVIDIA (+22%)')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">2</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide2-number" style="margin-bottom:4px;">+9.2%</div>
-                <div class="mp-slide-subtitle">YTD Return</div>
-                <div class="mp-slide-subtitle" style="font-size:10px;margin-top:4px;">+1.4% Alpha · Sharpe 1.42</div>
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(2,'Performance')">
+            <div class="mp-sr-badge">2 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:12px;">Portfolio Performance Overview</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+                <div style="text-align:center;padding:8px;background:#f0f7f4;border-radius:4px;"><div style="font-size:16px;font-weight:800;color:#28a745;">+9.2%</div><div style="font-size:8px;color:#666;">YTD Return</div></div>
+                <div style="text-align:center;padding:8px;background:#f0f4f8;border-radius:4px;"><div style="font-size:16px;font-weight:800;color:#003366;">+7.8%</div><div style="font-size:8px;color:#666;">Benchmark</div></div>
+                <div style="text-align:center;padding:8px;background:rgba(201,162,39,0.08);border-radius:4px;"><div style="font-size:16px;font-weight:800;color:#C9A227;">+1.4%</div><div style="font-size:8px;color:#666;">Alpha</div></div>
+                <div style="text-align:center;padding:8px;background:#f0f4f8;border-radius:4px;"><div style="font-size:16px;font-weight:800;color:#001a33;">1.42</div><div style="font-size:8px;color:#666;">Sharpe</div></div>
               </div>
-            </div>
-          </div>
-          <!-- Slide 3: Asset Allocation -->
-          <div class="mp-slide mp-slide3" onclick="window.mpShowSlideModal(3, 'Asset Allocation: Current vs Target | Equities 58%→55% | Fixed Income 22%→20% | Alternatives 12%→20% (underweight $22.4M) | Cash 8%→5% (excess $8.4M)')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">3</div>
-              <div class="mp-slide-content">
-                <div style="margin-bottom:6px;font-weight:600;">Asset Allocation</div>
-                <div class="mp-slide3-bars">
-                  <div class="mp-slide3-bar"></div>
-                  <div class="mp-slide3-bar"></div>
-                  <div class="mp-slide3-bar"></div>
-                  <div class="mp-slide3-bar"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:10px;">
+                <div>
+                  <div style="font-size:9px;font-weight:700;color:#28a745;margin-bottom:4px;">TOP CONTRIBUTORS</div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>Nexus Technologies</span><span style="color:#28a745;font-weight:600;">+34.2%</span></div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>Growth Equity Fund</span><span style="color:#28a745;font-weight:600;">+18.1%</span></div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>NVIDIA Corp</span><span style="color:#28a745;font-weight:600;">+22.4%</span></div>
                 </div>
-                <div style="font-size:9px;">Current vs Target</div>
+                <div>
+                  <div style="font-size:9px;font-weight:700;color:#dc3545;margin-bottom:4px;">DETRACTORS</div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>European Industrials</span><span style="color:#dc3545;font-weight:600;">-4.2%</span></div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>EM Bonds</span><span style="color:#dc3545;font-weight:600;">-2.8%</span></div>
+                  <div style="display:flex;justify-content:space-between;color:#555;"><span>Healthcare Select</span><span style="color:#dc3545;font-weight:600;">-1.3%</span></div>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Slide 3: Asset Allocation -->
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(3,'Allocation')">
+            <div class="mp-sr-badge">3 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:12px;">Asset Allocation — Current vs Target</div>
+              <div style="margin-bottom:10px;">
+                <div style="font-size:8px;font-weight:600;color:#666;margin-bottom:3px;">CURRENT</div>
+                <div style="display:flex;height:18px;border-radius:3px;overflow:hidden;margin-bottom:4px;">
+                  <div style="width:58%;background:#003366;display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:700;">Equity 58%</div>
+                  <div style="width:22%;background:#0066cc;display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:700;">FI 22%</div>
+                  <div style="width:12%;background:#C9A227;display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:700;">Alts 12%</div>
+                  <div style="width:8%;background:#95b8d1;display:flex;align-items:center;justify-content:center;color:#001a33;font-size:7px;font-weight:700;">8%</div>
+                </div>
+                <div style="font-size:8px;font-weight:600;color:#666;margin-bottom:3px;margin-top:8px;">TARGET</div>
+                <div style="display:flex;height:18px;border-radius:3px;overflow:hidden;">
+                  <div style="width:55%;background:rgba(0,51,102,0.3);border:1px dashed #003366;display:flex;align-items:center;justify-content:center;color:#003366;font-size:8px;font-weight:700;">55%</div>
+                  <div style="width:20%;background:rgba(0,102,204,0.2);border:1px dashed #0066cc;display:flex;align-items:center;justify-content:center;color:#0066cc;font-size:8px;font-weight:700;">20%</div>
+                  <div style="width:20%;background:rgba(201,162,39,0.2);border:1px dashed #C9A227;display:flex;align-items:center;justify-content:center;color:#996b00;font-size:8px;font-weight:700;">20%</div>
+                  <div style="width:5%;background:rgba(149,184,209,0.3);border:1px dashed #95b8d1;display:flex;align-items:center;justify-content:center;color:#555;font-size:7px;font-weight:700;">5%</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:10px;">
+                <div style="flex:1;padding:6px;background:#fff3cd;border-radius:3px;font-size:8px;text-align:center;color:#856404;border:1px solid #ffc107;"><strong>Alts Gap</strong><br>-$22.4M below target</div>
+                <div style="flex:1;padding:6px;background:#d4edda;border-radius:3px;font-size:8px;text-align:center;color:#155724;border:1px solid #28a745;"><strong>Cash Excess</strong><br>+$8.4M above target</div>
+                <div style="flex:1;padding:6px;background:#f0f4f8;border-radius:3px;font-size:8px;text-align:center;color:#003366;border:1px solid #b8daff;"><strong>Nexus</strong><br>28% concentration risk</div>
+              </div>
+            </div>
+          </div>
+
           <!-- Slide 4: Market Outlook -->
-          <div class="mp-slide" onclick="window.mpShowSlideModal(4, 'Market Outlook: S&P 500 +12.4% YTD | Fed Funds 5.25% (higher for longer) | 10Y at 4.35% | Research: OW US Equities, Strong OW Private Credit | Tech/AI infrastructure theme dominant')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">4</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title">Market Outlook</div>
-                <div class="mp-slide-subtitle">Rates · AI Rally · Private Credit</div>
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(4,'Markets')">
+            <div class="mp-sr-badge">4 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:12px;">Market Outlook &amp; House View</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
+                <div style="padding:6px;background:#f0f7f4;border-radius:3px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#28a745;">S&amp;P +12.4%</div><div style="font-size:8px;color:#666;">YTD</div></div>
+                <div style="padding:6px;background:#f0f4f8;border-radius:3px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#003366;">Fed 5.25%</div><div style="font-size:8px;color:#666;">Higher for longer</div></div>
+                <div style="padding:6px;background:#fff3cd;border-radius:3px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#856404;">10Y 4.35%</div><div style="font-size:8px;color:#666;">Rates elevated</div></div>
               </div>
+              <div style="font-size:9px;font-weight:700;color:#001a33;margin-bottom:6px;">RESEARCH POSITIONING</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:9px;">
+                <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#f0f7f4;border-radius:2px;"><span>US Equities</span><span style="color:#28a745;font-weight:700;">Overweight</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#f0f7f4;border-radius:2px;"><span>Private Credit</span><span style="color:#28a745;font-weight:700;">Strong OW</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#f9fafb;border-radius:2px;"><span>Intl Developed</span><span style="color:#666;font-weight:700;">Neutral</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 6px;background:#fff5f5;border-radius:2px;"><span>EM Bonds</span><span style="color:#dc3545;font-weight:700;">Underweight</span></div>
+              </div>
+              <div style="margin-top:8px;padding:6px;background:#f0f4f8;border-radius:3px;font-size:9px;color:#003366;"><strong>Key Theme:</strong> AI infrastructure spending accelerating. Positioned via Nexus, NVIDIA, and Growth Equity Fund.</div>
             </div>
           </div>
+
           <!-- Slide 5: Strategic Recommendations -->
-          <div class="mp-slide" onclick="window.mpShowSlideModal(5, 'Strategic Recommendations: 1) GRAT Funding — $25M Nexus shares, $8.2M projected tax-free transfer, Mar 15 deadline | 2) Nexus 10b5-1 Plan — reduce 28%→15% over 18mo | 3) Alternatives — $22.4M deployment across 3 platforms | 4) Cash — $8.4M muni bond ladder')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">5</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title">Strategic Recommendations</div>
-                <div class="mp-slide-subtitle" style="font-size:10px;">GRAT · Concentration · Alts · Cash</div>
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(5,'Recommendations')">
+            <div class="mp-sr-badge">5 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:10px;">Strategic Recommendations</div>
+              <div style="display:grid;gap:6px;">
+                <div style="display:flex;gap:8px;align-items:flex-start;padding:8px;background:linear-gradient(135deg,rgba(201,162,39,0.06),rgba(201,162,39,0.02));border-left:3px solid #C9A227;border-radius:0 4px 4px 0;">
+                  <div style="font-size:14px;font-weight:800;color:#C9A227;min-width:18px;">1</div>
+                  <div><div style="font-size:10px;font-weight:700;color:#001a33;">GRAT Funding — $25M Nexus Shares</div><div style="font-size:8px;color:#666;">$8.2M projected tax-free transfer · Mar 15 deadline · Docs ready</div></div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:flex-start;padding:8px;background:rgba(0,51,102,0.03);border-left:3px solid #003366;border-radius:0 4px 4px 0;">
+                  <div style="font-size:14px;font-weight:800;color:#003366;min-width:18px;">2</div>
+                  <div><div style="font-size:10px;font-weight:700;color:#001a33;">Nexus 10b5-1 Plan — 28% → 15%</div><div style="font-size:8px;color:#666;">Systematic reduction over 18 months · $21.1M · Tax-loss offset $596K</div></div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:flex-start;padding:8px;background:rgba(40,167,69,0.04);border-left:3px solid #28a745;border-radius:0 4px 4px 0;">
+                  <div style="font-size:14px;font-weight:800;color:#28a745;min-width:18px;">3</div>
+                  <div><div style="font-size:10px;font-weight:700;color:#001a33;">Alternatives Deployment — $22.4M</div><div style="font-size:8px;color:#666;">Buyout XIV $10M · Private Credit IV $8M · Infrastructure III $4.4M</div></div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:flex-start;padding:8px;background:rgba(0,102,204,0.04);border-left:3px solid #0066cc;border-radius:0 4px 4px 0;">
+                  <div style="font-size:14px;font-weight:800;color:#0066cc;min-width:18px;">4</div>
+                  <div><div style="font-size:10px;font-weight:700;color:#001a33;">Cash Redeployment — $8.4M Muni Ladder</div><div style="font-size:8px;color:#666;">3.8% tax-equivalent yield · Short duration · NY triple tax exempt</div></div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- Slide 6: Next-Gen Planning -->
-          <div class="mp-slide" onclick="window.mpShowSlideModal(6, 'Next-Generation Planning: David (24) — $2M seed account, 70/20/10 allocation, irrevocable trust | Emily (21) — $500K convertible note, founder equity guardrails | Family Wealth Summit — April 2026, governance charter, investment education, philanthropic mission')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">6</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title">Next-Gen Planning</div>
-                <div class="mp-slide-subtitle">David · Emily · Family Summit</div>
+
+          <!-- Slide 6: Estate & GRAT Strategy -->
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(6,'Estate')">
+            <div class="mp-sr-badge">6 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:10px;">Estate Planning &amp; Wealth Transfer</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;">
+                <div style="text-align:center;padding:8px;background:linear-gradient(135deg,rgba(201,162,39,0.08),rgba(201,162,39,0.02));border-radius:4px;border:1px solid rgba(201,162,39,0.2);"><div style="font-size:14px;font-weight:800;color:#C9A227;">$8.2M</div><div style="font-size:8px;color:#666;">GRAT Transfer</div></div>
+                <div style="text-align:center;padding:8px;background:rgba(0,51,102,0.04);border-radius:4px;border:1px solid rgba(0,51,102,0.15);"><div style="font-size:14px;font-weight:800;color:#003366;">$10.9M</div><div style="font-size:8px;color:#666;">SLAT Savings</div></div>
+                <div style="text-align:center;padding:8px;background:rgba(40,167,69,0.04);border-radius:4px;border:1px solid rgba(40,167,69,0.15);"><div style="font-size:14px;font-weight:800;color:#28a745;">$7.2M</div><div style="font-size:8px;color:#666;">CRT Savings</div></div>
+              </div>
+              <div style="padding:8px;background:#f0f4f8;border-radius:4px;margin-bottom:8px;">
+                <div style="font-size:9px;font-weight:700;color:#001a33;margin-bottom:4px;">GRAT SCENARIO — RECOMMENDED</div>
+                <div style="font-size:9px;color:#555;line-height:1.6;">3-year zeroed-out GRAT · $25M Nexus shares · 5.2% 7520 rate<br>Beneficiaries: David Chen (50%) &amp; Emily Chen (50%)<br>Total projected estate tax savings: <strong style="color:#C9A227;">$26.3M combined</strong></div>
+              </div>
+              <div style="display:flex;gap:6px;">
+                <div style="flex:1;padding:6px;background:#fff3cd;border-radius:3px;font-size:8px;text-align:center;border:1px solid #ffc107;"><strong style="color:#856404;">⏰ Mar 15 Deadline</strong><br>Q1 funding window</div>
+                <div style="flex:1;padding:6px;background:#d4edda;border-radius:3px;font-size:8px;text-align:center;border:1px solid #28a745;"><strong style="color:#155724;">✓ Docs Ready</strong><br>Sullivan &amp; Cromwell</div>
               </div>
             </div>
           </div>
-          <!-- Slide 7: Alternative Investments -->
-          <div class="mp-slide" onclick="window.mpShowSlideModal(7, 'Alternative Investments Pipeline: Buyout XIV ($10M, 2.1x MOIC, 18% net IRR) | Private Credit IV ($8M, 9.2% yield, senior secured) | Infrastructure III ($4.4M, 7.8% yield, inflation-linked) | Total deployment: $22.4M → closes allocation gap')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">7</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title">Alternatives Pipeline</div>
-                <div class="mp-slide-subtitle" style="font-size:10px;">Buyout · Credit · Infrastructure</div>
+
+          <!-- Slide 7: Next-Gen Planning -->
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(7,'NextGen')">
+            <div class="mp-sr-badge">7 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:10px;">Next-Generation Wealth Planning</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="padding:10px;background:#f9fafb;border-radius:4px;border-left:3px solid #003366;">
+                  <div style="font-size:10px;font-weight:700;color:#001a33;">David Chen <span style="font-weight:400;color:#666;">Age 24</span></div>
+                  <div style="font-size:8px;color:#555;margin-top:4px;line-height:1.5;">Stanford MBA '25 · Sequoia Capital<br>$2M seed account · Irrevocable trust<br>70% growth / 20% venture / 10% cash</div>
+                </div>
+                <div style="padding:10px;background:#f9fafb;border-radius:4px;border-left:3px solid #28a745;">
+                  <div style="font-size:10px;font-weight:700;color:#001a33;">Emily Chen <span style="font-weight:400;color:#666;">Age 21</span></div>
+                  <div style="font-size:8px;color:#555;margin-top:4px;line-height:1.5;">Yale '25 · ClimateBridge founder<br>$500K convertible note consideration<br>Founder equity separation guidance</div>
+                </div>
+              </div>
+              <div style="padding:8px;background:linear-gradient(135deg,rgba(201,162,39,0.06),rgba(0,51,102,0.04));border-radius:4px;border:1px solid rgba(201,162,39,0.2);">
+                <div style="font-size:9px;font-weight:700;color:#C9A227;margin-bottom:4px;">FAMILY WEALTH SUMMIT — APRIL 2026</div>
+                <div style="font-size:8px;color:#555;line-height:1.5;">Governance charter · Investment education · Philanthropic mission · All family members</div>
               </div>
             </div>
           </div>
-          <!-- Slide 8: Next Steps -->
-          <div class="mp-slide" onclick="window.mpShowSlideModal(8, 'Next Steps & Timeline: Week 1: GRAT docs review + Buyout XIV approval | Week 2: GRAT signing (Mar 10) + Tax harvesting | Week 3: GRAT funding (Mar 15) + 10b5-1 setup | April: Family Wealth Summit | Q2: Estate plan update + Private Credit & Infrastructure deployment')">
-            <div class="mp-slide-inner">
-              <div class="mp-slide-number">8</div>
-              <div class="mp-slide-content">
-                <div class="mp-slide-title">Next Steps & Timeline</div>
-                <div class="mp-slide-subtitle">Action Items · Key Deadlines</div>
+
+          <!-- Slide 8: Action Plan & Timeline -->
+          <div class="mp-slide-rich" onclick="window.mpShowSlideModal(8,'Actions')">
+            <div class="mp-sr-badge">8 / 8</div>
+            <div style="background:#fff;border-radius:6px;padding:16px 18px;border:1px solid #e8e8e8;">
+              <div style="font-size:11px;font-weight:700;color:#003366;border-bottom:2px solid #003366;padding-bottom:6px;margin-bottom:10px;">Action Plan &amp; Timeline</div>
+              <div style="position:relative;padding-left:14px;">
+                <div style="position:absolute;left:4px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#C9A227,#003366,#28a745);border-radius:1px;"></div>
+                <div style="margin-bottom:8px;position:relative;">
+                  <div style="position:absolute;left:-13px;top:2px;width:8px;height:8px;border-radius:50%;background:#C9A227;border:2px solid white;box-shadow:0 0 0 1px #C9A227;"></div>
+                  <div style="font-size:9px;font-weight:700;color:#C9A227;">WEEK 1 — IMMEDIATE</div>
+                  <div style="font-size:8px;color:#555;line-height:1.6;">GRAT documents review · Buyout XIV approval · Tax harvesting execution</div>
+                </div>
+                <div style="margin-bottom:8px;position:relative;">
+                  <div style="position:absolute;left:-13px;top:2px;width:8px;height:8px;border-radius:50%;background:#003366;border:2px solid white;box-shadow:0 0 0 1px #003366;"></div>
+                  <div style="font-size:9px;font-weight:700;color:#003366;">WEEK 2–3 — EXECUTION</div>
+                  <div style="font-size:8px;color:#555;line-height:1.6;">GRAT signing (Mar 10) · GRAT funding (Mar 15) · 10b5-1 plan setup</div>
+                </div>
+                <div style="margin-bottom:8px;position:relative;">
+                  <div style="position:absolute;left:-13px;top:2px;width:8px;height:8px;border-radius:50%;background:#28a745;border:2px solid white;box-shadow:0 0 0 1px #28a745;"></div>
+                  <div style="font-size:9px;font-weight:700;color:#28a745;">APRIL — MILESTONE</div>
+                  <div style="font-size:8px;color:#555;line-height:1.6;">Family Wealth Summit · David seed account · Emily convertible note</div>
+                </div>
+                <div style="position:relative;">
+                  <div style="position:absolute;left:-13px;top:2px;width:8px;height:8px;border-radius:50%;background:#0066cc;border:2px solid white;box-shadow:0 0 0 1px #0066cc;"></div>
+                  <div style="font-size:9px;font-weight:700;color:#0066cc;">Q2 — DEPLOYMENT</div>
+                  <div style="font-size:8px;color:#555;line-height:1.6;">Private Credit IV &amp; Infrastructure III · Estate plan update · SLAT execution</div>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
         <button class="mp-view-button" onclick="alert('Full presentation opens in PowerPoint')">View Full Presentation</button>
       </div>
@@ -8517,6 +8847,9 @@
       <h2>Your Financial Life,<br><em>Always On</em></h2>
       <p>Wealth OS transforms the firm from a service you consult into a system that works for you — an always-on operating layer that monitors, anticipates, and acts within the guardrails you set. Here's what that experience looks like.</p>
     </div>
+
+    <!-- LIGHT SECTION WRAPPER -->
+    <div class="wo-light-section">
 
     <!-- ===== CLIENT PERSPECTIVE ===== -->
     <div class="wo-section">
@@ -8838,6 +9171,8 @@
       <p>When every interaction builds context, every service deepens trust, and every module extends the platform — The firm doesn't just manage wealth. It becomes the indispensable intelligence layer that clients can't imagine living without.</p>
     </div>
 
+    </div><!-- end wo-light-section -->
+
   </div>
 </div>
 </div>
@@ -8848,13 +9183,14 @@
   <div class="fh-top">
     <div style="display:flex;align-items:center">
       <button class="fh-back" onclick="window.showView('framing')">&#8592; Back to Storyboard</button>
-      <h1>Future Service Horizon &mdash; Beyond Wealth</h1>
+      <h1>Future Service Horizon &mdash; <em>Beyond Wealth</em></h1>
     </div>
     <span class="fh-badge">Expansion Roadmap 2026–2031+</span>
   </div>
   <div class="fh-body">
     <div class="fh-hero">
-      <h2>From Wealth Manager to Life Operating System</h2>
+      <div class="fh-hero-badge">The Indispensability Roadmap</div>
+      <h2>From Wealth Manager to<br><em>Life Operating System</em></h2>
       <p>The firms that win long-term will transcend "wealth manager" to become the indispensable operating system for UHNW families. Each new service deepens irreplaceable context — not contractual lock-in, but switching costs built on trust, data, and orchestration capability.</p>
     </div>
 
@@ -8881,6 +9217,9 @@
         <div class="fh-theme-desc">Deliver bespoke, white-glove service at scale — AI handles complexity while advisors provide judgment and empathy</div>
       </div>
     </div>
+
+    <!-- LIGHT SECTION WRAPPER -->
+    <div class="fh-light-section">
 
     <!-- NEAR-TERM HORIZON -->
     <div class="fh-horizon fh-horizon-near">
@@ -9162,6 +9501,8 @@
       </div>
       <div class="fh-convergence-foot">From wealth manager to life operating system — the ultimate defensible position in an AI-driven world</div>
     </div>
+
+    </div><!-- end fh-light-section -->
 
   </div>
 </div>
@@ -9815,16 +10156,32 @@
 
   /* --- Walkthrough (presentation mode) --- */
   var wtStops = [
-    { key: 'framing', title: 'Homepage', bc: ['How + What We Deliver'] },
-    { key: 'era1', title: 'Era 1: Firm-Side AI', bc: ['How We Deliver', 'Era 1'] },
-    { key: 'review', title: 'Quarterly Reviews', bc: ['How We Deliver', 'Era 1', 'Client Lifecycle'] },
-    { key: 'estatestrat', title: 'Estate Strategy Agent', bc: ['How We Deliver', 'Era 1', 'Agent Deep Dive'] },
-    { key: 'dashboard', title: 'Advisor Dashboard', bc: ['How We Deliver', 'Era 1', 'Advisor Experience'] },
-    { key: 'era2', title: 'Era 2: Client-Side Agents', bc: ['How We Deliver', 'Era 2'] },
-    { key: 'clientagent', title: 'Client Agent Experience', bc: ['How We Deliver', 'Era 2', 'Client AI'] },
-    { key: 'era3', title: 'Era 3: Collaborative Ecosystem', bc: ['How We Deliver', 'Era 3'] },
-    { key: 'wealthos', title: 'Wealth OS', bc: ['How We Deliver', 'Era 3', 'Platform Vision'] },
-    { key: 'servicehorizon', title: 'Service Expansion', bc: ['What We Deliver', 'Expansion Roadmap'] }
+    { key: 'framing', title: 'Welcome', bc: ['Strategic Roadmap'],
+      desc: 'This is the AI transformation roadmap for wealth management \u2014 a vision for how advisors, clients, and technology evolve together over the next decade.' },
+    { key: 'framing', scrollTo: 'framing-eras', title: 'Three Eras of Transformation', bc: ['Strategic Roadmap', 'Overview'],
+      desc: 'The transformation unfolds across three eras: Firm-Side AI (today), Client-Side Agents (2027\u20132029), and the Collaborative Ecosystem (2029+). Each era builds on the last. Click any era card to explore it.' },
+    { key: 'framing', scrollTo: 'framing-moat', title: 'Competitive Landscape', bc: ['Strategic Roadmap', 'Moat Analysis'],
+      desc: 'Not everything is defensible. This analysis maps what generic AI will commoditize, where firm agents maintain an edge, and where non-agentic advantages \u2014 like deal flow and lending \u2014 are the true differentiator.' },
+    { key: 'era1', title: 'Era 1: The AI-Powered Advisor', bc: ['How We Deliver', 'Era 1'],
+      desc: 'Era 1 (2025\u20132027) focuses on AI that helps advisors work faster and smarter. Ten capabilities span the full client lifecycle \u2014 from prospect identification through ongoing portfolio management.' },
+    { key: 'era1', scrollTo: 'era1-capabilities', title: 'Ten Capabilities', bc: ['How We Deliver', 'Era 1', 'Capabilities'],
+      desc: 'Each card represents an AI-powered capability. They follow the client journey from left to right: prospecting, onboarding, reviews, monitoring, estate planning, and more. Click any card to see the full agent-driven experience.' },
+    { key: 'review', title: 'Ongoing Client Review Cycle', bc: ['How We Deliver', 'Era 1', 'Quarterly Reviews'],
+      desc: 'A deep dive into the quarterly review process. AI agents handle preparation, real-time support during the meeting, and automated follow-through \u2014 turning a weeks-long cycle into a seamless, always-current experience.' },
+    { key: 'meetingprep', title: 'Meeting Prep Agent', bc: ['How We Deliver', 'Era 1', 'Agent Deep Dive'],
+      desc: 'This is what the AI agent actually produces. The Meeting Prep Agent synthesizes 50,000+ research documents, consolidates performance across all entities, and generates a complete advisor briefing \u2014 reducing prep time by 80%.' },
+    { key: 'dashboard', title: 'Advisor Dashboard', bc: ['How We Deliver', 'Era 1', 'Advisor Experience'],
+      desc: 'The unified command center where all AI capabilities come together. Morning briefs, priority actions, client health scores, and portfolio alerts \u2014 everything an advisor needs in one view.' },
+    { key: 'era2', title: 'Era 2: Client-Side Agents', bc: ['How We Deliver', 'Era 2'],
+      desc: 'By 2027\u20132029, clients will have their own AI agents that negotiate, challenge, and collaborate with firm agents. This era explores how to prepare for \u2014 and win \u2014 in that world.' },
+    { key: 'clientagent', title: 'Client Agent Experience', bc: ['How We Deliver', 'Era 2', 'Client AI'],
+      desc: 'What happens when a client\u2019s personal AI contacts your firm\u2019s AI? This experience shows agent-to-agent negotiation, real-time portfolio defense, and how institutional depth becomes the differentiator.' },
+    { key: 'era3', title: 'Era 3: Collaborative Ecosystem', bc: ['How We Deliver', 'Era 3'],
+      desc: 'The final era (2029+) envisions wealth management evolving into life management \u2014 a platform operating system that connects clients, advisors, and external partners in a collaborative ecosystem.' },
+    { key: 'wealthos', title: 'Wealth OS Platform', bc: ['How We Deliver', 'Era 3', 'Platform Vision'],
+      desc: 'Wealth OS is the platform vision: an operating system for high-net-worth life \u2014 connecting financial planning, real estate, healthcare, philanthropy, and family governance into a single intelligent fabric.' },
+    { key: 'servicehorizon', title: 'Service Expansion Roadmap', bc: ['What We Deliver', 'Expansion'],
+      desc: 'Beyond AI capabilities, this maps the expansion of what we deliver \u2014 new service lines, product extensions, and revenue opportunities that each era unlocks across the client relationship.' }
   ];
 
   var wtIdx = 0;
@@ -9832,6 +10189,7 @@
   var wtBarEl = document.getElementById('wtBar');
   var wtStepLabel = document.getElementById('wtStepLabel');
   var wtTitleEl = document.getElementById('wtTitle');
+  var wtDescEl = document.getElementById('wtDesc');
   var wtPipsEl = document.getElementById('wtPips');
   var wtPrevBtn = document.getElementById('wtPrev');
   var wtNextBtn = document.getElementById('wtNext');
@@ -9860,7 +10218,7 @@
     wtStepLabel.textContent = 'Stop ' + (wtIdx + 1) + ' of ' + wtStops.length;
     wtTitleEl.textContent = stop.title;
     wtPrevBtn.disabled = (wtIdx === 0);
-    wtNextBtn.textContent = (wtIdx === wtStops.length - 1) ? 'Finish' : 'Next →';
+    wtNextBtn.textContent = (wtIdx === wtStops.length - 1) ? 'Finish' : 'Next \u2192';
     buildWtPips();
     /* Breadcrumb */
     if (stop.bc && stop.bc.length > 0) {
@@ -9874,22 +10232,54 @@
     } else {
       wtBcEl.innerHTML = '';
     }
+    /* Description */
+    wtDescEl.textContent = stop.desc || '';
   }
+
+  /* Track the last view key we navigated to, to avoid re-triggering showView for scroll-only stops */
+  var wtLastViewKey = null;
 
   function goToWtStop(idx) {
     wtIdx = idx;
     var stop = wtStops[idx];
+
+    /* Navigate to the view if it changed */
     if (stop.key === 'framing') {
-      window.showFraming();
+      if (wtLastViewKey !== 'framing') window.showFraming();
+      wtLastViewKey = 'framing';
     } else {
-      window.showView(stop.key);
+      if (wtLastViewKey !== stop.key) window.showView(stop.key);
+      wtLastViewKey = stop.key;
     }
+
+    /* Scroll to target element if specified */
+    if (stop.scrollTo) {
+      setTimeout(function() {
+        var target = document.getElementById(stop.scrollTo);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    } else {
+      /* Scroll to top of view */
+      setTimeout(function() {
+        var activeView = document.querySelector('.view.active');
+        if (activeView) {
+          var scroller = activeView.querySelector('.journey-view') || activeView;
+          scroller.scrollTop = 0;
+        }
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 100);
+    }
+
     updateWtBar();
   }
 
   function startWalkthrough() {
     wtActive = true;
     wtIdx = 0;
+    wtLastViewKey = null;
     wtBarEl.classList.add('active');
     goToWtStop(0);
   }
@@ -9897,6 +10287,7 @@
 
   function endWalkthrough() {
     wtActive = false;
+    wtLastViewKey = null;
     wtBarEl.classList.remove('active');
   }
 
@@ -9932,6 +10323,64 @@
 
 
   /* Auto-snap scroll removed — using default scroll behavior */
+
+  /* ===== SPOTLIGHT / ONBOARDING PROMPT ===== */
+  (function initSpotlight() {
+    var overlay = document.getElementById('spotlightOverlay');
+    var hole = document.getElementById('spotlightHole');
+    var pulse = document.getElementById('spotlightPulse');
+    var tooltip = document.getElementById('spotlightTooltip');
+    var dim = document.getElementById('spotlightDim');
+    var btnStart = document.getElementById('spotlightStart');
+    var btnDismiss = document.getElementById('spotlightDismiss');
+    var tourBtn = document.getElementById('tourStartBtn');
+    if (!overlay || !tourBtn) return;
+
+    function positionSpotlight() {
+      var r = tourBtn.getBoundingClientRect();
+      var pad = 10;
+      pulse.style.top = (r.top - pad) + 'px';
+      pulse.style.left = (r.left - pad) + 'px';
+      pulse.style.width = (r.width + pad * 2) + 'px';
+      pulse.style.height = (r.height + pad * 2) + 'px';
+      /* Position tooltip to the right of the button */
+      var tooltipTop = r.top + (r.height / 2) - 80;
+      tooltip.style.top = Math.max(16, tooltipTop) + 'px';
+      tooltip.style.left = (r.right + 20) + 'px';
+    }
+
+    function showSpotlight() {
+      positionSpotlight();
+      overlay.classList.add('active');
+    }
+
+    function dismissSpotlight() {
+      overlay.classList.remove('active');
+      window.removeEventListener('scroll', onScrollDismiss, true);
+    }
+
+    /* Auto-dismiss when user scrolls — they've chosen to explore */
+    function onScrollDismiss() {
+      if (overlay.classList.contains('active')) dismissSpotlight();
+    }
+
+    btnStart.addEventListener('click', function() {
+      dismissSpotlight();
+      setTimeout(function() { window.startWalkthrough(); }, 300);
+    });
+
+    btnDismiss.addEventListener('click', dismissSpotlight);
+
+    /* Listen for scroll on any element (capture phase) to catch scrollable containers */
+    window.addEventListener('scroll', onScrollDismiss, true);
+
+    window.addEventListener('resize', function() {
+      if (overlay.classList.contains('active')) positionSpotlight();
+    });
+
+    /* Show after a brief delay on first load */
+    setTimeout(showSpotlight, 1200);
+  })();
 
 })();
 </script>
